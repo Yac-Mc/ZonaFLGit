@@ -1,0 +1,151 @@
+﻿@model ZonaFl.Models.PortFolio
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_LayoutFreelanceLog.cshtml";
+}
+<script src="~/Scripts/jquery.form.js"></script>
+<script src="~/Scripts/knockout-3.4.0.js"></script>
+<script src="~/Scripts/ModelsKo/Knockout.bindings.js"></script>
+<script src="~/Scripts/ModelsKo/ViewModel.js"></script>
+
+<script type="text/css">
+    .progress
+    {
+    display: none;
+    position: relative;
+    width: 300px;
+    border: 1px solid #ddd;
+    padding: 1px;
+    border-radius: 3px;
+    }
+    .bar
+    {
+    background-color: #B4F5B4;
+    width: 0%;
+    height: 20px;
+    border-radius: 3px;
+    }
+    .percent
+    {
+    position: absolute;
+    display: inline-block;
+    top: 3px;
+    left: 48%;
+    }
+    .progressError
+    {
+    display: none;
+    color: red;
+    font-size: 0.8em;
+    font-weight: bold;
+    margin: 5px 0;
+    }
+</script>
+ <!--/pop up nuevo trabajo-->
+
+<div id="nuevowork" class="emer">
+    <div class="emer-addwork">
+        <a href="@ViewBag.UrlRef">x</a>
+        <hr>
+        <h2 class="title_pop">Publica un trabajo:</h2>
+
+        <div id="content_np">
+            <form id="addwork_contrat" data-bind="submit:setPortfolios">
+                <label>Título para el trabajo</label>
+                <input type="hidden" data-bind="textInput:UserId"  id="UserId"/>
+                <input id="title_port" type="text" class="form-control" placeholder="Es el título de trabajo que se verá publicamente..." data-bind="textInput: Titulo">
+                <br>
+                <label>Cliente</label>
+                <input id="client_port" type="text" class="form-control" placeholder="Persona o empresa para la cual realizó el trabajo..." data-bind="textInput: Cliente">
+                <br>
+                Tipo de trabajo:
+                <select id="tipotrabajo" name="tipotrabajo" data-bind="textInput: CategoriaId" >
+                   @foreach (var cat in Model.Categories)
+                   {
+                    <option value="@cat.Id">@cat.Name</option>
+                   
+                   }
+                </select>
+                <br>
+                <br>
+                <label>Descripción trabajo</label>
+                <textarea name="message" id="describe" required="required" class="form-control" rows="7" placeholder="habla sobre tu trabajo, por ejemplo: campaña en la que se desarrolló, cliente que lo solicitó, etc..." data-bind="textInput: Description"></textarea>
+                <br>
+               
+
+                <label for="upload"><i class="fa fa-upload"></i>Cargar archivo</label>
+                <input id="upload" name="upload" type="file" class="inputfile" data-bind="fileUpload: { property: 'filename', url: '/Portfolio/UploadedFiles' }" />
+                <br />
+                <br />
+                <p>Carga un archivo que sustente el trabajo descrito anteriormente. <i>(Utiliza imágenes de mínimo 500px de ancho para que tu trabajo tenga la mejor definición):</i></p>
+                <output id="list"><div class="thumb pre_foto"><img id="portfolioimg" src="" data-bind="attr: { src: Imagen}" /></div></output>
+                <hr>
+                <input id="copyright" type="checkbox" name="copyright" value="copyright" data-bind="checked: TermCopy"> <span style="font-size:13px; font-style:italic;"> Certifico que la información que estoy suministrando y subiendo al portal ZonaFL es de mi pertenencia y por lo tanto la subo y la comparto aceptando los términos del portal ZFL y eximiéndolo de fraude o cualquier otro problema legal.</span>
+                <br>
+                <br>
+
+                <a href="@Url.Action("DetailsById","Portfolio",new { id = SessionBag.Current.User.Id })"><h2 class="btn-cancel_addofer">Cancelar</h2></a>
+
+                <input type="submit" value="Publicar trabajo +" class="btn-addofer">
+
+
+
+
+            </form>
+            <br />
+        </div>
+
+        <hr>
+
+    </div>
+
+</div>
+<!--/ fin pop up nuevo trabajo-->
+
+<script>
+    // Funcion cargar y visualizar nuevo portafolio
+
+    //function archivo(evt) {
+    //    var files = evt.target.files; // FileList object
+
+    //    //Obtenemos la imagen del campo "file".
+    //    for (var i = 0, f; f = files[i]; i++) {
+    //        //Solo admitimos imágenes.
+    //        if (!f.type.match('image.*')) {
+    //            continue;
+    //        }
+
+    //        var reader = new FileReader();
+
+    //        reader.onload = (function (theFile) {
+    //            return function (e) {
+    //                // Creamos la imagen.
+    //                document.getElementById("list").innerHTML = ['<img class="thumb" src="', e.target.result, '" title="', escape(theFile.name), '"/>'].join('');
+    //            };
+    //        })(f);
+
+    //        reader.readAsDataURL(f);
+    //    }
+    //}
+
+    //document.getElementById('files').addEventListener('change', archivo, false);
+
+
+    // mantener actualizado
+
+    $(document).ready(function () {
+        //$("#preview_img_prof").clone().prependTo(".pre_foto");
+        var vmP = new ViewModelPortfolio(null,'@SessionBag.Current.User.Id');
+        ko.applyBindings(vmP, document.getElementById("addwork_contrat"));
+    });
+
+    //function UploadViewModel() {
+    //    this.filename = ko.observable("");
+    //}
+
+
+
+    //ko.applyBindings(new UploadViewModel(), document.getElementById('upload'));
+
+</script>

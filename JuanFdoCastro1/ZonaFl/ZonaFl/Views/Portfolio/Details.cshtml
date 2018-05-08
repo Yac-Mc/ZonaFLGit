@@ -1,0 +1,225 @@
+﻿@model List<ZonaFl.Models.PortFolio>
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutFreelanceLog.cshtml";
+}
+
+<script src="~/Scripts/knockout-3.4.0.js"></script>
+<script src="~/Scripts/ModelsKo/Knockout.bindings.js"></script>
+<script src="~/Scripts/ModelsKo/ViewModel.js"></script>
+
+<!--/pop up ampliación trabajo-->
+
+ <!--/pop up ampliación trabajo-->
+
+<div id="ampliawork" class="emer">
+    <div class="emer-addwork">
+        <a href="#">x</a>
+        <hr>
+        <h2 id="tit_port_amp" class="title_pop">Título del trabajo</h2>
+
+
+        <div id="content_nw">
+            <h4>Categoría: <span id="cat_port_amp" style="font-style:normal; font-size:14px;"> Diseño gráfico</span></h4>
+
+            <h4>Cliente: <span id="clien_port_amp" style="font-style:normal; font-size:14px;">Nombre del cliente</span></h4>
+            <br>
+
+            <div id="portaf_img" class="preview_porta_big"><img src="" id="portima" /></div>
+            <div id="portaf_descri">
+                <p id="describe_port">Descripción del trabajo, en qué campaña se realizó, qué cliente lo solicitó, etc...</p>
+            </div>
+
+
+        </div>
+
+        <hr>
+
+    </div>
+
+</div>
+<!--/ fin pop up ampliación trabajo-->
+<input type="hidden" id="iduser" value="@ViewBag.UserId" />
+<div id="wrap_perfiles">
+    <section id="principal">
+        <div class="container">
+            <div id="columnahide" class="col-lg-2"></div>
+            <div id="columna" class=" col-md-12 col-lg-12">
+
+                <!-- Div izq-->
+                <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+                    <div class="saludoperfi">
+                        <div id="fotop" class="fotodeperfil">
+                            <img src="images/user_default.png" />
+                        </div>
+                        <div id="saludop" class="saludops">
+                            <h5 id="username_profile">Jairo Barbosa</h5>
+                            <h6 id="tipo_usuario_profile"><i>Contratante</i></h6>
+                            <h6 id="ciudad_profile">Bucaramanga</h6>
+                            <h6 id="pais_profile">COLOMBIA</h6>
+
+                        </div>
+
+                    </div>
+                    <div id="calificaciones" class="col-xs-12">
+                        <div id="stars">
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star-half-o"></i>
+                            <i class="fa fa-star-o"></i>
+                        </div>
+                        <div id="bande_comen" class="col-xs-12">
+                            <a class="iconbar2" href="#"><i class="fa fa-envelope-o"></i></a>
+                            <a class="iconbar2" href="#"><i class="fa fa-comment-o"></i></a>
+
+                        </div>
+                    </div>
+                    <hr>
+                    <div id="comentarios_freelance" class="col-xs-12 col-sm-12 col-md-12">
+                        <h3><strong><i class="fa fa-comment-o"></i> Comentarios:</strong></h3>
+                        <hr>
+                        <div id="comentarios_recopil">
+                            <div class="single_comments">
+                                <img id="com_reciente_img" src="images/blog/avatar3.png" alt="" />
+                                <p id="com_reciente_com">"Excelente trabajo, dentro de los tiempos establecidos."</p>
+                                <div class="entry-meta small muted">
+                                    <span>Por: <a id="com_reciente_user" href="#">Otro usuario</a></span>
+                                </div>
+                            </div>
+
+
+
+
+                        </div>
+                    </div>
+
+                    <br>
+                </div>
+                <!--FIN Div izq-->
+
+                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                    <hr>
+                    <h3><strong>&nbsp;MIS TRABAJOS:</strong></h3>
+                    <hr>
+                    <div id="portfolio_scroll">
+
+
+                        <!--trabajo de portafolio-->
+                        @if (Model.Count > 0)
+                        {
+                            foreach (var port in Model)
+                            {
+                        <div id="portafolio_work">
+                            <input type="hidden" id=@("idport"+port.Id) value="@port.Id" />
+                            <a href="#ampliawork" id=@("href"+port.Id) onclick="TraerPortfolio(this.id);"><h3 class="title_work"><strong><i class="fa fa-bookmark-o"></i>@port.Titulo</strong></h3></a>
+                            <h5 id="cat_port">@port.CategoriaId</h5>
+                            <h5>Cliente: <span id="clie_port">@port.Cliente</span></h5>
+                            <hr>
+                            <a href="#ampliawork"><div id="portaf_1" class="preview_porta"><img src="@port.Imagen" id=@("href"+port.Id) onclick="TraerPortfolio(this.id);"/></div></a>
+
+                            <hr>
+                            <a href="/PortFolio/EditById/@port.Id#nuevowork" class="cont_work"><i class="fa fa-edit" title="Editar trabajo"></i></a>
+                            <button type="button" class="cont_work" id="buttonDelete" ><i class="fa fa-trash-o" title="Eliminar trabajo" data-bind="confirmClick: { message: 'Esta seguro de eliminar el registro?', click: deletePortfolio }" id="@("id"+port.Id)" ></i></button>
+                        </div>
+                            }
+                        }
+                        else
+                        {
+                            <span >No ha creado portafolios hasta el momento</span>
+                        }
+                        <!--FIN trabajo portafolio-->   
+
+
+                    </div>
+
+
+
+                </div>
+
+                <!--FIN Div central-->
+                <!-- Div der-->
+
+                <div id="secder_free" class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+
+                    <div id="veri_pago" class="verificaciones_barra">
+                        <div id="verifi_pago" class="verif_item">
+                            <img src="images/verificacion/verificacionpago.png" />
+                        </div>
+                        <center><h5>Verificación pago</h5></center>
+                    </div>
+
+
+                    <div id="veri_mail" class="verificaciones_barra">
+                        <div id="verifi_mail" class="verif_item">
+                            <img src="images/verificacion/verificacionemail.png" />
+                        </div>
+                        <center><h5>Verificación Email</h5></center>
+                    </div>
+
+                    <div id="veri_movil" class="verificaciones_barra">
+                        <div id="verifi_movil" class="verif_item">
+                            <img src="images/verificacion/verificacionmovil.png" />
+                        </div>
+                        <center><h5>Verificación móvil</h5></center>
+                    </div>
+
+
+                </div>
+
+                <!--FIN Div der-->
+
+            </div>
+
+
+        </div><!--/.container-->
+    </section><!--/about-us-->
+
+</div>
+
+
+<script>
+    function TraerPortfolio(idport) {
+        idport = idport.replace("href", "");
+        $.get("/Portfolio/GetPortfolioByUserAnId", { id: idport, userid: $('#iduser').val() }).done(function (data) {
+            $("#tit_port_amp").html(data.Titulo);
+            $("#cat_port_amp").html(data.Categoria);
+            $("#clien_port_amp").html(data.Cliente);
+            $("#portima").attr("src", data.Imagen);
+            $("#describe_port").html(data.Description);
+
+        });
+
+    }
+
+    ko.applyBindings({
+        deletePortfolio: function (vm) {
+         var id=   vm.confirmClick.click.arguments[1].target.id
+         var idportfolio = id.replace("id", "");
+            
+              
+            
+            
+            if (idportfolio != '') {
+                var jsonData = ko.toJSON(idportfolio);
+                $.ajax({
+                    url: "/Portfolio/DeletePortfolio",
+                    type: "POST",
+                    data: { id: idportfolio },
+                    async: false,
+                    success: function (returnedData) {
+                        if (returnedData) {
+                            location.reload();
+                            alert("Se ha eliminado correctamente la información");
+                        }
+                        else {
+                            alert("Error al eliminar la información, favor comunicarse con el administrador del sistema");
+                        }
+                    }
+                });
+            }
+        }
+    }, document.getElementById('portfolio_scroll'))
+
+</script>

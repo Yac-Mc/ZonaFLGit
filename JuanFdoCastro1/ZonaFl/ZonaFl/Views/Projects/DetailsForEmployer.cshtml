@@ -1,0 +1,342 @@
+﻿@model List<ZonaFl.Models.Offer>
+
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutContratanteLog.cshtml";
+}
+
+<link href="~/Static/css/bootstrap.min.css" rel="stylesheet" />
+
+
+<link href="~/Static/css/font-awesome.min.css" rel="stylesheet">
+<link href="~/Static/css/prettyPhoto.css" rel="stylesheet">
+<link href="~/Static/css/animate.min.css" rel="stylesheet">
+<link href="~/Static/css/main.css" rel="stylesheet">
+<link href="~/Static/css/responsive.css" rel="stylesheet">
+<link href="~/Static/css/jquery-ui-themes-1.12.0/jquery-ui.min.css" rel="stylesheet" />
+<link href="~/Static/css/toastr.min.css" rel="stylesheet" />
+
+
+
+
+
+
+<div id="wrap_perfiles">
+            <section id="principal">
+            <div class="container">
+            <div id="columnahide" class="col-lg-2"></div>
+    <div id="columna" class=" col-md-12 col-lg-12">
+
+              <!-- Div izq-->
+           <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+
+           <div id="goodwill" class="col-xs-12">
+           <p><i class="fa fa-user"></i>&nbsp;<span id="namewill">@ViewBag.NameUser</span></p>
+               <div id="stars">
+                   @if (ViewBag.Calification != null)
+                   {
+                       if (ViewBag.Calification == 0)
+                       {
+                           <i class="fa fa-star-o"></i>
+                               <i class="fa fa-star-o"></i>
+                               <i class="fa fa-star-o"></i>
+                               <i class="fa fa-star-o"></i>
+                               <i class="fa fa-star-o"></i>
+                       }
+                       else if (ViewBag.Calification == 1)
+                       {
+                           <i class="fa fa-star"></i>
+                               <i class="fa fa-star-o"></i>
+                               <i class="fa fa-star-o"></i>
+                               <i class="fa fa-star-o"></i>
+                               <i class="fa fa-star-o"></i>
+                       }
+                       else if (ViewBag.Calification == 2)
+                       {
+                           <i class="fa fa-star"></i>
+                               <i class="fa fa-star"></i>
+                               <i class="fa fa-star-o"></i>
+                               <i class="fa fa-star-o"></i>
+                               <i class="fa fa-star-o"></i>
+                       }
+                       else if (ViewBag.Calification == 3)
+                       {
+                           <i class="fa fa-star"></i>
+                               <i class="fa fa-star"></i>
+                               <i class="fa fa-star"></i>
+                               <i class="fa fa-star-o"></i>
+                               <i class="fa fa-star-o"></i>
+                       }
+                       else if (ViewBag.Calification == 4)
+                       {
+                           <i class="fa fa-star"></i>
+                               <i class="fa fa-star"></i>
+                               <i class="fa fa-star"></i>
+                               <i class="fa fa-star"></i>
+                               <i class="fa fa-star-o"></i>
+                       }
+                       else if (ViewBag.Calification == 5)
+                       {
+                           <i class="fa fa-star"></i>
+                               <i class="fa fa-star"></i>
+                               <i class="fa fa-star"></i>
+                               <i class="fa fa-star"></i>
+                               <i class="fa fa-star"></i>
+                       }
+
+
+
+                   }
+               </div>
+
+           </div>
+
+              <div id="verify" class="col-xs-12">
+              <p style="margin-top:13px;"><strong>Verificaciones</strong></p>
+                   <div id="verify_wrap">
+                            <div class="col-xs-4 verify_item">
+                              <a href="#"><img class="@ViewBag.PagosConfirmed" src="~/Static/images/verificacion/verificacion_pago-G.png"/></a>
+                              <p><strong>Pagos</strong></p>
+                            </div>
+
+                            <div class="col-xs-4 verify_item">
+                               <a href="#"><img  class="@ViewBag.EmailConfirmed" src="~/Static/images/verificacion/verificacion_email_G.png"/></a>
+                              <p><strong>Email</strong></p>
+                            </div>
+
+                            @*<div class="col-xs-4 verify_item">
+                               <a href="#"><img src="~/Static/images/verificacion/verificacion_movil_G.png"/></a>
+                              <p><strong>Móvil</strong></p>
+                            </div>*@
+                   </div>
+          </div>
+
+
+           <div id="terminados_freelance" class="col-xs-12">
+            <h3><strong>Proyecto más reciente:</strong></h3>
+                 <hr>
+                             <div class="progress-wrap">
+                             <h3><span class="latest-cat">Categoría proyecto</span>: <span class="latest-prog">0</span>%</h3>
+                                <div class="progress">
+                                  <div class="progress-bar" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100">
+                                  </div>
+                                </div>
+                            </div>
+            </div>
+
+
+             <div id="comentarios_freelance" class="col-xs-12 col-sm-12 col-md-12">
+             <h3><strong><i class="fa fa-comment-o"></i> Comentarios:</strong></h3>
+             <hr>
+                 <div id="comentarios_recopil">
+
+                       <!--comentario-->
+                     <div class="single_comments">
+
+                         @if (ViewBag.Commentaries != null)
+                         {
+                             foreach (ZonaFl.Models.Project comment in ((List<ZonaFl.Models.Project>)ViewBag.Commentaries))
+                             {
+                                <hr />
+                                 if (string.IsNullOrEmpty(comment.Image))
+                                 {
+                                     <img id="com_reciente_img" src="/static/images/blog/avatar3.png" alt="" />
+                                 }
+                                 else
+                                 {
+                                     <img width="20" height="20" id="com_reciente_img" src='~/UploadedFiles/@comment.Image' alt="" />
+                                 }
+                                 <p id="com_reciente_com">@comment.Comments</p>
+
+                                     <div class="entry-meta small muted">
+                                         <span>Por: <a id="com_reciente_user" href="#">@comment.UserName</a></span>
+                                     </div>
+                             }
+                         }
+
+
+
+                     </div>
+
+
+
+                    <!--Fin comentario-->
+
+                  </div>
+             </div>
+
+
+
+            <br>
+           </div>
+             <!--FIN Div izq-->
+
+           <!--Div central-->
+
+     <div class="col-xs-12 col-sm-7 col-md-7 col-lg-7">
+
+            <h2><i class="fa fa-flag"></i> &nbsp;Proyectos:</h2>
+         @Html.Partial("PartialDetailsEmployer")
+
+
+    </div>
+
+                   <!--FIN Div central-->
+
+    <!-- Div der-->
+
+        <div id="secder_free" class="col-xs-12 col-sm-2 col-md-2 col-lg-2">
+
+      <div id="ads_zona">
+        (Espacio reservado para publicidad y avisos varios)
+        <hr>
+         (Espacio reservado para publicidad y avisos varios)
+          <hr>
+          (Espacio reservado para publicidad y avisos varios)
+           <hr>
+           (Espacio reservado para publicidad y avisos varios)
+      </div>
+
+
+        </div>
+
+          <!--FIN Div der-->
+
+                </div>
+
+
+            </div><!--/.container-->
+        </section><!--/about-us-->
+
+        </div>
+<script src="~/Static/js/jquery.js"></script>
+<script src="~/Static/js/bootstrap.min.js"></script>
+<script src="~/Static/js/jquery.prettyPhoto.js"></script>
+<script src="~/Static/js/jquery.isotope.min.js"></script>
+<script src="~/Static/js/main.js"></script>
+<script src="~/Static/js/wow.min.js"></script>
+<script src="~/Static/js/jquery-1.10.2.js"></script>
+<script src="~/Scripts/jquery-ui.min.js"></script>
+
+<script src="~/Scripts/knockout-3.4.0.js"></script>
+<script src="~/Scripts/knockout.mapping-latest.js"></script>
+<script src="~/Scripts/toastr.min.js"></script>
+<script src="~/Scripts/jquery.number.min.js"></script>
+<script src="~/Scripts/koTable.min.js"></script>
+<script src="~/Scripts/ModelsKo/ViewModel.js"></script>
+
+
+<script type="text/javascript">
+    $.ajaxSetup({
+        global: true
+    });
+
+    $(document).ajaxError(function (evt, xhr, data, error) {
+
+        if (!xhr.handled) {
+
+            var msg = error;
+            if (xhr.responseJSON && xhr.responseJSON.ExceptionMessage) {
+
+                msg = xhr.responseJSON.ExceptionMessage;
+
+            }
+            toastr.error(msg, "An error occured :(");
+
+        }
+
+    });
+   
+
+    $(document).ready(function () {
+       
+
+
+        $('#amount').number(true, 2, '.', '');
+        $('#tax').number(true, 2, '.', '');
+        $('#taxReturnBase').number(true, 2, '.', '');
+        vm = new ViewModel();
+        vmpost = new ViewModel();
+        ko.applyBindings(vmpost, $("#table-example-5").get(0));
+        //$(function () {
+          
+            $('.postulados').click(function () {
+
+               var idoffer=this.id.replace("postulados", "");
+               vmpost.getPostuladosFilterFromServer(idoffer);
+               
+            });
+
+        //});
+
+        var status = getUrlParameter('statusProject');
+        if(status==0)
+        {
+            $('#applied-btn').addClass("project-tab-selected");
+           
+            $('#incourse-btn').removeClass("project-tab-selected");
+            $('#finished-btn').removeClass("project-tab-selected");
+            $('#deleted-btn').removeClass("project-tab-selected");
+            $('#applied').css("display", "block");
+            $('#incourse').css("display", "none");
+            $('#finished').css("display", "none");
+            $('#deleted').css("display", "none");
+            
+        }
+        else if(status == 1)
+        {
+            $('#applied-btn').removeClass("project-tab-selected");
+            $('#incourse-btn').addClass("project-tab-selected");
+            $('#finished-btn').removeClass("project-tab-selected");
+            $('#deleted-btn').removeClass("project-tab-selected");
+            $('#applied').css("display", "none");
+            $('#incourse').css("display", "block");
+            $('#finished').css("display", "none");
+            $('#deleted').css("display", "none");
+
+        }
+        else if (status == 2) {
+            $('#applied-btn').removeClass("project-tab-selected");
+            $('#incourse-btn').removeClass("project-tab-selected")
+            $('#finished-btn').addClass("project-tab-selected")
+            $('#deleted-btn').removeClass("project-tab-selected");
+            $('#applied').css("display", "none");
+            $('#incourse').css("display", "none");
+            $('#finished').css("display", "block");
+            $('#deleted').css("display", "none");
+        }
+        else if (status == 3) {
+            $('#applied-btn').removeClass("project-tab-selected");
+            $('#incourse-btn').removeClass("project-tab-selected")
+            $('#finished-btn').removeClass("project-tab-selected")
+            $('#deleted-btn').addClass("project-tab-selected");
+            $('#applied').css("display", "none");
+            $('#incourse').css("display", "none");
+            $('#finished').css("display", "node");
+            $('#deleted').css("display", "block");
+        }
+     
+      
+       
+    });
+    var getUrlParameter = function getUrlParameter(sParam) {
+        var sPageURL = decodeURIComponent(window.location.search.substring(1)),
+            sURLVariables = sPageURL.split('&'),
+            sParameterName,
+            i;
+
+        for (i = 0; i < sURLVariables.length; i++) {
+            sParameterName = sURLVariables[i].split('=');
+
+            if (sParameterName[0] === sParam) {
+                return sParameterName[1] === undefined ? true : sParameterName[1];
+            }
+        }
+    };
+
+   
+   
+
+</script>
+

@@ -1,0 +1,245 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title> Admin | Zona FL</title>
+    
+    <!-- core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/font-awesome.min.css" rel="stylesheet">
+    <link href="css/prettyPhoto.css" rel="stylesheet">
+    <link href="css/animate.min.css" rel="stylesheet">
+    <link href="css/main.css" rel="stylesheet">
+    <link href="css/responsive.css" rel="stylesheet">
+      <link href="http://cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css" rel="stylesheet">
+    
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.js"></script>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->       
+    <link rel="shortcut icon" href="images/ico/logo.png">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="images/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="images/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="images/ico/apple-touch-icon-57-precomposed.png">
+</head><!--/head-->
+
+<body>
+
+    
+    <header id="header">
+        <nav class="navbar navbar-inverse navbar navbar-fixed-top" role="banner">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="index.html"><img src="images/logo.png" alt="logo"></a>
+                </div>
+        
+                <div class="collapse navbar-collapse navbar-right">
+                    <ul class="nav navbar-nav">                   
+                            
+                              <li><p>¡Hola,<span id="username_bar"> Jairo Barbosa</span>!</p></li>                     
+                              <li id="bell"><a id="iconotif" class="iconbar" href="#"><i class="fa fa-bell"></i></a></li>
+                                        
+                              <li><a href="index.html#contact-page" class="scroll">Contacto</a></li>
+                              <li><a href="#" class="scroll">Cerrar sesión</a></li>                      
+                                             
+                    </ul>
+                </div>
+            </div><!--/.container-->
+        </nav><!--/nav-->
+
+                  <!--/Contenedor notificaciones-->
+        <div class="notificaciones">
+                <a id="closenotif" href="#">x Cerrar</a>
+                     <br>
+    
+                              <!--/Notificación-->
+                             <div id="single_notif">
+                             <img id="single_notif_img" src="images/user_default.png" alt=""  />
+                             <h6 id="single_notif_desc"><span id="usernotif">Nombre de usuario</span><span id="descrinotif">recién calificó tu proyecto</span><span id="proyectnotif">Nombre de proyecto</span></h6>                             
+                             </div>
+                                  <!--/Fin notificación-->                             
+        </div>
+
+   <!--/Fin Contenedor notificaciones-->
+        
+
+    
+    </header><!--/header-->
+    
+    <section id="submenu-admin">
+      
+    </section>
+    
+    
+    
+      <section>
+        <div class="container">
+        
+              <div id="admintable" class=" col-xs-12" style="text-align: center;">
+              <h2>Tabla de administración de usuarios ZonaFL</h2> 
+              <br><br>
+
+              <div class="table-responsive" style="overflow-x: scroll; padding-bottom: 15px;">
+
+              <table id="admintab" class="table table-hover table-striped aplies">
+    <thead style="background-color: #333; color: white;">
+      <tr>
+        <th >Usuario</th>
+        <th>Nombre / Apellidos</th>
+         <th>Email</th>
+          <th>Teléfono</th>
+           <th>País</th>
+            <th>Ciudad</th>
+             <th>Rol</th>
+              <th>Fecha creación</th>
+               <th>Último acceso</th>
+                <th>Estado</th>
+                 <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody >
+      <tr>
+        <td><a class="plist" href="#" target="_blank">Postulado 1</a></td>
+        <td>Jairo Barbosa</td>
+        <td>jbarbosa@mail.com</td>
+        <td>3004567890</td>
+        <td>Colombia</td>
+        <td>Bucaramanga</td>
+         <td>Contratante</td>
+        <td>22/01/2016</td>
+         <td>30/09/2016</td>
+        <td>Activo</td>
+        <td><button class="suspende" type="button">Suspender </button></td>        
+      </tr>
+
+
+      
+    </tbody>
+  </table>  
+  </div>
+  <br>
+
+  <div id="newadmin" class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+  <button id="newadmin-btn" type="button" class="newadmin-btn">Crear nuevo admin</button>
+  <br><br>
+      <form id="createadmin">
+
+        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">  
+          <input id="useradmin" type="text" name="useradmin" class="form-control" placeholder="Nombre de usuario">
+          <input id="mailadmin" type="email" name="mailadmin" class="form-control" placeholder="Email">
+          <input id="nameadmin" type="text" name="nameadmin" class="form-control" placeholder="Nombre y Apellidos">
+         </div>
+
+          <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+          <input id="passadmin" type="password" name="passadmin" class="form-control" placeholder="Contraseña">
+          <input id="passadmin2" type="password" name="passadmin2" class="form-control" placeholder="Confirma Contraseña">
+          <button id="sendnewadmin" type="submit" class="newadmin-btn">Crear Admin</button>    
+          </div>
+
+        </form>
+
+  </div>
+
+			</div>
+
+		
+		</div><!--/.container-->
+    </section><!--/about-us-->
+    
+    
+           <section id="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6">
+                    &copy; 2016 <a target="_blank" href="#" title="EnMarca Digital">EnMarca Digital</a>. Todos los derechos reservados.
+                </div>
+                <div class="col-sm-6">
+                    <ul class="pull-right">
+                        <li><a href="index.html#contact-page">Contacto</a></li>
+                        <li><a href="#">Términos de uso</a></li>
+                        <li><a href="#">Política de privacidad</a></li>
+                      
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section><!--/#footer-->
+
+    <script src="js/jquery.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.prettyPhoto.js"></script>
+    <script src="js/jquery.isotope.min.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/wow.min.js"></script>
+      <script src="js/jquery-1.10.2.js"></script>
+       <script src="http://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+
+       <script>
+$(document).ready(function(){
+    $('#admintab').DataTable();
+});
+</script>
+
+</body>
+
+
+
+
+<script>
+           // código notificaciones
+         
+ $("#bell").on( "click", function() {    
+            $('.notificaciones').toggle("slow");
+             });
+             
+$("#closenotif").click(function(){
+    $('.notificaciones').hide("slow");
+    });
+    
+$("#iconotif").mouseleave(function(){
+    $(this).css("color", "#000");
+});
+
+
+
+
+  //subasta o precio fijo
+
+  $("input[type=checkbox]").click(function() {
+
+      
+    if($(this).is(':checked')) {
+  
+     $("#rango_val, .valsubasta").show("slow");
+      $("#valor_fijo, .valfijo").hide("slow");
+      $("#valorproy").attr('value', '000');
+
+    } else {
+
+     $("#rango_val, .valsubasta").hide("slow");
+      $("#valor_fijo, .valfijo").show("slow");
+      $("#valorproy").attr('value', '0');
+
+    }
+  });
+  
+    </script>
+
+<script>
+$("#newadmin-btn").on("click", function(){
+$("#createadmin").show("slow");
+});
+</script>
+
+
+</html>

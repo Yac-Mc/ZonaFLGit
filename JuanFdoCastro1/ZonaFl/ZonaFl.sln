@@ -1,0 +1,94 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZonaFl", "ZonaFl\ZonaFl.csproj", "{1178C56C-ECC8-4D9D-867C-F8F7504A4E22}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZonaFl.Business", "ZonaFl.Business\ZonaFl.Business.csproj", "{FB95E011-C90F-4548-87E7-8323037538C2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZonaFl.Persistence", "ZonaFl.Persistence\ZonaFl.Persistence.csproj", "{B4E64F20-DB53-4249-AC0D-082C3F38D895}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZonaFl.PersistenceTests", "ZonaFl.PersistenceTests\ZonaFl.PersistenceTests.csproj", "{CCE17777-DFFE-4DAE-9F32-12A1CA96281A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZonaFl.Entities", "ZonaFl.Entities\ZonaFl.Entities.csproj", "{A3FD450A-C6A9-4A7D-9332-E122113178F0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZonaFl.BusinessTests", "ZonaFl.BusinessTests\ZonaFl.BusinessTests.csproj", "{80D13624-2114-4AC5-890D-64BE132E622F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PruebaPasarelaPagos", "PruebaPasarelaPagos\PruebaPasarelaPagos.csproj", "{3F3607D0-EC93-4024-B9A6-F2303D8EC9A4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZonaFlTests", "ZonaFlTests\ZonaFlTests.csproj", "{295E3EAD-6D9D-4714-A573-F144EE09E300}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1178C56C-ECC8-4D9D-867C-F8F7504A4E22}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1178C56C-ECC8-4D9D-867C-F8F7504A4E22}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1178C56C-ECC8-4D9D-867C-F8F7504A4E22}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1178C56C-ECC8-4D9D-867C-F8F7504A4E22}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FB95E011-C90F-4548-87E7-8323037538C2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FB95E011-C90F-4548-87E7-8323037538C2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FB95E011-C90F-4548-87E7-8323037538C2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FB95E011-C90F-4548-87E7-8323037538C2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B4E64F20-DB53-4249-AC0D-082C3F38D895}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B4E64F20-DB53-4249-AC0D-082C3F38D895}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B4E64F20-DB53-4249-AC0D-082C3F38D895}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B4E64F20-DB53-4249-AC0D-082C3F38D895}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CCE17777-DFFE-4DAE-9F32-12A1CA96281A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CCE17777-DFFE-4DAE-9F32-12A1CA96281A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CCE17777-DFFE-4DAE-9F32-12A1CA96281A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CCE17777-DFFE-4DAE-9F32-12A1CA96281A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A3FD450A-C6A9-4A7D-9332-E122113178F0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A3FD450A-C6A9-4A7D-9332-E122113178F0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A3FD450A-C6A9-4A7D-9332-E122113178F0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A3FD450A-C6A9-4A7D-9332-E122113178F0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{80D13624-2114-4AC5-890D-64BE132E622F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{80D13624-2114-4AC5-890D-64BE132E622F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{80D13624-2114-4AC5-890D-64BE132E622F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{80D13624-2114-4AC5-890D-64BE132E622F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3F3607D0-EC93-4024-B9A6-F2303D8EC9A4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3F3607D0-EC93-4024-B9A6-F2303D8EC9A4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3F3607D0-EC93-4024-B9A6-F2303D8EC9A4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3F3607D0-EC93-4024-B9A6-F2303D8EC9A4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{295E3EAD-6D9D-4714-A573-F144EE09E300}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{295E3EAD-6D9D-4714-A573-F144EE09E300}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{295E3EAD-6D9D-4714-A573-F144EE09E300}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{295E3EAD-6D9D-4714-A573-F144EE09E300}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 9
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://juanfdocastro.visualstudio.com/
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = ZonaFl\\ZonaFl.csproj
+		SccProjectName1 = ZonaFl
+		SccLocalPath1 = ZonaFl
+		SccProjectUniqueName2 = ZonaFl.Business\\ZonaFl.Business.csproj
+		SccProjectName2 = ZonaFl.Business
+		SccLocalPath2 = ZonaFl.Business
+		SccProjectUniqueName3 = ZonaFl.Persistence\\ZonaFl.Persistence.csproj
+		SccProjectName3 = ZonaFl.Persistence
+		SccLocalPath3 = ZonaFl.Persistence
+		SccProjectUniqueName4 = ZonaFl.PersistenceTests\\ZonaFl.PersistenceTests.csproj
+		SccProjectName4 = ZonaFl.PersistenceTests
+		SccLocalPath4 = ZonaFl.PersistenceTests
+		SccProjectUniqueName5 = ZonaFl.Entities\\ZonaFl.Entities.csproj
+		SccProjectName5 = ZonaFl.Entities
+		SccLocalPath5 = ZonaFl.Entities
+		SccProjectUniqueName6 = ZonaFl.BusinessTests\\ZonaFl.BusinessTests.csproj
+		SccProjectName6 = ZonaFl.BusinessTests
+		SccLocalPath6 = ZonaFl.BusinessTests
+		SccProjectUniqueName7 = PruebaPasarelaPagos\\PruebaPasarelaPagos.csproj
+		SccProjectName7 = PruebaPasarelaPagos
+		SccLocalPath7 = PruebaPasarelaPagos
+		SccProjectUniqueName8 = ZonaFlTests\\ZonaFlTests.csproj
+		SccProjectName8 = ZonaFlTests
+		SccLocalPath8 = ZonaFlTests
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,27 @@
+﻿@model List<ZonaFl.Models.Offer>
+
+@{
+    ViewBag.Title = "DetailsForFreelance";
+    Layout = "~/Views/Shared/_LayoutFreelanceLog.cshtml";
+}
+<link href="~/Static/css/bootstrap.min.css" rel="stylesheet" />
+
+
+<link href="~/Static/css/font-awesome.min.css" rel="stylesheet">
+<link href="~/Static/css/prettyPhoto.css" rel="stylesheet">
+<link href="~/Static/css/animate.min.css" rel="stylesheet">
+<link href="~/Static/css/main.css" rel="stylesheet">
+<link href="~/Static/css/responsive.css" rel="stylesheet">
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.0/themes/base/jquery-ui.css">
+
+
+<div id="wrap_perfiles">
+    <section id="principal">
+        <div class="container" id="container">
+            @Html.Partial("PartialFilterOffer")   <!--/.container-->
+            </div>
+</section><!--/about-us-->
+</div>
+
+
+

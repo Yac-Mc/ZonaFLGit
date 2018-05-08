@@ -1,0 +1,112 @@
+﻿<div id="wrap_perfiles">
+    <section id="principal">
+        <div class="container">
+            <div id="columnahide" class="col-lg-2"></div>
+            <div id="columna" class=" col-md-12 col-lg-12">
+
+                <!-- Div izq-->
+                <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+                    <div class="saludoperfi">
+                        <div id="fotop" class="fotodeperfil">
+
+                            @if (ViewBag.ImageUser == null)
+                            {
+                                <img src="images/user_default.png" alt="" />
+                            }
+                            else
+                            {
+                                <img src='~/UploadedFiles/@ViewBag.ImageUser' alt="" />
+                            }
+                        </div>
+                        <div id="saludop" class="saludops">
+                            <h5 id="username_profile">@Html.DisplayFor(m => m.UserName)</h5>
+                            <h6 id="tipo_usuario_profile"><i>Contratante</i></h6>
+                            <h6 id="ciudad_profile">@Html.DisplayFor(m => m.City)</h6>
+                            <h6 id="pais_profile">@Html.DisplayFor(m => m.Country)</h6>
+
+                        </div>
+
+                    </div>
+                    <div id="calificaciones" class="col-xs-12">
+                        <div id="stars">
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star-half-o"></i>
+                            <i class="fa fa-star-o"></i>
+                        </div>
+                        <div id="bande_comen" class="col-xs-12">
+                            <a class="iconbar2" href="#"><i class="fa fa-envelope-o"></i></a>
+                            <a class="iconbar2" href="#"><i class="fa fa-comment-o"></i></a>
+
+                        </div>
+                    </div>
+                    <hr>
+                    <div id="comentarios_freelance" class="col-xs-12 col-sm-12 col-md-12">
+                        <h3><strong><i class="fa fa-comment-o"></i> Comentarios:</strong></h3>
+                        <hr>
+                        <div id="comentarios_recopil">
+                            <div class="single_comments">
+                                <img id="com_reciente_img" src="images/blog/avatar3.png" alt="" />
+                                <p id="com_reciente_com">"Excelente trabajo, dentro de los tiempos establecidos."</p>
+                                <div class="entry-meta small muted">
+                                    <span>Por: <a id="com_reciente_user" href="#">Otro usuario</a></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <br>
+                </div>
+                <!--FIN Div izq-->
+                <!--Div central-->
+                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                    <a id="edicion_perfil" href="freelance.html">Editar perfil &nbsp;<i class="fa fa-edit"></i></a>
+                    <hr>
+                    <div class="media-body post_reply_comments acercade">
+                        <h3><strong><i class="fa fa-user"></i> &nbsp;Acerca de mi:</strong></h3>
+                        <hr>
+                        <p id="descripcion_profile">@Html.DisplayFor(m => m.DescUser)</p>
+                    </div>
+
+
+                </div>
+
+                <!--FIN Div central-->
+                <!-- Div der-->
+
+                <div id="secder_free" class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+
+                    <div id="veri_pago" class="verificaciones_barra">
+                        <div id="verifi_pago" class="verif_item">
+                            <img src="images/verificacion/verificacionpago.png" />
+                        </div>
+                        <center><h5>Verificación pago</h5></center>
+                    </div>
+
+
+                    <div id="veri_mail" class="verificaciones_barra">
+                        <div id="verifi_mail" class="verif_item">
+                            <img src="images/verificacion/verificacionemail.png" />
+                        </div>
+                        <center><h5>Verificación Email</h5></center>
+                    </div>
+
+                    <div id="veri_movil" class="verificaciones_barra">
+                        <div id="verifi_movil" class="verif_item">
+                            <img src="images/verificacion/verificacionmovil.png" />
+                        </div>
+                        <center><h5>Verificación móvil</h5></center>
+                    </div>
+
+
+                </div>
+
+                <!--FIN Div der-->
+
+            </div>
+
+        </div><!--/.container-->
+    </section><!--/about-us-->
+</div>
+

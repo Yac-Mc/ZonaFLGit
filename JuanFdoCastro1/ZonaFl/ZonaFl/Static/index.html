@@ -1,0 +1,1109 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Inicio | Zona FL</title>
+	
+	<!-- core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/font-awesome.min.css" rel="stylesheet">
+    <link href="css/animate.min.css" rel="stylesheet">
+    <link href="css/prettyPhoto.css" rel="stylesheet">
+    <link href="css/main.css" rel="stylesheet">
+    <link href="css/responsive.css" rel="stylesheet">
+   
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.js"></script>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->       
+    <link rel="shortcut icon" href="images/ico/logo.png">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="images/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="images/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="images/ico/apple-touch-icon-57-precomposed.png">
+  
+
+
+
+</head><!--/head-->
+
+<body class="homepage">
+    <header id="header">
+        <nav class="navbar navbar-inverse navbar navbar-fixed-top" role="banner">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="index.html"><img src="images/logo.png" alt="logo" style="margin-bottom: .2em;"></a>
+                </div>
+				
+                <div class="collapse navbar-collapse navbar-right">
+                    <ul class="nav navbar-nav">
+                        
+                        <li><a href="#" data-toggle="modal" data-target="#modal_registro">Registrarse</a></li>
+                        <li><a href="#" data-toggle="modal" data-target="#modal_inicio">Iniciar sesión</a></li>
+                         <li><a href="#nosotros" class="scroll">Nosotros</a></li>  
+                        <li><a href="#contact-page" class="scroll">Contacto</a></li> 
+                                             
+                    </ul>
+                </div>
+            </div><!--/.container-->
+        </nav><!--/nav-->
+        
+
+		
+    </header><!--/header-->
+    
+    <!--Modal registro-->
+
+    <div id="modal_registro" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+            <div class="modal-content">
+
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+
+
+
+                <h2>Registro</h2>
+
+                <p class="lead">Empieza a trabajar o contrata Freelance hoy mismo:</p>
+
+
+                <form id="main-register-form" class="contact-form" name="contact-form" method="post" action="#">
+                    <input type="text" name="name" class="form-control" placeholder="Nombre de usuario" id="UserName">
+                    <div id="status"></div>
+                    <input type="email" name="email" class="form-control" placeholder="Correo electrónico" id="Email">
+                    <div id="statusmail"></div>
+                    <input type="password" class="form-control" placeholder="Contraseña" name="password" id="password">
+                    <input type="password" class="form-control" placeholder="Repetir contraseña" name="confirmpassword" id="confirmpassword">
+                    <label id="tipolabel" for="tipouser">Soy:</label>
+                    <select id="tipouser" name="tipouser" class="form-control">
+                        <option disabled selected>Elije un tipo de usuario</option>
+                        <option value="1">Freelance</option>
+                        <option value="2">Contratante</option>
+                    </select>
+                    <input type="submit" name="submit" value="Crear cuenta" class="btn-crear-se" id="createUser" style="width: 100%;">
+                </form>
+
+
+                <h4>ó regístrate con:</h4>
+                <div class="btns-redes">
+                    <div class="sign_redes"><button type="button" data-toggle="modal" data-target="#modal_redes" data-dismiss="modal"><i class="fa fa-facebook"></i></button></div>
+                    <div class="sign_redes"><button type="button" data-toggle="modal" data-target="#modal_redes" data-dismiss="modal"><i class="fa fa-google-plus"></i></button></div>
+                    <div class="sign_redes"><button type="button" data-toggle="modal" data-target="#modal_redes" data-dismiss="modal"><i class="fa fa-linkedin"></i></button></div>
+                </div>
+
+                <div class="avis">
+                    <p>¿Ya tienes una cuenta?</p>
+                    <li style="list-style:none;"><a href="#" data-dismiss="modal" data-toggle="modal" data-target="#modal_inicio">Iniciar sesión</a>
+                </div></li>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Fin modal registro -->
+
+    <!-- Modal registro redes -->
+    <div id="modal_redes" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+
+
+                <div class="modal-body">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+
+                    <h2>Registro con redes sociales</h2>
+
+                    <form id="redes-register-form" class="contact-form" name="contact-form" method="post" action="#">
+                        <input type="text" name="name_redes" id="name_redes" class="form-control" required="required" placeholder="Nombre de usuario" id="name_redes" data-rule-required="true" readonly="readonly">
+                        <input type="email" name="email_redes" id="email_redes" class="form-control" required="required" placeholder="Correo electrónico" id="email_redes" data-rule-email="true" readonly="readonly">
+
+                        <label id="tipolabel_redes" for="tipouser">Soy:</label>
+                        <select id="tipouser_redes" class="form-control">
+                            <option value="0">Elije un tipo de usuario</option>
+                            <option value="1">Freelance</option>
+                            <option value="2">Contratante</option>
+                        </select>
+
+                        <input type="button" name="submit" value="Crear cuenta" class="btn-crear-se" id="createUserRedes">
+
+                    </form>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!-- Fin modal registro redes -->
+
+    <div id="recoverpassword" class="emer">
+        <div id="wrapform2" class="emer-contenido form-log">
+            <a href="#">x</a>
+            <hr />
+            <div class="fb-login-button" data-max-rows="1" data-size="large" data-show-faces="false" data-auto-logout-link="false">Recordar contraseña</div>
+            <hr />
+
+           
+
+            <p class="lead">Ingresa tu correo electrónico:</p>
+
+
+            <form id="main-insertmail-form" class="contact-form" name="main-insertmail-form" method="post" action="#">
+                
+                <input type="email" name="emailrecover" class="form-control" required="required" placeholder="Correo electrónico" id="emailrecover" data-rule-email="true" data-msg-email="Ingrese un correo electrónico válido">
+                <div id="statusmail"></div>
+                
+                <input type="button" name="enviarcorreo" value="Enviar correo" class="btn-crear-se" id="enviarcorreo">
+            </form>
+
+
+
+
+           
+        </div>
+
+    </div>
+
+
+    <div id="ChangePassword" class="emer">
+        <div id="wrapform3" class="emer-contenido form-log">
+            <a href="#">x</a>
+            <hr />
+            <div class="fb-login-button" data-max-rows="1" data-size="large" data-show-faces="false" data-auto-logout-link="false">Recordar contraseña</div>
+            <hr />
+
+
+
+            <p class="lead">Ingresa tu nueva contraseña:</p>
+
+
+            <form id="main-changepassword-form" class="contact-form" name="main-changepassword-form" method="post" action="#">
+
+                
+                <input type="password" name="newpassword" class="form-control" placeholder="Nueva contraseña" id="newpassword">
+                <div id="statusmail"></div>
+                 <input type="password" name="confirmpassword" class="form-control" placeholder="Confirma tu nueva contraseña" id="confirmpassword">
+                <div id="statusmail"></div>
+                <input type="email" name="emailuser" class="form-control" placeholder="Tu correo electrónico" id="emailuser">
+                <input type="text" name="token" class="form-control" style="visibility:hidden"  id="token"  >
+
+                <input type="button" name="submit" value="Aceptar" class="btn-crear-se" id="changepassword">
+            </form>
+
+
+
+
+
+        </div>
+
+    </div>
+
+    
+
+    <!--Modal inicio sesión-->
+
+    <div id="modal_inicio" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+
+
+                <div class="modal-body">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+
+                    <h2>Iniciar sesión</h2>
+
+                    <p class="lead">Ingresa tus datos de usuario de Zona FL:</p>
+                    <form id="iniciosesion" class="contact-form" name="contact-form" method="post" action="sendemail.php">
+                        <input type="text" name="name" class="form-control" required="required" placeholder="Usuario o Email" id="loginusername">
+                        <input type="password" class="form-control" placeholder="Contraseña" id="passwordusername" name="passwordusername">
+                        <div class="form-check">
+                            <input type="checkbox" name="empresa" value="empresa">Recordarme
+                        </div>
+                        <input type="submit" name="submit" required="required" value="Iniciar sesión" class="btn-iniciar-se" id="loginUser" style="width: 100%;">
+
+                    </form>
+
+                    <h4>ó inicia sesión con:</h4>
+                    <div class="btns-redes">
+                        <div class="sign_redes"><button type="button" data-dismiss="modal"><i class="fa fa-facebook"></i></button></div>
+                        <div class="sign_redes"><button type="button" data-dismiss="modal"><i class="fa fa-google-plus"></i></button></div>
+                        <div class="sign_redes"><button type="button" data-dismiss="modal"><i class="fa fa-linkedin"></i></button></div>
+                        
+                    </div>
+                   
+                    <div class="avis">
+
+                        <li style="list-style:none;"><a href="#recoverpassword">- Olvidé mis datos de acceso -</a></li>
+                        <li style="list-style:none;"><a href="#" data-dismiss="modal" data-toggle="modal" data-target="#modal_registro">- Aún no tengo una cuenta -</a></li>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!--Fin modal inicio sesión-->
+    
+    
+    
+  
+    
+
+    <section id="main-slider" class="no-margin">
+        <div class="carousel slide">
+            <ol class="carousel-indicators">
+                <li data-target="#main-slider" data-slide-to="0" class="active"></li>
+                <li data-target="#main-slider" data-slide-to="1"></li>
+                <li data-target="#main-slider" data-slide-to="2"></li>
+            </ol>
+            <div class="carousel-inner">
+
+                <div class="item active" style="background-image: url(images/slider/sl1.jpg)">
+                    <div class="container">
+                        <div class="row slide-margin">
+                            <div class="col-sm-6">
+                                <div class="carousel-content">
+                                <div class="descripciones">
+                                    <h1 class="animation animated-item-1">Bienvenido a Zona FL</h1>
+                                    <h2 class="animation animated-item-2">Contrata Freelance en cualquier lugar y ofrece tu trabajo creativo en línea</h2>
+                                    <a href="#" data-toggle="modal" data-target="#modal_inicio" class="btn-slide animation animated-item-3">Contratar</a>
+                                    <a href="#" data-toggle="modal" data-target="#modal_inicio" class="btn-slide animation animated-item-3">Encontrar trabajo</a></div>
+                                </div>
+                            </div>
+
+                         
+
+                        </div>
+                    </div>
+                </div><!--/.item-->
+
+
+<div class="item" style="background-image: url(images/slider/sl2.jpg)">
+                    <div class="container">
+                        <div class="row slide-margin">
+                            <div class="col-sm-6">
+                                <div class="carousel-content">   <div class="descripciones">
+                                    <h1 class="animation animated-item-1">Comunidad de trabajo creativo Online</h1>
+                                    <h2 class="animation animated-item-2">Encuentra personas que están buscando tu talento</h2>
+                                    <a class="btn-slide animation animated-item-3" href="#contact-page">Contratar</a>
+                                      <a class="btn-slide animation animated-item-3" href="#">Encontrar trabajo</a>
+                                      </div>
+                                </div>
+                            </div>
+
+                       
+
+                        </div>
+                    </div>
+                </div><!--/.item-->
+                
+                
+              
+
+
+           
+            </div><!--/.carousel-inner-->
+        </div><!--/.carousel-->
+        <a class="prev hidden-xs" href="#main-slider" data-slide="prev">
+            <i class="fa fa-chevron-left"></i>
+        </a>
+        <a class="next hidden-xs" href="#main-slider" data-slide="next">
+            <i class="fa fa-chevron-right"></i>
+        </a>
+    </section><!--/#main-slider-->
+
+    
+
+    <section id="nosotros">
+
+        <div class="container">
+            <div class="center wow fadeInDown">
+                <h2>Acerca de Zona FL</h2>
+                
+               </div>
+
+             <div class="row">
+                <div class="col-md-6 wow fadeInDown">
+                    <div class="clients-comments text-center">
+                        <iframe width="90%" height="315" src="https://www.youtube.com/embed/R2H-nKfhrps?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                      
+                      
+                    </div>
+                </div>
+                  <div class="get-started center wow fadeInDown col-md-6">
+                <h2>Quiénes somos y qué hacemos</h2>
+                <p class="lead"><strong>Zona FL</strong> nace como respuesta a la necesidad de conectar en un mismo punto, el mejor talento con las más innovadoras ideas,
+                    generando un nuevo campo de acción, construyendo así una mejor y eficaz forma de trabajo. <strong>Sueña, idea, construye.</strong></p>
+                <div class="request">
+                    <h4><a href="#contact-page" class="scroll">Contáctanos</a></h4>
+                </div>
+            </div><!--/.get-started-->
+
+         
+          
+        </div><!--/.container-->
+    </section><!--/#recent-works-->
+
+    <section id="services" class="service-item">
+	   <div class="container">
+            <div class="center wow fadeInDown">
+                <h2>Cómo funciona Zona FL</h2>
+             
+            </div>
+
+            <div class="row">
+
+                <div class="col-sm-6 col-md-4">
+                    <div class="media services-wrap wow fadeInDown">
+                        <div class="pull-left">
+                            <img class="img-responsive" src="images/services/services5.png">
+                        </div>
+                        <div class="media-body">
+                            <h3 class="media-heading">Regístrate</h3>
+                            <p>Con un Email, nombre de usuario y contraseña personal</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-6 col-md-4">
+                    <div class="media services-wrap wow fadeInDown">
+                        <div class="pull-left">
+                            <img class="img-responsive" src="images/services/services3.png">
+                        </div>
+                        <div class="media-body">
+                            <h3 class="media-heading">Configura tu cuenta</h3>
+                            <p>Crea un perfil de Freelance o empresa contratante</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-6 col-md-4">
+                    <div class="media services-wrap wow fadeInDown">
+                        <div class="pull-left">
+                            <img class="img-responsive" src="images/services/services2.png">
+                        </div>
+                        <div class="media-body">
+                            <h3 class="media-heading">Obtén resultados</h3>
+                            <p>En poco tiempo estarás trabajando o contratando</p>
+                        </div>
+                    </div>
+                </div>  
+
+                                             
+            </div><!--/.row-->
+        </div><!--/.container-->
+    </section><!--/#services-->
+
+
+  
+ <section id="contact-page">
+        <div class="container">
+            <div class="center">        
+                <h2>Contacto</h2>
+                <p class="lead">Déjanos saber tu inquietud con respecto a Zona FL aquí:</p>
+            </div> 
+            <div class="row contact-wrap" id="contactform"> 
+                <div class="status alert alert-success" style="display: none"></div>
+                <form id="formulariocontacto" class="contact-form" name="contact-form" method="post" action='/Contact/Index'>
+                    <div class="col-sm-5 col-sm-offset-1">
+                        <div class="form-group">
+                            <label>Nombre *</label>
+                            <input type="text" class="form-control" name="namecontact" id="namecontact" required="required">
+                        </div>
+                        <div class="form-group">
+                            <label>Email *</label>
+                            <input type="email" name="emailcontact" class="form-control" required="required" id="emailcontact" data-rule-email="true" data-msg-email="Ingrese un correo electrónico válido">
+                        </div>
+                        <div class="form-group">
+                            <label>Teléfono</label>
+                            <input type="number" class="form-control" required="required" name="numbercontact" id="numbercontact"  minlength="6" data-msg-minlength="Ingrese mínimo 6 caracteres" >
+                             
+                        </div>
+                        <div class="form-group">
+                            <label>Ciudad</label>
+                            <input type="text" class="form-control" name="citycontact" id="citycontact" required="required">
+                        </div>                        
+                    </div>
+                    <div class="col-sm-5">
+                        <div class="form-group">
+                            <label>Asunto *</label>
+                            <input type="text" name="asuntocontact" id="asuntocontact" class="form-control" required="required">
+                        </div>
+                        <div class="form-group">
+                            <label>Mensaje *</label>
+                            <textarea name="mensajecontact" id="mensajecontact" required="required" class="form-control" rows="8"></textarea>
+                        </div>  
+                                      
+                        <div class="form-group">
+                            <button type="Button" name="SendContact" class="btn btn-primary btn-lg" id="SendContact">Enviar mensaje</button>
+                        </div>
+                    </div>
+                </form> 
+              
+            </div><!--/.row-->
+            <div id="oops" style="display:none">
+                <p>
+                    Desafortunadanmente, algo resultado erroneo y su mensaje o comentarios no han sido enviados satisfactoriamente.
+                    El inconveniente se resolverá lo mas pronto posible.
+
+                </p>
+            </div>
+            <div id="thanks" style="display:none">
+
+                <p>
+                    Gracias por sus comentarios. Se ha enviado satisfactoriamente el correo.Trataremos de responder si es necesario lo mas pronto posible
+
+                </p>
+            </div>
+        </div><!--/.container-->
+    </section><!--/#contact-page-->
+
+   
+
+    <footer id="footer" class="midnight-blue">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6">
+                    &copy; 2016 <a target="_blank" href="#" title="EnMarca Digital">EnMarca Digital</a>. Todos los derechos reservados.
+                </div>
+                <div class="col-sm-6">
+                    <ul class="pull-right">
+                        <li><a href="contacto">Contacto | nosotros</a></li>
+                        <li><a href="#">Términos de uso</a></li>
+                        <li><a href="#">Política de privacidad</a></li>
+                        <li><a href="#header" class="scroll">Volver al inicio</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer><!--/#footer-->
+   
+    <a href="#" class="scrollup"><i class="fa fa-angle-up active"></i></a>
+
+    <script src="js/jquery.js"></script>
+    <script src="js/scroll.js" type="text/javascript"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.prettyPhoto.js"></script>
+    <script src="js/jquery.isotope.min.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/wow.min.js"></script>
+    <script src="js/jquery-1.10.2.js"></script>
+    <script src="../Scripts/jquery.validate.min.js"></script>
+    <script src="../Scripts/knockout-3.4.0.js"></script>
+       <script src="../Scripts/ModelsKo/ViewModel.js"></script>
+    <script src="../Scripts/modal.js"></script>
+    <script>
+
+        <!--
+/*
+Credits: Bit Repository
+Source: http://www.bitrepository.com/web-programming/ajax/username-checker.html
+*/
+
+pic1 = new Image(16, 16);
+        pic1.src = "loader.gif";
+        function getUrlVars()
+        {
+            var vars = [], hash;
+            var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+            for (var i=0;i< hashes.length;i++)
+            {
+                hash = hashes[i].split('=');
+                vars.push(hash[0]);
+                vars[hash[0]] = hash[1];
+            }
+            return vars;
+        }
+        $(document).ready(function () {
+
+            if (window.location.href.indexOf('#iniciar') != -1) {
+                $('#modal_inicio').modal();
+            }
+
+
+
+
+            var token = getUrlVars()["code"];
+            if (token != undefined) {
+                $('#token').val(token.replace("#ChangePassword", ""));
+            }
+            $("#main-insertmail-form").validate();
+            vm = new ViewModelRegister();
+            ko.applyBindings(vm);
+            vm.verifySessionUser();
+            //$('#main-register-form input').on('keyup blur', function () { // fires on every keyup & blur
+            //    if ($('#main-register-form').valid()) {                   // checks form for validity
+                   
+            //        enableButton('createUser');
+                    
+            //    } else {
+            //        disableButton('createUser');
+                    
+            //    }
+            //});
+            $("#UserName").change(function () {
+
+                var usr = $("#UserName").val();
+
+                if(usr.length > 4)
+                {
+                    $("#status").html('<img src="loader.gif" align="absmiddle">&nbsp;Verificando Disponibilidad...');
+                    var user = { 'username': usr };
+                    $.ajax({
+                        type: "POST",
+                        url: "/api/Account/CheckUser?username=" + usr,
+                           success: function(msg){
+
+                            //$("#status").ajaxComplete(function(event, request, settings){
+
+                               if (msg.errors == "")
+                                {
+                                    $("#UserName").removeClass('object_error'); // if necessary
+                                    $("#UserName").addClass("object_ok");
+                                    $("#status").html('&nbsp;<img src="tick.gif" align="absmiddle">');
+                                    enableButton("createUser")
+                                }
+                                else
+                                {
+                                    $("#UserName").removeClass('object_ok'); // if necessary
+                                    $("#UserName").addClass("object_error");
+                                    $("#status").html(msg.errors);
+                                    disableButton("createUser")
+                                }
+
+                            //});
+
+                        },
+                        error: function (xhr, ajaxOptions, thrownError) {
+                            var responseTitle = $(xhr.responseText).filter('title').get(0);
+                            alert(responseTitle.text + "\n" + formatErrorMessage(xhr, thrownError));
+                            disableButton("createUser")
+                        }
+                    });
+
+                }
+                else
+                {
+                    $("#status").html('<font color="red">The username should have at least <strong>4</strong> characters.</font>');
+                    $("#UserName").removeClass('object_ok'); // if necessary
+                    $("#UserName").addClass("object_error");
+                    disableButton("createUser")
+                }
+
+            });
+
+
+
+            //validar email
+            $("#Email").change(function () {
+
+                var emai = $("#Email").val();
+
+              
+                    $("#statusmail").html('<img src="loader.gif" align="absmiddle">&nbsp;Verificando Disponibilidad...');
+                    var email = { 'email': emai };
+                    $.ajax({
+                        type: "POST",
+                        url: "/api/Account/CheckEmail?email=" + emai,
+                        success: function (msg) {
+
+                            //$("#status").ajaxComplete(function(event, request, settings){
+
+                            if (msg.errors == "") {
+                                $("#Email").removeClass('object_error'); // if necessary
+                                $("#Email").addClass("object_ok");
+                                $("#statusmail").html('&nbsp;<img src="tick.gif" align="absmiddle">');
+                                enableButton("createUser")
+                            }
+                            else {
+                                $("#Email").removeClass('object_ok'); // if necessary
+                                $("#Email").addClass("object_error");
+                                $("#statusmail").html(msg.errors);
+                                disableButton("createUser")
+                            }
+
+                            //});
+
+                        },
+                        error: function (xhr, ajaxOptions, thrownError) {
+                            var responseTitle = $(xhr.responseText).filter('title').get(0);
+                            alert(responseTitle.text + "\n" + formatErrorMessage(xhr, thrownError));
+                            disableButton("createUser")
+                        }
+                    });
+
+             
+
+            });
+
+
+          
+
+      
+        });
+
+        //-->
+        // just for the demos, avoids form submit
+
+        jQuery.validator.setDefaults({
+            debug: true,
+            success: "valid"
+        });
+        
+
+        $("#main-register-form").validate({
+            rules: {
+                name:{required: true},
+                email: {required: true, email: true},
+                password: {required: true, minlength: 8},
+                confirmpassword: { required: true, equalTo: "#password" },
+                tipouser: {required: true}
+
+
+            },
+            messages: {
+                name: {required: 'Ingresa un nombre de usuario...'},
+                email: { required: 'Ingresa un correo electrónico...', email: 'Formato válido: ejemplo@mail.com...' },
+                password: {required: "Ingresa una contraseña...", minlength: "Debe contener al menos 8 caracteres..."},
+                confirmpassword: { required: 'Confirma tu contraseña...', equalTo: "Las contraseñas deben coincidir..." },
+                tipouser: { required: 'Selecciona como quieres trabajar en Zona FL...' }
+            }
+
+        });
+
+        function disableButton( namebutton)
+        {
+            $("#" + namebutton).attr('disabled', 'disabled');
+            $("#" + namebutton).css("background-color", "grey");
+        }
+
+        function enableButton( namebutton) {
+            $("#" + namebutton).removeAttr("disabled");
+            $("#" + namebutton).css("background-color", "");
+        }
+
+        function RegisterUser(newUser)
+        {
+            if($('#main-register-form').valid())
+            {
+            $.ajax({
+                url: "/api/Account/Register",
+                data: JSON.stringify(newUser),
+                type: "POST",
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                success: function (response) {
+                    if (response.success) {
+                        // do something clever
+                        $("#main-register-form")[0].reset();
+                        //alert("Se ha guardado correctamente la información!!!");
+                        top.location.href = response.Url; //'freelance.html?UserEmail=' + response.UserEmail;
+
+
+                    } else {
+                        alert('Ha ocurrido un error: ' + response.errors)
+                        
+
+
+
+
+                    }
+
+
+                },
+
+
+
+
+                error: function (xhr, ajaxOptions, thrownError) {
+                    var responseTitle = $(xhr.responseText).filter('title').get(0);
+                    alert(responseTitle.text + "\n" + formatErrorMessage(xhr, thrownError));
+                   
+                }
+
+            });
+            }
+        else
+            {
+
+                alert("favor digitar los datos correctamente");
+
+            }
+
+        }
+
+        function LoginUser(newUser) {
+
+            $.ajax({
+                url: "/Cuenta/LoginUser",
+                data: JSON.stringify(newUser),
+                type: "POST",
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                success: function (response) {
+                    if (response.success) {
+                        // do something clever
+                        $("#iniciosesion")[0].reset();
+                        //window.event.returnValue = false;
+                        //window.location.reload(); //Remove it
+                        //if (top.location != self.location) {
+                        //window.top.location.replace(response.Url);
+                        //setTimeout(function () { document.location.href = response.Url }, 500);
+                        //window.location.assign(response.Url)
+                        window.location.href = response.Url;
+                        //}
+
+                        //alert("Se ha guardado correctamente la información!!!");
+                        //top.location.href = response.Url; //'freelance.html?UserEmail=' + response.UserEmail;
+                        //window.location.replace(response.Url); //+ "?nocache=" + (new Date()).getTime();
+                        //return (false);
+                        //return false;
+
+                    } else {
+                        alert('Ha ocurrido un error: ' + response.errors)
+
+
+
+
+
+                    }
+
+
+                },
+
+
+
+
+                error: function (xhr, ajaxOptions, thrownError) {
+                    var responseTitle = $(xhr.responseText).filter('title').get(0);
+                    alert(responseTitle.text + "\n" + formatErrorMessage(xhr, thrownError));
+
+                }
+
+            });
+        }
+
+        function formatErrorMessage(jqXHR, exception) {
+
+            if (jqXHR.status === 0) {
+                return ('Not connected.\nPlease verify your network connection.');
+            } else if (jqXHR.status == 404) {
+                return ('The requested page not found. [404]');
+            } else if (jqXHR.status == 500) {
+                return ('Internal Server Error [500].');
+            } else if (exception === 'parsererror') {
+                return ('Requested JSON parse failed.');
+            } else if (exception === 'timeout') {
+                return ('Time out error.');
+            } else if (exception === 'abort') {
+                return ('Ajax request aborted.');
+            } else {
+                return ('Uncaught Error.\n' + jqXHR.responseText);
+            }
+        }
+
+        $('#createUser').click(function () {
+            var free=0;
+            var empre=0;
+            if($('#tipouser').val()=='1')
+            {
+                free = 1;
+            }
+            else
+            {
+                empre = 1
+            }
+           
+          
+            var newUser = {
+                Email: $('#Email').val(),
+                UserName: $('#UserName').val(),
+                PasswordHash: $('#password').val(),
+                confirmpassword: $('#confirmpassword').val(),
+                Freelance: free,
+                Empresa: empre
+
+            };
+            RegisterUser(newUser);
+
+
+
+
+        });
+        function SendEmail(email) {
+
+            $.ajax({
+                url: "/api/Account/RecoverPassword?email=" + email,
+                             
+                type: "POST",
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                success: function (response) {
+                    if (response.success) {
+                        // do something clever
+                        $("#main-insertmail-form")[0].reset();
+                        //alert("Se ha guardado correctamente la información!!!");
+                        top.location.href = response.Url //'freelance.html?UserEmail=' + response.UserEmail;
+
+
+                    } else {
+                        alert('Ha ocurrido un error: ' + response.errors)
+
+
+
+
+
+                    }
+
+
+                },
+
+
+
+
+                error: function (xhr, ajaxOptions, thrownError) {
+                    var responseTitle = $(xhr.responseText).filter('title').get(0);
+                    alert(responseTitle.text + "\n" + formatErrorMessage(xhr, thrownError));
+
+                }
+
+            });
+        }
+        $('#enviarcorreo').click(function () {
+                    
+            SendEmail($('#emailrecover').val());
+        });
+
+        $('#changepassword').click(function () {
+
+          
+            var newPassword = {
+                OldPassword: $('#oldpassword').val(),
+                NewPassword: $('#newpassword').val(),
+                ConfirmPassword: $('#newpassword').val(),
+                Email: $('#emailuser').val(),
+                Token: $('#token').val()
+               
+
+            };
+            $.ajax({
+                url: "/api/Account/ChangePasswordEmail",
+                data: JSON.stringify(newPassword),
+                type: "POST",
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                success: function (response) {
+                    if (response.success) {
+                        // do something clever
+                        //$("#iniciosesion")[0].reset();
+                        alert("Se ha guardado correctamente la información!!!");
+                        top.location.href = response.Url //'freelance.html?UserEmail=' + response.UserEmail;
+
+
+                    } else {
+                        alert('Ha ocurrido un error: ' + response.errors)
+
+
+
+
+
+                    }
+
+
+                },
+
+
+
+
+                error: function (xhr, ajaxOptions, thrownError) {
+                    var responseTitle = $(xhr.responseText).filter('title').get(0);
+                    alert(responseTitle.text + "\n" + formatErrorMessage(xhr, thrownError));
+
+                }
+
+            });
+
+
+           
+        });
+
+        $('#loginUser').click(function () {
+            var free = 0;
+            var empre = 0;
+            //if ($('#tipouser').val() == 'Frelance') {
+            //    free = 1;
+            //}
+            //else {
+            //    empre = 1
+            //}
+
+
+            var newUser = {
+                Email: $('#Email').val(),
+                UserName: $('#loginusername').val(),
+                PasswordHash: $('#passwordusername').val(),
+                Freelance: free,
+                Empresa: empre
+
+            };
+            LoginUser(newUser);
+
+
+
+
+        });
+        function SendContact(newContact) {
+            $.ajax({
+                type: "POST",
+                data: JSON.stringify(newContact),
+                url: "/api/Contact/SendContact",
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                success: function (response) {
+                    //$("#contactform").hide('slow')
+                    if (response != null && response.success) {
+                        //alert(response.responseText);
+                        $("#thanks").show('slow')
+                    } else {
+                        // DoSomethingElse()
+                        $("#oops").show('slow');
+                        //alert(response.responseText);
+                    }
+                },
+                error: function (xhr, status, error) {
+                    var err = eval("(" + xhr.responseText + ")");
+                    alert(err.Message);
+                }
+
+            });
+                     
+        }
+        $('#SendContact').click(function () {
+            var free = 0;
+            var empre = 0;
+               
+           
+            var newContact = {
+                Namecontact: $('#namecontact').val(),
+                Emailcontact: $('#emailcontact').val(),
+                Numbercontact: $('#numbercontact').val(),
+                Citycontact: $('#citycontact').val(),
+                Asuntocontact: $('#asuntocontact').val(),
+                Mensajecontact: $('#mensajecontact').val(),
+
+            };
+            SendContact(newContact);
+            
+        });
+
+
+        $("#loginUser").on("click", function () {
+
+            $("#iniciosesion").validate
+            ({
+
+                rules: {
+                    name: {required: true},
+                    passwordusername: {required: true}
+
+                },
+
+                messages: {
+                    name: { required: 'Ingresa tu usuario o Email...' },
+                    passwordusername: {required: 'Ingresa tu contraseña...'}
+
+                }
+
+            })
+
+        });
+
+    
+
+
+
+
+
+        $("#changepassword").on("click", function () {
+
+            $("#main-changepassword-form").validate
+          ({
+              rules: {
+                  newpassword: { required: true, minlength: 8 },
+                  confirmpassword: { required: true, minlength: 8, equalTo: "#newpassword" },
+                  emailuser: { required: true, email: true }
+
+              },
+
+              messages: {
+                  newpassword: { required: 'Ingresa tu nueva contraseña...', minlength: 'Debe contener al menos 8 caracteres...' },
+                  confirmpassword: { required: 'Confirma tu nueva contraseña', minlength: 'Debe contener al menos 8 caracteres...', equalTo: 'Las contraseñas deben coincidir...' },
+                  emailuser: { required: 'Debes ingresar un email...', email: 'Ingresa un formato válido de email...' }
+
+              }
+
+          })
+
+
+        });
+
+      
+        
+        //$("#formulariocontacto").validate();
+
+    </script>
+
+    <!--Validación de coincidencia de contraseñas en cambio de password-->
+
+    <script>
+ $(function(){
+        $("#changepassword").on("click", function(){
+
+          $("#main-changepassword-form").validate
+          ({
+            rules:{
+              newpassword:{required: true, minlength: 8},
+              confirmpassword: {required: true, equalTo: "#newpassword"},
+              emailuser: {required: true, email: true}
+
+                },
+
+            messages:{
+               newpassword:{required: 'Por favor ingresa tu nueva contraseña...', minlength: 'Mínimo 8 caracteres...'},
+               confirmpassword: {required: 'Por favor confirma tu nueva contraseña', equalTo: 'Las contraseñas deben coincidir'},
+               emailuser: {required: 'Por favor ingresa tu correo electrónico', email: 'Formato permitido: example@example.com'}
+
+              }
+
+            });
+
+          });
+        });
+    </script>
+</body>
+</html>

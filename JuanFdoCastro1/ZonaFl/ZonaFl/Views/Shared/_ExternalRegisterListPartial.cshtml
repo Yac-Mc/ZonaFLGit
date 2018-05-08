@@ -1,0 +1,28 @@
+﻿
+@using Microsoft.Owin.Security
+
+<h4>Use otro servicio para iniciar sesión.</h4>
+<hr />
+@{
+    var loginProviders = Context.GetOwinContext().Authentication.GetExternalAuthenticationTypes();
+    if (loginProviders.Count() == 0) {
+        <div>
+            <p>
+                No hay servicios de autenticación externos configurados. Consulte <a href="http://go.microsoft.com/fwlink/?LinkId=403804">este artículo</a>
+                para obtener más información acerca de la configuración de esta aplicación ASP.NET para admitir el inicio de sesión mediante servicios externos.
+            </p>
+        </div>
+    }
+    else
+    {
+
+        <div class="btns-redes">
+            <div class="sign_redes"><button type="button" data-toggle="modal" id="registerBtnfacebook" data-dismiss="modal"  ><i class="fa fa-facebook"></i></button></div>
+            <div class="sign_redes"><button type="button" data-toggle="modal"  data-dismiss="modal" onclick="googleAuth()" ><i class="fa fa-google-plus"></i></button></div>
+            <div class="sign_redes"><button type="button" data-toggle="modal"  data-dismiss="modal" onclick="onLinkedInLoad()"><i class="fa fa-linkedin"></i></button></div>
+            
+        </div>
+        <div id="mensajelogexternal" style="background-color:white"></div>
+
+    }
+}

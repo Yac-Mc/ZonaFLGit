@@ -1,0 +1,767 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DB_102707_zonaflModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="DB_102707_zonaflEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="AspNetRoles" EntityType="DB_102707_zonaflModel.AspNetRole" />
+    <EntitySet Name="AspNetUserClaims" EntityType="DB_102707_zonaflModel.AspNetUserClaim" />
+    <EntitySet Name="AspNetUserLogins" EntityType="DB_102707_zonaflModel.AspNetUserLogin" />
+    <EntitySet Name="AspNetUsers" EntityType="DB_102707_zonaflModel.AspNetUser" />
+    <EntitySet Name="Categories" EntityType="DB_102707_zonaflModel.Category" />
+    <EntitySet Name="Certifications" EntityType="DB_102707_zonaflModel.Certification" />
+    <EntitySet Name="ChatMessageDetails" EntityType="DB_102707_zonaflModel.ChatMessageDetail" />
+    <EntitySet Name="ChatPrivateMessageDetails" EntityType="DB_102707_zonaflModel.ChatPrivateMessageDetail" />
+    <EntitySet Name="ChatPrivateMessageMasters" EntityType="DB_102707_zonaflModel.ChatPrivateMessageMaster" />
+    <EntitySet Name="ChatUserDetails" EntityType="DB_102707_zonaflModel.ChatUserDetail" />
+    <EntitySet Name="CityMasters" EntityType="DB_102707_zonaflModel.CityMaster" />
+    <EntitySet Name="Companies" EntityType="DB_102707_zonaflModel.Company" />
+    <EntitySet Name="Countries" EntityType="DB_102707_zonaflModel.Country" />
+    <EntitySet Name="CountryMasters" EntityType="DB_102707_zonaflModel.CountryMaster" />
+    <EntitySet Name="Educations" EntityType="DB_102707_zonaflModel.Education" />
+    <EntitySet Name="Experiences" EntityType="DB_102707_zonaflModel.Experience" />
+    <EntitySet Name="Offers" EntityType="DB_102707_zonaflModel.Offer" />
+    <EntitySet Name="OfferPhases" EntityType="DB_102707_zonaflModel.OfferPhas" />
+    <EntitySet Name="OfferUsers" EntityType="DB_102707_zonaflModel.OfferUser" />
+    <EntitySet Name="PortFolios" EntityType="DB_102707_zonaflModel.PortFolio" />
+    <EntitySet Name="Projects" EntityType="DB_102707_zonaflModel.Project" />
+    <EntitySet Name="ProjectUsers" EntityType="DB_102707_zonaflModel.ProjectUser" />
+    <EntitySet Name="Skills" EntityType="DB_102707_zonaflModel.Skill" />
+    <EntitySet Name="StateMasters" EntityType="DB_102707_zonaflModel.StateMaster" />
+    <EntitySet Name="SubCategories" EntityType="DB_102707_zonaflModel.SubCategory" />
+    <EntitySet Name="sysdiagrams" EntityType="DB_102707_zonaflModel.sysdiagram" />
+    <EntitySet Name="Languages" EntityType="DB_102707_zonaflModel.Language" />
+    <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="DB_102707_zonaflModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+      <End Role="AspNetUser" EntitySet="AspNetUsers" />
+      <End Role="AspNetUserClaim" EntitySet="AspNetUserClaims" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="DB_102707_zonaflModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+      <End Role="AspNetUser" EntitySet="AspNetUsers" />
+      <End Role="AspNetUserLogin" EntitySet="AspNetUserLogins" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Certifications_AspNetUsers" Association="DB_102707_zonaflModel.FK_Certifications_AspNetUsers">
+      <End Role="AspNetUser" EntitySet="AspNetUsers" />
+      <End Role="Certification" EntitySet="Certifications" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Company_AspNetUsers" Association="DB_102707_zonaflModel.FK_Company_AspNetUsers">
+      <End Role="AspNetUser" EntitySet="AspNetUsers" />
+      <End Role="Company" EntitySet="Companies" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Education_AspNetUsers" Association="DB_102707_zonaflModel.FK_Education_AspNetUsers">
+      <End Role="AspNetUser" EntitySet="AspNetUsers" />
+      <End Role="Education" EntitySet="Educations" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Experience_AspNetUsers" Association="DB_102707_zonaflModel.FK_Experience_AspNetUsers">
+      <End Role="AspNetUser" EntitySet="AspNetUsers" />
+      <End Role="Experience" EntitySet="Experiences" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Language_AspNetUsers" Association="DB_102707_zonaflModel.FK_Language_AspNetUsers">
+      <End Role="AspNetUser" EntitySet="AspNetUsers" />
+      <End Role="Language" EntitySet="Languages" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Offer_AspNetUsers" Association="DB_102707_zonaflModel.FK_Offer_AspNetUsers">
+      <End Role="AspNetUser" EntitySet="AspNetUsers" />
+      <End Role="Offer" EntitySet="Offers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OfferUser_AspNetUsers" Association="DB_102707_zonaflModel.FK_OfferUser_AspNetUsers">
+      <End Role="AspNetUser" EntitySet="AspNetUsers" />
+      <End Role="OfferUser" EntitySet="OfferUsers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PortFolio_AspNetUsers" Association="DB_102707_zonaflModel.FK_PortFolio_AspNetUsers">
+      <End Role="AspNetUser" EntitySet="AspNetUsers" />
+      <End Role="PortFolio" EntitySet="PortFolios" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProjectUser_AspNetUsers" Association="DB_102707_zonaflModel.FK_ProjectUser_AspNetUsers">
+      <End Role="AspNetUser" EntitySet="AspNetUsers" />
+      <End Role="ProjectUser" EntitySet="ProjectUsers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Offer_Category" Association="DB_102707_zonaflModel.FK_Offer_Category">
+      <End Role="Category" EntitySet="Categories" />
+      <End Role="Offer" EntitySet="Offers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Project_Category1" Association="DB_102707_zonaflModel.FK_Project_Category1">
+      <End Role="Category" EntitySet="Categories" />
+      <End Role="Project" EntitySet="Projects" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Skill_Category" Association="DB_102707_zonaflModel.FK_Skill_Category">
+      <End Role="Category" EntitySet="Categories" />
+      <End Role="Skill" EntitySet="Skills" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SubCategory_Category" Association="DB_102707_zonaflModel.FK_SubCategory_Category">
+      <End Role="Category" EntitySet="Categories" />
+      <End Role="SubCategory" EntitySet="SubCategories" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CityMaster_StateMaster" Association="DB_102707_zonaflModel.FK_CityMaster_StateMaster">
+      <End Role="StateMaster" EntitySet="StateMasters" />
+      <End Role="CityMaster" EntitySet="CityMasters" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Company_Company" Association="DB_102707_zonaflModel.FK_Company_Company">
+      <End Role="Company" EntitySet="Companies" />
+      <End Role="Company1" EntitySet="Companies" />
+    </AssociationSet>
+    <AssociationSet Name="FK_StateMaster_CountryMaster" Association="DB_102707_zonaflModel.FK_StateMaster_CountryMaster">
+      <End Role="CountryMaster" EntitySet="CountryMasters" />
+      <End Role="StateMaster" EntitySet="StateMasters" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OfferPhases_Offer" Association="DB_102707_zonaflModel.FK_OfferPhases_Offer">
+      <End Role="Offer" EntitySet="Offers" />
+      <End Role="OfferPhas" EntitySet="OfferPhases" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OfferUser_Offer" Association="DB_102707_zonaflModel.FK_OfferUser_Offer">
+      <End Role="Offer" EntitySet="Offers" />
+      <End Role="OfferUser" EntitySet="OfferUsers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Project_Offer" Association="DB_102707_zonaflModel.FK_Project_Offer">
+      <End Role="Offer" EntitySet="Offers" />
+      <End Role="Project" EntitySet="Projects" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProjectUser_Project" Association="DB_102707_zonaflModel.FK_ProjectUser_Project">
+      <End Role="Project" EntitySet="Projects" />
+      <End Role="ProjectUser" EntitySet="ProjectUsers" />
+    </AssociationSet>
+    <AssociationSet Name="AspNetUserRoles" Association="DB_102707_zonaflModel.AspNetUserRoles">
+      <End Role="AspNetRole" EntitySet="AspNetRoles" />
+      <End Role="AspNetUser" EntitySet="AspNetUsers" />
+    </AssociationSet>
+    <AssociationSet Name="UserSkill" Association="DB_102707_zonaflModel.UserSkill">
+      <End Role="AspNetUser" EntitySet="AspNetUsers" />
+      <End Role="Skill" EntitySet="Skills" />
+    </AssociationSet>
+    <EntitySet Name="Log4Net_Error" EntityType="DB_102707_zonaflModel.Log4Net_Error" />
+  </EntityContainer>
+  <EntityType Name="AspNetRole">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="AspNetUsers" Relationship="DB_102707_zonaflModel.AspNetUserRoles" FromRole="AspNetRole" ToRole="AspNetUser" />
+  </EntityType>
+  <EntityType Name="AspNetUserClaim">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="ClaimType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ClaimValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="AspNetUser" Relationship="DB_102707_zonaflModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUserClaim" ToRole="AspNetUser" />
+  </EntityType>
+  <EntityType Name="AspNetUserLogin">
+    <Key>
+      <PropertyRef Name="LoginProvider" />
+      <PropertyRef Name="ProviderKey" />
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="LoginProvider" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="ProviderKey" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="AspNetUser" Relationship="DB_102707_zonaflModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUserLogin" ToRole="AspNetUser" />
+  </EntityType>
+  <EntityType Name="AspNetUser">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="Empresa" Type="Boolean" Nullable="false" />
+    <Property Name="Freelance" Type="Boolean" Nullable="false" />
+    <Property Name="DescUser" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Country" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
+    <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNumberConfirmed" Type="Boolean" Nullable="false" />
+    <Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
+    <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
+    <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
+    <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
+    <Property Name="UserName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="FirstMiddleName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="Image" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="NombreEmpresa" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="RazonSocial" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Nit" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="SecIndustrial" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="NoTrabajadores" Type="Int32" />
+    <Property Name="DesEmpresa" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="UrlEmpresa" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="DateCreate" Type="DateTime" Precision="3" />
+    <Property Name="LastAccess" Type="DateTime" Precision="3" />
+    <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="AspNetUserClaims" Relationship="DB_102707_zonaflModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUser" ToRole="AspNetUserClaim" />
+    <NavigationProperty Name="AspNetUserLogins" Relationship="DB_102707_zonaflModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUser" ToRole="AspNetUserLogin" />
+    <NavigationProperty Name="Certifications" Relationship="DB_102707_zonaflModel.FK_Certifications_AspNetUsers" FromRole="AspNetUser" ToRole="Certification" />
+    <NavigationProperty Name="Companies" Relationship="DB_102707_zonaflModel.FK_Company_AspNetUsers" FromRole="AspNetUser" ToRole="Company" />
+    <NavigationProperty Name="Educations" Relationship="DB_102707_zonaflModel.FK_Education_AspNetUsers" FromRole="AspNetUser" ToRole="Education" />
+    <NavigationProperty Name="Experiences" Relationship="DB_102707_zonaflModel.FK_Experience_AspNetUsers" FromRole="AspNetUser" ToRole="Experience" />
+    <NavigationProperty Name="Languages" Relationship="DB_102707_zonaflModel.FK_Language_AspNetUsers" FromRole="AspNetUser" ToRole="Language" />
+    <NavigationProperty Name="Offers" Relationship="DB_102707_zonaflModel.FK_Offer_AspNetUsers" FromRole="AspNetUser" ToRole="Offer" />
+    <NavigationProperty Name="OfferUsers" Relationship="DB_102707_zonaflModel.FK_OfferUser_AspNetUsers" FromRole="AspNetUser" ToRole="OfferUser" />
+    <NavigationProperty Name="PortFolios" Relationship="DB_102707_zonaflModel.FK_PortFolio_AspNetUsers" FromRole="AspNetUser" ToRole="PortFolio" />
+    <NavigationProperty Name="ProjectUsers" Relationship="DB_102707_zonaflModel.FK_ProjectUser_AspNetUsers" FromRole="AspNetUser" ToRole="ProjectUser" />
+    <NavigationProperty Name="AspNetRoles" Relationship="DB_102707_zonaflModel.AspNetUserRoles" FromRole="AspNetUser" ToRole="AspNetRole" />
+    <NavigationProperty Name="Skills" Relationship="DB_102707_zonaflModel.UserSkill" FromRole="AspNetUser" ToRole="Skill" />
+  </EntityType>
+  <EntityType Name="Category">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="NameLarge" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <NavigationProperty Name="Offers" Relationship="DB_102707_zonaflModel.FK_Offer_Category" FromRole="Category" ToRole="Offer" />
+    <NavigationProperty Name="Projects" Relationship="DB_102707_zonaflModel.FK_Project_Category1" FromRole="Category" ToRole="Project" />
+    <NavigationProperty Name="Skills" Relationship="DB_102707_zonaflModel.FK_Skill_Category" FromRole="Category" ToRole="Skill" />
+    <NavigationProperty Name="SubCategories" Relationship="DB_102707_zonaflModel.FK_SubCategory_Category" FromRole="Category" ToRole="SubCategory" />
+  </EntityType>
+  <EntityType Name="Certification">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Certificate" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Otorgante" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="DateCert" Type="DateTime" Precision="0" />
+    <Property Name="Actually" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="AspNetUser" Relationship="DB_102707_zonaflModel.FK_Certifications_AspNetUsers" FromRole="Certification" ToRole="AspNetUser" />
+  </EntityType>
+  <EntityType Name="ChatMessageDetail">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Message" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="EmailID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="ChatPrivateMessageDetail">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MasterEmailID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ChatToEmailID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Message" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="ChatPrivateMessageMaster">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="EmailID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="ChatUserDetail">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ConnectionId" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="UserName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="EmailID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="CityMaster">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="StateID" Type="Int32" />
+    <NavigationProperty Name="StateMaster" Relationship="DB_102707_zonaflModel.FK_CityMaster_StateMaster" FromRole="CityMaster" ToRole="StateMaster" />
+  </EntityType>
+  <EntityType Name="Company">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Mail" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Site" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Sector" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="RazonSocial" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Telefono" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="Nit" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="NumeroEmp" Type="Int32" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="IdUser" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="AspNetUser" Relationship="DB_102707_zonaflModel.FK_Company_AspNetUsers" FromRole="Company" ToRole="AspNetUser" />
+    <NavigationProperty Name="Company1" Relationship="DB_102707_zonaflModel.FK_Company_Company" FromRole="Company" ToRole="Company1" />
+    <NavigationProperty Name="Company2" Relationship="DB_102707_zonaflModel.FK_Company_Company" FromRole="Company1" ToRole="Company" />
+  </EntityType>
+  <EntityType Name="Country">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CountryName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="CountryMaster">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CountryCode" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="StateMasters" Relationship="DB_102707_zonaflModel.FK_StateMaster_CountryMaster" FromRole="CountryMaster" ToRole="StateMaster" />
+  </EntityType>
+  <EntityType Name="Education">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Institution" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Country" Type="Int32" />
+    <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="DateIni" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="DateEnd" Type="DateTime" Precision="0" />
+    <Property Name="Actually" Type="Boolean" />
+    <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="AspNetUser" Relationship="DB_102707_zonaflModel.FK_Education_AspNetUsers" FromRole="Education" ToRole="AspNetUser" />
+  </EntityType>
+  <EntityType Name="Experience">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Company" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="DateIni" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="DateEnd" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="CurrentEmploy" Type="Boolean" Nullable="false" />
+    <Property Name="Position" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="FunctionPosition" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="AspNetUser" Relationship="DB_102707_zonaflModel.FK_Experience_AspNetUsers" FromRole="Experience" ToRole="AspNetUser" />
+  </EntityType>
+  <EntityType Name="Offer">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PrecioFijo" Type="Boolean" />
+    <Property Name="Sale" Type="Boolean" Nullable="false" />
+    <Property Name="ValueFixedProject" Type="Int32" Nullable="false" />
+    <Property Name="NumberPhases" Type="Int16" Nullable="false" />
+    <Property Name="AutomaticValuePhases" Type="Boolean" Nullable="false" />
+    <Property Name="IdUser" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="CategoryId" Type="Int32" Nullable="false" />
+    <Property Name="TitleOffer" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="RangoValor" Type="Int32" />
+    <Property Name="DateOffer" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="AspNetUser" Relationship="DB_102707_zonaflModel.FK_Offer_AspNetUsers" FromRole="Offer" ToRole="AspNetUser" />
+    <NavigationProperty Name="Category" Relationship="DB_102707_zonaflModel.FK_Offer_Category" FromRole="Offer" ToRole="Category" />
+    <NavigationProperty Name="OfferPhases" Relationship="DB_102707_zonaflModel.FK_OfferPhases_Offer" FromRole="Offer" ToRole="OfferPhas" />
+    <NavigationProperty Name="OfferUsers" Relationship="DB_102707_zonaflModel.FK_OfferUser_Offer" FromRole="Offer" ToRole="OfferUser" />
+    <NavigationProperty Name="Projects" Relationship="DB_102707_zonaflModel.FK_Project_Offer" FromRole="Offer" ToRole="Project" />
+  </EntityType>
+  <EntityType Name="OfferPhas">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdOffer" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="InitPhase" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="FinishPhase" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Value" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+    <Property Name="StatusPhase" Type="Int16" />
+    <NavigationProperty Name="Offer" Relationship="DB_102707_zonaflModel.FK_OfferPhases_Offer" FromRole="OfferPhas" ToRole="Offer" />
+  </EntityType>
+  <EntityType Name="OfferUser">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdOffer" Type="Int32" Nullable="false" />
+    <Property Name="IdUser" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="AspNetUser" Relationship="DB_102707_zonaflModel.FK_OfferUser_AspNetUsers" FromRole="OfferUser" ToRole="AspNetUser" />
+    <NavigationProperty Name="Offer" Relationship="DB_102707_zonaflModel.FK_OfferUser_Offer" FromRole="OfferUser" ToRole="Offer" />
+  </EntityType>
+  <EntityType Name="PortFolio">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Titulo" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="CategoriaId" Type="Int32" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Imagen" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="TermCopy" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="AspNetUser" Relationship="DB_102707_zonaflModel.FK_PortFolio_AspNetUsers" FromRole="PortFolio" ToRole="AspNetUser" />
+  </EntityType>
+  <EntityType Name="Project">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdCategory" Type="Int32" Nullable="false" />
+    <Property Name="IdOffer" Type="Int32" Nullable="false" />
+    <Property Name="Comments" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Qualification" Type="Int16" />
+    <Property Name="Status" Type="Int16" Nullable="false" />
+    <Property Name="Postulantes" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Category" Relationship="DB_102707_zonaflModel.FK_Project_Category1" FromRole="Project" ToRole="Category" />
+    <NavigationProperty Name="Offer" Relationship="DB_102707_zonaflModel.FK_Project_Offer" FromRole="Project" ToRole="Offer" />
+    <NavigationProperty Name="ProjectUsers" Relationship="DB_102707_zonaflModel.FK_ProjectUser_Project" FromRole="Project" ToRole="ProjectUser" />
+  </EntityType>
+  <EntityType Name="ProjectUser">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdProject" Type="Int32" Nullable="false" />
+    <Property Name="IdUser" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="AspNetUser" Relationship="DB_102707_zonaflModel.FK_ProjectUser_AspNetUsers" FromRole="ProjectUser" ToRole="AspNetUser" />
+    <NavigationProperty Name="Project" Relationship="DB_102707_zonaflModel.FK_ProjectUser_Project" FromRole="ProjectUser" ToRole="Project" />
+  </EntityType>
+  <EntityType Name="Skill">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="CategoryId" Type="Int32" Nullable="false" />
+    <Property Name="IdHtml" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
+    <NavigationProperty Name="Category" Relationship="DB_102707_zonaflModel.FK_Skill_Category" FromRole="Skill" ToRole="Category" />
+    <NavigationProperty Name="AspNetUsers" Relationship="DB_102707_zonaflModel.UserSkill" FromRole="Skill" ToRole="AspNetUser" />
+  </EntityType>
+  <EntityType Name="StateMaster">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CountryID" Type="Int32" />
+    <NavigationProperty Name="CityMasters" Relationship="DB_102707_zonaflModel.FK_CityMaster_StateMaster" FromRole="StateMaster" ToRole="CityMaster" />
+    <NavigationProperty Name="CountryMaster" Relationship="DB_102707_zonaflModel.FK_StateMaster_CountryMaster" FromRole="StateMaster" ToRole="CountryMaster" />
+  </EntityType>
+  <EntityType Name="SubCategory">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="CategoryId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Category" Relationship="DB_102707_zonaflModel.FK_SubCategory_Category" FromRole="SubCategory" ToRole="Category" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="Language">
+    <Key>
+      <PropertyRef Name="Id" />
+      <PropertyRef Name="Name" />
+      <PropertyRef Name="LevelLang" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="LevelLang" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Certificate" Type="Boolean" />
+    <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="AspNetUser" Relationship="DB_102707_zonaflModel.FK_Language_AspNetUsers" FromRole="Language" ToRole="AspNetUser" />
+  </EntityType>
+  <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+    <End Type="DB_102707_zonaflModel.AspNetUser" Role="AspNetUser" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="DB_102707_zonaflModel.AspNetUserClaim" Role="AspNetUserClaim" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUser">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserClaim">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+    <End Type="DB_102707_zonaflModel.AspNetUser" Role="AspNetUser" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="DB_102707_zonaflModel.AspNetUserLogin" Role="AspNetUserLogin" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUser">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserLogin">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Certifications_AspNetUsers">
+    <End Type="DB_102707_zonaflModel.AspNetUser" Role="AspNetUser" Multiplicity="1" />
+    <End Type="DB_102707_zonaflModel.Certification" Role="Certification" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUser">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Certification">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Company_AspNetUsers">
+    <End Type="DB_102707_zonaflModel.AspNetUser" Role="AspNetUser" Multiplicity="0..1" />
+    <End Type="DB_102707_zonaflModel.Company" Role="Company" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUser">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Company">
+        <PropertyRef Name="IdUser" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Education_AspNetUsers">
+    <End Type="DB_102707_zonaflModel.AspNetUser" Role="AspNetUser" Multiplicity="0..1" />
+    <End Type="DB_102707_zonaflModel.Education" Role="Education" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUser">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Education">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Experience_AspNetUsers">
+    <End Type="DB_102707_zonaflModel.AspNetUser" Role="AspNetUser" Multiplicity="1" />
+    <End Type="DB_102707_zonaflModel.Experience" Role="Experience" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUser">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Experience">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Language_AspNetUsers">
+    <End Type="DB_102707_zonaflModel.AspNetUser" Role="AspNetUser" Multiplicity="0..1" />
+    <End Type="DB_102707_zonaflModel.Language" Role="Language" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUser">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Language">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Offer_AspNetUsers">
+    <End Type="DB_102707_zonaflModel.AspNetUser" Role="AspNetUser" Multiplicity="1" />
+    <End Type="DB_102707_zonaflModel.Offer" Role="Offer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUser">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Offer">
+        <PropertyRef Name="IdUser" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OfferUser_AspNetUsers">
+    <End Type="DB_102707_zonaflModel.AspNetUser" Role="AspNetUser" Multiplicity="1" />
+    <End Type="DB_102707_zonaflModel.OfferUser" Role="OfferUser" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUser">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="OfferUser">
+        <PropertyRef Name="IdUser" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PortFolio_AspNetUsers">
+    <End Type="DB_102707_zonaflModel.AspNetUser" Role="AspNetUser" Multiplicity="1" />
+    <End Type="DB_102707_zonaflModel.PortFolio" Role="PortFolio" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUser">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PortFolio">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProjectUser_AspNetUsers">
+    <End Type="DB_102707_zonaflModel.AspNetUser" Role="AspNetUser" Multiplicity="1" />
+    <End Type="DB_102707_zonaflModel.ProjectUser" Role="ProjectUser" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUser">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ProjectUser">
+        <PropertyRef Name="IdUser" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Offer_Category">
+    <End Type="DB_102707_zonaflModel.Category" Role="Category" Multiplicity="1" />
+    <End Type="DB_102707_zonaflModel.Offer" Role="Offer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Category">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Offer">
+        <PropertyRef Name="CategoryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Project_Category1">
+    <End Type="DB_102707_zonaflModel.Category" Role="Category" Multiplicity="1" />
+    <End Type="DB_102707_zonaflModel.Project" Role="Project" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Category">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Project">
+        <PropertyRef Name="IdCategory" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Skill_Category">
+    <End Type="DB_102707_zonaflModel.Category" Role="Category" Multiplicity="1" />
+    <End Type="DB_102707_zonaflModel.Skill" Role="Skill" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Category">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Skill">
+        <PropertyRef Name="CategoryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SubCategory_Category">
+    <End Type="DB_102707_zonaflModel.Category" Role="Category" Multiplicity="1" />
+    <End Type="DB_102707_zonaflModel.SubCategory" Role="SubCategory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Category">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="SubCategory">
+        <PropertyRef Name="CategoryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CityMaster_StateMaster">
+    <End Type="DB_102707_zonaflModel.StateMaster" Role="StateMaster" Multiplicity="0..1" />
+    <End Type="DB_102707_zonaflModel.CityMaster" Role="CityMaster" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="StateMaster">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="CityMaster">
+        <PropertyRef Name="StateID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Company_Company">
+    <End Type="DB_102707_zonaflModel.Company" Role="Company" Multiplicity="1" />
+    <End Type="DB_102707_zonaflModel.Company" Role="Company1" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Company">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Company1">
+        <PropertyRef Name="Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_StateMaster_CountryMaster">
+    <End Type="DB_102707_zonaflModel.CountryMaster" Role="CountryMaster" Multiplicity="0..1" />
+    <End Type="DB_102707_zonaflModel.StateMaster" Role="StateMaster" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CountryMaster">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="StateMaster">
+        <PropertyRef Name="CountryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OfferPhases_Offer">
+    <End Type="DB_102707_zonaflModel.Offer" Role="Offer" Multiplicity="1" />
+    <End Type="DB_102707_zonaflModel.OfferPhas" Role="OfferPhas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Offer">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="OfferPhas">
+        <PropertyRef Name="IdOffer" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OfferUser_Offer">
+    <End Type="DB_102707_zonaflModel.Offer" Role="Offer" Multiplicity="1" />
+    <End Type="DB_102707_zonaflModel.OfferUser" Role="OfferUser" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Offer">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="OfferUser">
+        <PropertyRef Name="IdOffer" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Project_Offer">
+    <End Type="DB_102707_zonaflModel.Offer" Role="Offer" Multiplicity="1" />
+    <End Type="DB_102707_zonaflModel.Project" Role="Project" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Offer">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Project">
+        <PropertyRef Name="IdOffer" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProjectUser_Project">
+    <End Type="DB_102707_zonaflModel.Project" Role="Project" Multiplicity="1" />
+    <End Type="DB_102707_zonaflModel.ProjectUser" Role="ProjectUser" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Project">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ProjectUser">
+        <PropertyRef Name="IdProject" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="AspNetUserRoles">
+    <End Type="DB_102707_zonaflModel.AspNetRole" Role="AspNetRole" Multiplicity="*" />
+    <End Type="DB_102707_zonaflModel.AspNetUser" Role="AspNetUser" Multiplicity="*" />
+  </Association>
+  <Association Name="UserSkill">
+    <End Type="DB_102707_zonaflModel.AspNetUser" Role="AspNetUser" Multiplicity="*" />
+    <End Type="DB_102707_zonaflModel.Skill" Role="Skill" Multiplicity="*" />
+  </Association>
+  <EntityType Name="Log4Net_Error">
+    <Key>
+      <PropertyRef Name="Id" />
+      <PropertyRef Name="Date" />
+      <PropertyRef Name="Thread" />
+      <PropertyRef Name="Level" />
+      <PropertyRef Name="Logger" />
+      <PropertyRef Name="Message" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Thread" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Level" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Logger" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Message" Type="String" Nullable="false" MaxLength="4000" FixedLength="false" Unicode="false" />
+    <Property Name="Exception" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+    <Property Name="Entidad" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+  </EntityType>
+</Schema>

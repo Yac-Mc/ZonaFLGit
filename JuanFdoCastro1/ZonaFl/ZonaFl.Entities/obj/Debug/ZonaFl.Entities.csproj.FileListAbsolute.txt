@@ -1,0 +1,13 @@
+C:\Users\User\Source\Workspaces\Área de trabajo\JuanFdoCastro1\ZonaFl\ZonaFl.Entities\bin\Debug\ZonaFl.Entities.dll.config
+C:\Users\User\Source\Workspaces\Área de trabajo\JuanFdoCastro1\ZonaFl\ZonaFl.Entities\bin\Debug\ZonaFl.Entities.dll
+C:\Users\User\Source\Workspaces\Área de trabajo\JuanFdoCastro1\ZonaFl\ZonaFl.Entities\bin\Debug\ZonaFl.Entities.pdb
+C:\Users\User\Source\Workspaces\Área de trabajo\JuanFdoCastro1\ZonaFl\ZonaFl.Entities\bin\Debug\BB.SmsQuiz.Infrastructure.dll
+C:\Users\User\Source\Workspaces\Área de trabajo\JuanFdoCastro1\ZonaFl\ZonaFl.Entities\bin\Debug\EntityFramework.dll
+C:\Users\User\Source\Workspaces\Área de trabajo\JuanFdoCastro1\ZonaFl\ZonaFl.Entities\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\User\Source\Workspaces\Área de trabajo\JuanFdoCastro1\ZonaFl\ZonaFl.Entities\bin\Debug\EntityFramework.xml
+C:\Users\User\Source\Workspaces\Área de trabajo\JuanFdoCastro1\ZonaFl\ZonaFl.Entities\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\User\Source\Workspaces\Área de trabajo\JuanFdoCastro1\ZonaFl\ZonaFl.Entities\bin\Debug\es\EntityFramework.resources.dll
+C:\Users\User\Source\Workspaces\Área de trabajo\JuanFdoCastro1\ZonaFl\ZonaFl.Entities\bin\Debug\es\EntityFramework.SqlServer.resources.dll
+C:\Users\User\Source\Workspaces\Área de trabajo\JuanFdoCastro1\ZonaFl\ZonaFl.Entities\obj\Debug\ZonaFl.Entities.csprojResolveAssemblyReference.cache
+C:\Users\User\Source\Workspaces\Área de trabajo\JuanFdoCastro1\ZonaFl\ZonaFl.Entities\obj\Debug\ZonaFl.Entities.dll
+C:\Users\User\Source\Workspaces\Área de trabajo\JuanFdoCastro1\ZonaFl\ZonaFl.Entities\obj\Debug\ZonaFl.Entities.pdb

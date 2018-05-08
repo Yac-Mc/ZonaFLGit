@@ -1,0 +1,38 @@
+﻿<div id="comentarios_freelance" class="col-xs-12 col-sm-12 col-md-12">
+    <h3><strong><i class="fa fa-comment-o"></i> Comentarios:</strong></h3>
+    <hr>
+    <div id="comentarios_recopil">
+
+        <!--comentario-->
+        <div class="single_comments">
+
+            @if (ViewBag.Commentaries != null)
+            {
+                foreach (ZonaFl.Models.Project comment in ((List<ZonaFl.Models.Project>)ViewBag.Commentaries))
+                {
+                    <hr />
+                    if (string.IsNullOrEmpty(comment.Image))
+                    {
+                        <img id="com_reciente_img" src="/static/images/blog/avatar3.png" alt="" />
+                    }
+                    else
+                    {
+                        <img width="20" height="20" id="com_reciente_img" src='~/UploadedFiles/@comment.Image' alt="" />
+                    }
+                    <p id="com_reciente_com">@comment.Comments</p>
+
+                                        <div class="entry-meta small muted">
+                                            <span>Por: <a id="com_reciente_user" href="#">@comment.UserName</a></span>
+                                        </div>
+                }
+            }
+
+
+
+        </div>
+
+        <!--Fin comentario-->
+
+    </div>
+</div>
+ 

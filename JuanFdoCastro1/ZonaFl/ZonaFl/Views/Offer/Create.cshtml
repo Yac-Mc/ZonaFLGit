@@ -1,0 +1,549 @@
+﻿@model ZonaFl.Models.Offer
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_LayoutContratanteLog.cshtml";
+}
+
+
+<link href="~/Static/css/bootstrap.min.css" rel="stylesheet" />
+<link href="~/Static/css/font-awesome.min.css" rel="stylesheet">
+<link href="~/Static/css/prettyPhoto.css" rel="stylesheet">
+<link href="~/Static/css/animate.min.css" rel="stylesheet">
+<link href="~/Static/css/main.css" rel="stylesheet">
+<link href="~/Static/css/responsive.css" rel="stylesheet">
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
+<!--[if lt IE 9]>
+<script src="js/html5shiv.js"></script>
+<script src="js/respond.min.js"></script>
+<![endif]-->
+<link rel="shortcut icon" href="~/Static/images/ico/logo.png">
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="~/Static/images/ico/apple-touch-icon-144-precomposed.png">
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="~/Static/images/ico/apple-touch-icon-114-precomposed.png">
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="~/Static/images/ico/apple-touch-icon-72-precomposed.png">
+<link rel="apple-touch-icon-precomposed" href="~/Static/images/ico/apple-touch-icon-57-precomposed.png">
+<!--/pop up nueva oferta-->
+
+<div id="nuevoproyect" class="emer">
+    <div class="emer-addoferta">
+        <a href="@ViewBag.UrlRef">x</a>
+        <hr>
+        <h2 class="title_pop">Nuevo proyecto</h2>
+
+        <div id="content_np">
+            @using (Html.BeginForm("Create", "Offer", FormMethod.Post, new { id = "addoferta_contrat" }))
+            {
+
+                <label>
+                    Categoría del trabajo:
+                </label>
+
+                    <select name="Categories" class="form-control">
+                        <option disabled selected> -- selecciona una categoría -- </option>
+                        @foreach (var cat in Model.Categories)
+                    {
+
+
+                    <option value=@cat.Id>@cat.Name</option>
+
+                    }
+                    </select>
+                    <br>
+                    <br>
+                    <label>Nombre del proyecto</label>
+                    @*<input type="text" class="form-control" placeholder="Es el título que verán los Freelance en la oferta...">*@
+                    @Html.TextBoxFor(e => e.TitleOffer, new { @id = "titleoffer", @class = "form-control", @placeholder = "Es el título que verán los Freelance en la oferta..." })
+
+                    <br>
+                    <label>Descripción proyecto</label>
+                    @*<textarea name="message" id="message" required="required" class="form-control" rows="7" placeholder="Describe en detalle el proyecto que necesitas llevar a cabo; sé tan especifico como quieras para conseguir el Freelance más indicado para el trabajo..."></textarea>*@
+                    @Html.TextAreaFor(e => e.Description, 7, 1, new { @id = "description", @class = "form-control", @placeholder = "Describe en detalle el proyecto que necesitas llevar a cabo; sé tan especifico como quieras para conseguir el Freelance más indicado para el trabajo..." })
+
+
+                    <br>
+                    <div id="kind_pricing" class="col-lg-12">
+                        <div class="col-xs-9 col-sm-8 col-md-9 col-lg-9">
+                            <div id="valor_fijo">
+                                <label>Valor proyecto</label>
+                                @*<input type="number" class="form-control" placeholder="Sin puntos ni comas" id="valorproy" name="valorproy">*@
+                                @Html.TextBoxFor(e => e.ValueFixedProject, new { @id = "valorproy", @class = "form-control", @placeholder = "Sin puntos ni comas" })
+
+                            </div>
+                            <div id="rango_val">
+                                <label>Rango de subasta</label>
+                                <select name="rango_valor" class="form-control">
+                                    <option id="-500" value="1">Menos de 500.000 COP</option>
+                                    <option id="500-1" value="2">500.000 - 1.000.000 COP</option>
+                                    <option value="3">1.000.000 - 2.000.000 COP</option>
+                                    <option value="4">2.000.000 - 3.000.000 COP</option>
+                                    <option value="5">Más de 3.000.000 COP</option>
+                                </select>
+                                <i style="font-size:.9em;"> (*Elige un rango de valores estimado dentro del cual ofertarán los interesados)</i>
+                            </div>
+                        </div>
+
+                        <div id="subasta" class="col-xs-3 col-sm-4 col-md-3 col-lg-3">
+                            <div id="info_sub"><p>Puedes elegir un rango de valores para recibir ofertas y elegir al mejor postor.</p></div>
+                            <p><strong>Subasta <span id="info_subicon"><i class="fa fa-info-circle"></i></span></strong></p>
+                            @*<input type="checkbox" id="subasta" name="subasta">*@
+                            @Html.CheckBoxFor(e => e.Sale, new { @id = "subasta" })
+
+                        </div>
+                    </div>
+
+                    <div id="numfases" class="col-xs-12">
+
+                        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                            <div id="info_fases" class="boxinfo"><p>Puedes dividir tu proyecto en fases, asignarles valor/tiempo y pagar por ellas sólo cuando estén terminadas; el valor por defecto es una (1) fase.</p></div>
+                            <p><strong>Fases proyecto: <span id="info_fasesicon" class="iconinfo"><i class="fa fa-info-circle"></i></span></strong></p>
+                            <input id="fases_1" type="button" value="1" class="numfasebt fase_activ btn1">
+                            <input id="fases_2" type="button" value="2" class="numfasebt btn2">
+                            <input id="fases_3" type="button" value="3" class="numfasebt btn3">
+                            <input id="fases_4" type="button" value="4" class="numfasebt btn4">
+                        </div>
+
+
+                        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 autoval">
+                            <div id="tipo_val" class="boxinfo"><p>Si enciendes el botón "valor automático" el sistema dividirá el valor total del proyecto en el número de fases que elijas de 1 a 4, de lo contrario puedes dividir el total de manera manual según tu disposicíón.</p></div>
+                            <p><strong>Valor fases: <span id="tipo_valicon" class="iconinfo"><i class="fa fa-info-circle"></i></span></strong></p>
+                            <button id="auto" type="button" class="btn-auto">Automático <i class="fa fa-power-off"></i></button>
+                            <button id="manual" type="button" class="btn-manual btnchosen">Manual <i class="fa fa-power-off"></i></button>
+                        </div>
+
+
+                        <div class="col-xs-12 wrapper_fases">
+                            <div id="fase1" class="col-xs-12 col-sm-12 col-md-6 col-lg-6 cover_fase">
+                                @*<input type="text" class="form-control" placeholder="Nombra la fase 1" id="namefase1" name="namefase1">*@
+                                @Html.TextBoxFor(e => e.Phase1Name, new { @id = "namefase1", @class = "form-control", @placeholder = "Nombra la fase 1" })
+
+
+                                <label>Fecha de inicio</label>
+                                @*<input type="date" class="form-control" id="inifase1">*@
+                                @Html.TextBoxFor(e => e.DateIniPhase1, new { @type = "text", @id = "inifase1", @class = "form-control datesphases", @Value = Model.DateIniPhase1.ToString("d") })
+                                <label>Fecha de final</label>
+                                @*<input type="date" class="form-control" id="finfase1">*@
+                                @Html.TextBoxFor(e => e.DateEndPhase1, new { @type = "text", @id = "finfase1", @class = "form-control datesphases", @Value = Model.DateIniPhase1.ToString("d") })
+                                <label class="valorphase">Valor fase</label>
+
+                                @*<input type="number" class="form-control valfijo" id="valfase1">*@
+                                <div class="valfijo">
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i style="font-weight: bolder;">$</i></span>
+                                        @Html.TextBoxFor(e => e.ValuePhase1, new { @type = "number", @id = "valfase1", @class = "form-control" })
+                                    </div>
+                                </div>
+
+                                @*<input type="text" class="form-control valsubasta" id="valfase1-s">*@
+                                <div class="valsubasta">
+                                    <div class="input-group">
+                                        @Html.TextBoxFor(e => e.PercentValuePhase1, new { @type = "number", @id = "valfase1-s", @class = "form-control" })
+                                        <span class="input-group-addon"><i style="font-weight: bolder;">%</i></span>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div id="fase2" class="col-xs-12 col-sm-12 col-md-6 col-lg-6 cover_fase">
+                                @*<input type="text" class="form-control" placeholder="Nombra la fase 1" id="namefase1" name="namefase1">*@
+                                @Html.TextBoxFor(e => e.Phase2Name, new { @id = "namefase2", @class = "form-control", @placeholder = "Nombra la fase 2" })
+
+
+                                <label>Fecha de inicio</label>
+                                @*<input type="date" class="form-control" id="inifase1">*@
+                                @Html.TextBoxFor(e => e.DateIniPhase2, new { @type = "text", @id = "inifase2", @class = "form-control datesphases", @Value = Model.DateIniPhase1.ToString("d") })
+                                <label>Fecha de final</label>
+                                @*<input type="date" class="form-control" id="finfase1">*@
+                                @Html.TextBoxFor(e => e.DateEndPhase2, new { @type = "text", @id = "finfase2", @class = "form-control datesphases", @Value = Model.DateIniPhase1.ToString("d") })
+                                <label class="valorphase">Valor fase</label>
+
+                                @*<input type="number" class="form-control valfijo" id="valfase1">*@
+                                <div class="valfijo">
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i style="font-weight: bolder;">$</i></span>
+                                        @Html.TextBoxFor(e => e.ValuePhase2, new { @type = "number", @id = "valfase2", @class = "form-control" })
+                                    </div>
+                                </div>
+
+                                @*<input type="text" class="form-control valsubasta" id="valfase1-s">*@
+                                <div class="valsubasta">
+                                    <div class="input-group">
+                                        @Html.TextBoxFor(e => e.PercentValuePhase2, new { @type = "number", @id = "valfase2-s", @class = "form-control" })
+                                        <span class="input-group-addon"><i style="font-weight: bolder;">%</i></span>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div id="fase3" class="col-xs-12 col-sm-12 col-md-6 col-lg-6 cover_fase">
+                                @*<input type="text" class="form-control" placeholder="Nombra la fase 1" id="namefase1" name="namefase1">*@
+                                @Html.TextBoxFor(e => e.Phase3Name, new { @id = "namefase3", @class = "form-control", @placeholder = "Nombra la fase 3" })
+
+
+                                <label>Fecha de inicio</label>
+                                @*<input type="date" class="form-control" id="inifase1">*@
+                                @Html.TextBoxFor(e => e.DateIniPhase3, "", new { @type = "text", @id = "inifase3", @class = "form-control datesphases", @Value = Model.DateIniPhase1.ToString("d") })
+                                <label>Fecha de final</label>
+                                @*<input type="date" class="form-control" id="finfase1">*@
+                                @Html.TextBoxFor(e => e.DateEndPhase3, "", new { @type = "text", @id = "finfase3", @class = "form-control datesphases", @Value = Model.DateIniPhase1.ToString("d") })
+                                <label class="valorphase">Valor fase</label>
+
+                                @*<input type="number" class="form-control valfijo" id="valfase1">*@
+                                <div class="valfijo">
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i style="font-weight: bolder;">$</i></span>
+                                        @Html.TextBoxFor(e => e.ValuePhase3, new { @type = "number", @id = "valfase3", @class = "form-control" })
+                                    </div>
+                                </div>
+
+                                @*<input type="text" class="form-control valsubasta" id="valfase1-s">*@
+                                <div class="valsubasta">
+                                    <div class="input-group">
+                                        @Html.TextBoxFor(e => e.PercentValuePhase3, new { @type = "number", @id = "valfase3-s", @class = "form-control" })
+                                        <span class="input-group-addon"><i style="font-weight: bolder;">%</i></span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div id="fase4" class="col-xs-12 col-sm-12 col-md-6 col-lg-6 cover_fase">
+                                @*<input type="text" class="form-control" placeholder="Nombra la fase 1" id="namefase1" name="namefase1">*@
+                                @Html.TextBoxFor(e => e.Phase4Name, new { @id = "namefase4", @class = "form-control", @placeholder = "Nombra la fase 4" })
+                                <label>Fecha de inicio</label>
+                                @*<input type="date" class="form-control" id="inifase1">*@
+                                @Html.TextBoxFor(e => e.DateIniPhase4, "", new { @type = "text", @id = "inifase4", @class = "form-control datesphases", @Value = Model.DateIniPhase1.ToString("d") })
+                                <label>Fecha de final</label>
+                                @*<input type="date" class="form-control" id="finfase1">*@
+                                @Html.TextBoxFor(e => e.DateEndPhase4, "", new { @type = "text", @id = "finfase4", @class = "form-control datesphases", @Value = Model.DateIniPhase1.ToString("d") })
+                                <label class="valorphase">Valor fase</label>
+
+                                @*<input type="number" class="form-control valfijo" id="valfase1">*@
+                                <div class="valfijo">
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i style="font-weight: bolder;">$</i></span>
+                                        @Html.TextBoxFor(e => e.ValuePhase4, new { @type = "number", @id = "valfase4", @class = "form-control" })
+                                    </div>
+                                </div>
+
+                                @*<input type="text" class="form-control valsubasta" id="valfase1-s">*@
+                                <div class="valsubasta">
+                                    <div class="input-group">
+                                        @Html.TextBoxFor(e => e.PercentValuePhase4, new { @type = "number", @id = "valfase4-s", @class = "form-control" })
+                                        <span class="input-group-addon"><i style="font-weight: bolder;">%</i></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="botonesproy" class="col-xs-12 col-lg-12">
+                        <a href="@ViewBag.UrlRef"><h2 class="btn-cancel_addofer">Cancelar</h2></a>
+                        <!--Aca dejo una marca para validación de data que llega a la BD-->                        
+                        <input id="new_project" type="submit" value="Publicar proyecto +" class="btn-addofer">
+                    </div>
+                    }
+                    @*</form>*@
+                    <br />
+</div>
+
+        <hr>
+
+    </div>
+</div>
+<!--/ fin pop up nueva oferta-->
+
+<script src="~/Static/js/jquery.js"></script>
+<script src="~/Static/js/bootstrap.min.js"></script>
+<script src="~/Static/js/jquery.prettyPhoto.js"></script>
+<script src="~/Static/js/jquery.isotope.min.js"></script>
+
+<script src="~/Static/js/main.js"></script>
+<script src="~/Static/js/wow.min.js"></script>
+<script src="~/Static/js/jquery-2.1.4.js"></script>
+<script src="~/Scripts/jquery-ui.js"></script>
+<script src="~/Scripts/jquery.validate.js"></script>
+<script>
+    //subasta o precio fijo
+
+    $("input[type=checkbox]").click(function () {
+        if ($(this).is(':checked')) {
+
+            $("#rango_val, .valsubasta").show("slow");
+            $("#valor_fijo, .valfijo").hide("slow");
+            $("#valorproy").attr('value', '000');
+            $(".valorphase").text('Porcentaje valor fase');
+
+        } else {
+
+            $("#rango_val, .valsubasta").hide("slow");
+            $("#valor_fijo, .valfijo").show("slow");
+            $("#valorproy").attr('value', '0');
+            $(".valorphase").text('Valor fase');
+
+        }
+    });
+
+</script>
+
+<!--Validaciones formulario-->
+
+<script type="text/javascript">
+
+
+    $(function () {
+        $("#new_project").on("click", function () {
+            var rta = Validar();
+            if (rta === false)
+            {
+                limpiar()
+            }
+                $("#addoferta_contrat").validate
+                ({
+                    rules: {
+                        Categories: { required: true },
+                        TitleOffer: { required: true },
+                        Description: { required: true },
+                        ValueFixedProject: { required: true, min: 30000 },
+                        Phase1Name: { required: true },
+                        Phase2Name: { required: true },
+                        Phase3Name: { required: true },
+                        Phase4Name: { required: true },
+                        DateIniPhase1: { required: true },
+                        DateEndPhase1: { required: true },
+                        DateIniPhase2: { required: true },
+                        DateEndPhase2: { required: true },
+                        DateIniPhase3: { required: true },
+                        DateEndPhase3: { required: true },
+                        DateIniPhase4: { required: true },
+                        DateEndPhase4: { required: true },
+                        ValuePhase1: { required: true, number: true, min: 0 },
+                        ValuePhase2: { required: true, number: true, min: 0 },
+                        ValuePhase3: { required: true, number: true, min: 0 },
+                        ValuePhase4: { required: true, number: true, min: 0 },
+                        PercentValuePhase1: { required: true, number: true, min: 1, max: 100 },
+                        PercentValuePhase2: { required: true, number: true, min: 1, max: 100 },
+                        PercentValuePhase3: { required: true, number: true, min: 1, max: 100 },
+                        PercentValuePhase4: { required: true, number: true, min: 1, max: 100 }
+
+
+                    },
+
+                    messages: {
+                        Categories: { required: 'Indica la categoría del nuevo proyecto...' },
+                        TitleOffer: { required: 'Debes indicar un nombre para el proyecto...' },
+                        Description: { required: 'Debes describir el proyecto a realizar...' },
+                        ValueFixedProject: { required: 'Es necesario el valor del proyecto...', min: 'La suma debe ser mayor a $30.000' },
+                        Phase1Name: { required: 'Dale un nombre a la fase 1...' },
+                        Phase2Name: { required: 'Dale un nombre a la fase 2...' },
+                        Phase3Name: { required: 'Dale un nombre a la fase 3...' },
+                        Phase4Name: { required: 'Dale un nombre a la fase 4...' },
+                        DateIniPhase1: { required: 'Indica fecha de inicio de fase...', date: 'Ingresa una fecha real...' },
+                        DateEndPhase1: { required: 'Indica fecha de fin de fase...', date: 'Ingresa una fecha real...' },
+                        DateIniPhase2: { required: 'Indica fecha de inicio de fase...', date: 'Ingresa una fecha real...' },
+                        DateEndPhase2: { required: 'Indica fecha de fin de fase...', date: 'Ingresa una fecha real...' },
+                        DateIniPhase3: { required: 'Indica fecha de inicio de fase...', date: 'Ingresa una fecha real...' },
+                        DateEndPhase3: { required: 'Indica fecha de fin de fase...', date: 'Ingresa una fecha real...' },
+                        DateIniPhase4: { required: 'Indica fecha de inicio de fase...', date: 'Ingresa una fecha real...' },
+                        DateEndPhase4: { required: 'Indica fecha de fin de fase...', date: 'Ingresa una fecha real...' },
+                        ValuePhase1: { required: 'Indica el valor de la fase...', number: 'Sólo se permiten números...', min: 'Sólo números positivos...' },
+                        ValuePhase2: { required: 'Indica el valor de la fase...', number: 'Sólo se permiten números...', min: 'Sólo números positivos...' },
+                        ValuePhase3: { required: 'Indica el valor de la fase...', number: 'Sólo se permiten números...', min: 'Sólo números positivos...' },
+                        ValuePhase4: { required: 'Indica el valor de la fase...', number: 'Sólo se permiten números...', min: 'Sólo números positivos...' },
+                        PercentValuePhase1: { required: 'Indica el porcentaje de valor de la fase...', number: 'Sólo se permiten números...', min: 'Sólo números positivos...', max: 'El máximo es un 100%' },
+                        PercentValuePhase2: { required: 'Indica el porcentaje de valor de la fase...', number: 'Sólo se permiten números...', min: 'Sólo números positivos...', max: 'El máximo es un 100%' },
+                        PercentValuePhase3: { required: 'Indica el porcentaje de valor de la fase...', number: 'Sólo se permiten números...', min: 'Sólo números positivos...', max: 'El máximo es un 100%' },
+                        PercentValuePhase4: { required: 'Indica el porcentaje de valor de la fase...', number: 'Sólo se permiten números...', min: 'Sólo números positivos...', max: 'El máximo es un 100%' }
+
+
+                    }
+
+                });
+
+                $("#namefase1, #namefase2, #namefase3, #namefase4").css('margin-bottom', '1px');
+            
+        });
+    });
+
+    function limpiar() {
+        $('#valfase1').val('0');
+        $('#valfase2').val('0');
+        $('#valfase3').val('0');
+        $('#valfase4').val('0');
+    }
+
+    function Validar() {
+
+        //evt.preventDefault();
+
+        if ($('#fases_1').hasClass('fase_activ') === true) {
+            //lert('validando Datos');
+            if ($('#valfase1').val() != $('#valorproy').val()) {
+                alert('El valor no concuerda');
+                return false;
+                //$("#new_project").finish();
+
+            } else {
+                return true;
+            }
+
+        } else if ($('#fases_2').hasClass('fase_activ')) {
+            var resultado = 0;
+            var val1 = $('#valfase1').val();
+            var val2 = $('#valfase2').val();
+            //var val3 = $('#valfase3').val();
+            //var val4 = $('#valfase4').val();
+            resultado = parseInt(val1) + parseInt(val2);
+            if (resultado != $('#valorproy').val()) {
+                alert('Los valores no concuerdan con el inicial');
+                return false;
+
+            
+            } else {
+                return true;
+            }
+        
+
+        } else if ($('#fases_3').hasClass('fase_activ')) {
+            var resultado = 0;
+            var val1 = $('#valfase1').val();
+            var val2 = $('#valfase2').val();
+            var val3 = $('#valfase3').val();
+            //var val4 = $('#valfase4').val();
+            resultado = parseInt(val1) + parseInt(val2) + parseInt(val3);
+            if (resultado != $('#valorproy').val()) {
+                alert('Los valores no concuerdan con el inicial');
+                return false;
+            
+              
+        } else {
+            return true;
+        }
+
+        } else if ($('#fases_4').hasClass('fase_activ')) {
+            var resultado = 0;
+            var val1 = $('#valfase1').val();
+            var val2 = $('#valfase2').val();
+            var val3 = $('#valfase3').val();
+            var val4 = $('#valfase4').val();
+            resultado = parseInt(val1) + parseInt(val2) + parseInt(val3) + parseInt(val4);
+            if (resultado != $('#valorproy').val()) {
+                alert('Los valores no concuerdan con el inicial');
+                return false;
+            
+              
+        } else {
+            return true;
+        }
+        }
+
+    }
+    function abrir() {
+        $("#valfase1").val('0');
+        $("#valfase2").val('0');
+        $("#valfase3").val('0');
+        $("#valfase4").val('0');
+    }  
+
+</script>
+
+<script>
+    /control de fechas/
+    $(document).ready(function () {
+
+        $("#inifase1").datepicker({
+        defaultDate: new Date(),
+        minDate: new Date(),
+        onSelect: function (dateStr) {
+            $("#finfase1, #inifase2, #finfase2, #inifase3, #finfase3, #inifase4, #finfase4").val(dateStr);
+            $("#finfase1, #inifase2, #finfase2, #inifase3, #finfase3, #inifase4, #finfase4").datepicker("option", { minDate: dateStr });
+        }
+    });
+
+    $('#finfase1').datepicker({
+        defaultDate: new Date(),
+        minDate: new Date(),
+        onSelect: function (dateStr) {
+        toDate = new Date(dateStr);
+            $("#inifase2, #finfase2, #inifase3, #finfase3, #inifase4, #finfase4").val(dateStr);
+            $("#inifase2, #finfase2, #inifase3, #finfase3, #inifase4, #finfase4").datepicker("option", { minDate: dateStr });
+        }
+    });
+
+    $("#inifase2").datepicker({
+        defaultDate: new Date(),
+        minDate: new Date(),
+        onSelect: function (dateStr) {
+            $("#finfase2, #inifase3, #finfase3, #inifase4, #finfase4").val(dateStr);
+            $("#finfase2, #inifase3, #finfase3, #inifase4, #finfase4").datepicker("option", { minDate: dateStr });
+        }
+    });    
+
+    $('#finfase2').datepicker({
+        defaultDate: new Date(),
+        minDate: new Date(),
+        onSelect: function (dateStr) {
+        toDate = new Date(dateStr);
+            $("#inifase3, #finfase3, #inifase4, #finfase4").val(dateStr);
+            $("#inifase3, #finfase3, #inifase4, #finfase4").datepicker("option", { minDate: dateStr });
+        }
+    });
+
+    $("#inifase3").datepicker({
+        defaultDate: new Date(),
+        minDate: new Date(),
+        onSelect: function (dateStr) {
+            $("#finfase3, #inifase4, #finfase4").val(dateStr);
+            $("#finfase3, #inifase4, #finfase4").datepicker("option", { minDate: dateStr });
+        }
+    });
+
+    $('#finfase3').datepicker({
+        defaultDate: new Date(),
+        minDate: new Date(),
+        onSelect: function (dateStr) {
+        toDate = new Date(dateStr);
+            $("#inifase4, #finfase4").val(dateStr);
+            $("#inifase4, #finfase4").datepicker("option", { minDate: dateStr });
+        }
+    });
+
+    $("#inifase4").datepicker({
+        defaultDate: new Date(),
+        minDate: new Date(),
+        onSelect: function (dateStr) {
+            $("#finfase4").val(dateStr);
+            $("#finfase4").datepicker("option", { minDate: dateStr });
+        }
+    });
+
+    $('#finfase4').datepicker({
+        defaultDate: new Date(),
+        minDate: new Date(),
+        onSelect: function (dateStr) {
+        toDate = new Date(dateStr);
+        }
+    });
+
+    });
+    /fin control de fechas/
+</script>
+
+<script>
+
+    /hide input/
+
+    $(".datesphases").focusin(function () {
+        $(this).addClass('hideinput');
+        $(this).val('');
+    });
+
+    $(".datesphases").focusout(function () {
+        $(this).removeClass('hideinput');
+        $(this).css('color', '#333');
+
+    });
+
+    /Fin hide input/
+
+</script>
+
+<!--Fin Validaciones formulario-->
+

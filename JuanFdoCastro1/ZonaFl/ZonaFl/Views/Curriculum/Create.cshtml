@@ -1,0 +1,433 @@
+﻿@model ZonaFl.Models.Curriculum
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_LayoutFreelanceLog.cshtml";
+}
+
+<div id="wrap_perfiles">
+    <section id="principal">
+        <div class="container">
+            <div id="columnahide" class="col-lg-2"></div>
+            <div id="columna" class=" col-md-12 col-lg-12">
+
+                <!-- Div izq-->
+                <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+
+
+                    <div id="goodwill" class="col-xs-12">
+                        <p><i class="fa fa-user"></i>&nbsp;<span id="namewill">@Model.User.UserName</span></p>
+                        <div id="stars" class="starswill">
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                        </div>
+                    </div>
+
+                    @*<div id="skillswill" class="col-xs-12">
+                        <h3><strong><i class="fa fa-hand-o-right"></i> Habilidades:</strong></h3>
+                        <hr>
+                        <div id="skillys">
+                            <ul id="habilidades_freelance_profile" class="tag skills_selected">
+                                <li id="pw1">PHP</li>
+                            </ul>
+                        </div>
+                    </div>*@
+                    <div id="habilidades" class="cat_selec">
+                        <h3><strong><i class="fa fa-hand-o-right"></i> Mis habilidades:</strong></h3>
+                        <hr>
+                        <div id="skills_scroll">
+                            <ul id="habilidades_freelance_profile" class="tag skills_selected">
+                                @foreach (var x in Model.User.Skills)
+                                {
+                                    if (x.Visible)
+                                    {
+                                        <li id=x.Id>@x.Name</li>
+                                    }
+                                }
+
+
+                            </ul>
+                        </div>
+                    </div>
+
+
+                    <div id="terminados_freelance" class="col-xs-12">
+                        <h3><strong>Proyecto más reciente:</strong></h3>
+                        <hr>
+                        <div class="progress-wrap">
+                            <h3><span class="latest-cat">Categoría proyecto</span>: <span class="latest-prog">0</span>%</h3>
+                            <div class="progress">
+                                <div class="progress-bar" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    @*<div id="comentarios_freelance" class="col-xs-12 col-sm-12 col-md-12">
+                        <h3><strong><i class="fa fa-comment-o"></i> Comentarios:</strong></h3>
+                        <hr>
+                        <div id="comentarios_recopil">
+
+                            <!--comentario-->
+                            <div class="single_comments">
+                                <img id="com_reciente_img" src="images/blog/avatar3.png" alt="" />
+                                <p id="com_reciente_com">"Excelente trabajo, dentro de los tiempos establecidos."</p>
+                                <div class="entry-meta small muted">
+                                    <span>Por: <a id="com_reciente_user" href="#">Otro usuario</a></span>
+                                </div>
+                            </div>
+
+                            <!--Fin comentario-->
+
+                        </div>
+                    </div>*@
+                    @Html.Partial("PartialComentariosFreelance")
+                    <br>
+                </div>
+                <!--FIN Div izq-->
+                <!--Div central-->
+
+                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                    <h2><i class="fa fa-file-text-o"></i> &nbsp;Hoja de vida:</h2>
+                    <hr>
+
+                    <a id="exp_lab" class="hv_cat activo" href="#"><i class="fa fa-suitcase"></i> Experiencia laboral</a>
+                    <a id="estud" class="hv_cat" href="#"><i class="fa fa-book"></i> Educación</a>
+                    <a id="certifi" class="hv_cat" href="#"><i class="fa fa-trophy"></i> Certificaciones</a>
+                    <a id="idio" class="hv_cat" href="#"><i class="fa fa-globe"></i> Idiomas</a>
+                    <div id="anchor" class="ofertas_all_freelance">
+
+
+                        <!--Formulario experiencia laboral-->
+
+                        <div id="empleos">
+                            <div class="edicion_hv">
+
+                                <form id="experiencia_laboral">
+                                    <div class="header_div_hv"><h4>Experiencia Laboral<i id="addexper" class="fa fa-suitcase"></i></h4></div>
+
+                                    <br>
+
+                                    <div id="contenedor">
+                                        <div class="added">
+
+                                            <label>Empresa</label>
+                                            <input type="text" name="mitexto[]" id="Company" class="form-control inputs" />
+                                            Inicio<input type="date" id="DateIni" class="form-control fechas" />
+                                            Final<input type="date" id="DateEnd" class="form-control fechas" />
+                                            Actualmente<input type="checkbox" id="CurrentEmploy" class="form-control" />
+                                            <label>Cargo</label><input type="text" name="mitexto[]" id="Position" class="form-control inputs" />
+                                            <label>Resumen funciones</label><textarea name="mitexto[]" id="FunctionPosition" class="form-control inputs" rows="5"></textarea>
+                                            <hr />
+
+                                            <label>Empresa 2</label>
+                                            <input type="text" name="mitexto[]" id="Company2" class="form-control inputs" />
+                                            Inicio<input type="date" id="DateIni2" class="form-control fechas" />
+                                            Final<input type="date" id="DateEnd2" class="form-control fechas" />
+                                            Actualmente<input type="checkbox" id="CurrentEmploy2" class="form-control" />
+                                            <label>Cargo</label><input type="text" name="mitexto[]" id="Position2" class="form-control inputs" />
+                                            <label>Resumen funciones</label><textarea name="mitexto[]" id="FunctionPosition2" class="form-control inputs" rows="5"></textarea>
+                                            <hr />
+
+                                            <label>Empresa 3</label>
+                                            <input type="text" name="mitexto[]" id="Company3" class="form-control inputs" />
+                                            Inicio<input type="date" id="DateIni3" class="form-control fechas" />
+                                            Final<input type="date" id="DateEnd3" class="form-control fechas" />
+                                            Actualmente<input type="checkbox" id="CurrentEmploy3" class="form-control" />
+                                            <label>Cargo</label><input type="text" name="mitexto[]" id="Position3" class="form-control inputs" />
+                                            <label>Resumen funciones</label><textarea name="mitexto[]" id="FunctionPosition3" class="form-control inputs" rows="5"></textarea>
+                                            <hr />
+
+                                        </div>
+                                    </div>
+                                    <input type="button" value="Guardar cambios" class="save_hv">
+                                </form>
+                            </div> <!--item hoja fin-->
+
+                        </div>
+                        <!--Fin formulario experiencia laboral-->
+                        <!--Formulario estudios-->
+
+                        <div id="academicos">
+                            <div class="edicion_hv">
+
+                                <form id="experiencia_academica">
+                                    <div class="header_div_hv"><h4>Educación<i id="addexper_estudio" class="fa fa-book"></i></h4></div>
+
+                                    <br>
+
+                                    <div id="contenedor_estudio">
+                                        <div class="added">
+
+                                            <label>Institución</label>
+                                            <input type="text" name="mitexto[]" id="Institution" class="form-control inputs" />
+                                            <label>País</label><input type="text" name="mitexto[]" id="Country" class="form-control inputs" />
+                                            <label>Título</label><input type="text" name="mitexto[]" id="Title" class="form-control inputs" />
+                                            Inicio<input type="date" id="DateIni" class="form-control fechas" />
+                                            Final<input type="date" id="DateEnd" class="form-control fechas" />
+                                            Actualmente<input type="checkbox" id="Actually" class="form-control inputs" />
+                                            <hr />
+
+                                            <label>Institución 2</label>
+                                            <input type="text" name="mitexto[]" id="Institution2" class="form-control inputs" />
+                                            <label>País</label><input type="text" name="mitexto[]" id="Country2" class="form-control inputs" />
+                                            <label>Título</label><input type="text" name="mitexto[]" id="Title2" class="form-control inputs" />
+                                            Inicio<input type="date" id="DateIni2" class="form-control fechas" />
+                                            Final<input type="date" id="DateEnd2" class="form-control fechas" />
+                                            Actualmente<input type="checkbox" id="Actually2" class="form-control inputs" />
+                                            <hr />
+
+                                            <label>Institución 3</label>
+                                            <input type="text" name="mitexto[]" id="Institution3" class="form-control inputs" />
+                                            <label>País</label><input type="text" name="mitexto[]" id="Country3" class="form-control inputs" />
+                                            <label>Título</label><input type="text" name="mitexto[]" id="Title3" class="form-control inputs" />
+                                            Inicio<input type="date" id="DateIni3" class="form-control fechas" />
+                                            Final<input type="date" id="DateEnd3" class="form-control fechas" />
+                                            Actualmente<input type="checkbox" id="Actually3" class="form-control inputs" />
+                                            <hr />
+
+                                        </div>
+                                    </div>
+
+                                    <input type="button" value="Guardar cambios" class="save_hv_estudio">
+                                </form>
+                            </div>
+
+                        </div>
+
+                        <!--Fin formulario estudios-->
+                        <!--formulario certificaciones-->
+
+                        <div id="certificaciones">
+                            <div class="edicion_hv">
+
+                                <form id="experiencia_certificaciones">
+                                    <div class="header_div_hv"><h4>Certificaciones<i id="addexper_certif" class="fa fa-trophy"></i></h4></div>
+
+                                    <br>
+
+                                    <div id="contenedor_certificado">
+                                        <div class="added">
+
+                                            <label>Certificado</label>
+                                            <input type="text" name="mitexto[]" id="Certificate" class="form-control inputs" />
+                                            <label>Organización otorgante</label><input type="text" name="mitexto[]" id="Otorgante" class="form-control inputs" />
+                                            <label>Descripción Certificado</label><textarea type="text" name="mitexto[]" id="Description" class="form-control inputs" rows="5"></textarea>
+                                            Fecha Certificado<input type="date" id="DateCert" class="form-control fechac" />
+                                            Actualmente<input type="checkbox" id="Actually" class="form-control inputs" />
+                                            <hr />
+
+                                            <label>Certificado 2</label>
+                                            <input type="text" name="mitexto[]" id="Certificate2" class="form-control inputs" />
+                                            <label>Organización otorgante</label><input type="text" name="mitexto[]" id="Otorgante2" class="form-control inputs" />
+                                            <label>Descripción Certificado</label><textarea type="text" name="mitexto[]" id="Description2" class="form-control inputs" rows="5"></textarea>
+                                            Fecha Certificado<input type="date" id="DateCert2" class="form-control fechac" />
+                                            Actualmente<input type="checkbox" id="Actually2" class="form-control inputs" />
+                                            <hr />
+
+                                            <label>Certificado 3</label>
+                                            <input type="text" name="mitexto[]" id="Certificate3" class="form-control inputs" />
+                                            <label>Organización otorgante</label><input type="text" name="mitexto[]" id="Otorgante3" class="form-control inputs" />
+                                            <label>Descripción Certificado</label><textarea type="text" name="mitexto[]" id="Description3" class="form-control inputs" rows="5"></textarea>
+                                            Fecha Certificado<input type="date" id="DateCert3" class="form-control fechac" />
+                                            Actualmente<input type="checkbox" id="Actually3" class="form-control inputs" />
+                                            <hr />
+
+
+
+                                        </div>
+                                    </div>
+
+                                    <input type="button" value="Guardar cambios" class="save_hv_certificado">
+                                </form>
+                            </div>
+
+                        </div>
+
+                        <!--Fin formulario certificaciones-->
+                        <!--formulario idiomas-->
+
+                        <div id="idiomas">
+                            <div class="edicion_hv">
+
+                                <form id="experiencia_idiomas">
+                                    <div class="header_div_hv"><h4>Idiomas<i id="addexper_idiomas" class="fa fa-globe"></i></h4></div>
+
+                                    <br>
+
+                                    <div id="contenedor_idiomas">
+                                        <div class="added">
+
+                                            <label>Idioma</label>
+                                            <input type="text" name="mitexto[]" id="Name" class="form-control inputs" />
+                                            <label>Nivel</label>
+                                            <select id="LevelLang" name="mitexto[]" class="form-control">
+                                                <option value="0">Seleccione un nivel</option>
+                                                <option value="ma">Lengua materna</option>
+                                                <option value="pr">Principiante</option>
+                                                <option value="in">Intermedio</option>
+                                                <option value="av">Avanzado</option>
+                                                <option value="fl">Fluido</option>
+                                            </select>
+                                            Con Certificado<input type="checkbox" id="Certificate" class="form-control inputs" />
+                                            <hr />
+
+                                            <label>Idioma 2</label>
+                                            <input type="text" name="mitexto[]" id="Name2" class="form-control inputs" />
+                                            <label>Nivel</label>
+                                            <select id="LevelLang2" name="mitexto[]" class="form-control">
+                                                <option value="0">Seleccione un nivel</option>
+                                                <option value="ma">Lengua materna</option>
+                                                <option value="pr">Principiante</option>
+                                                <option value="in">Intermedio</option>
+                                                <option value="av">Avanzado</option>
+                                                <option value="fl">Fluido</option>
+                                            </select>
+                                            Con Certificado<input type="checkbox" id="Certificate2" class="form-control inputs" />
+                                            <hr />
+
+                                            <label>Idioma 3</label>
+                                            <input type="text" name="mitexto[]" id="Name3" class="form-control inputs" />
+                                            <label>Nivel</label>
+                                            <select id="LevelLang3" name="mitexto[]" class="form-control">
+                                                <option value="0">Seleccione un nivel</option>
+                                                <option value="ma">Lengua materna</option>
+                                                <option value="pr">Principiante</option>
+                                                <option value="in">Intermedio</option>
+                                                <option value="av">Avanzado</option>
+                                                <option value="fl">Fluido</option>
+                                            </select>
+                                            Con Certificado<input type="checkbox" id="Certificate3" class="form-control inputs" />
+                                            <hr />
+
+
+                                        </div>
+                                    </div>
+
+                                    <input type="button" value="Guardar cambios" class="save_hv_idiomas">
+                                </form>
+                            </div>
+
+                        </div>
+
+                        <!--Fin formulario idiomas-->
+
+                    </div>
+                </div>
+
+                <!--FIN Div central-->
+                <!-- Div der-->
+
+                <div id="secder_free" class="col-xs-12 col-sm-2 col-md-2 col-lg-2">
+
+                    <div id="ads_zona">
+                        (Espacio reservado para publicidad y avisos varios)
+                        <hr>
+                        (Espacio reservado para publicidad y avisos varios)
+                        <hr>
+                        (Espacio reservado para publicidad y avisos varios)
+                        <hr>
+                        (Espacio reservado para publicidad y avisos varios)
+                    </div>
+
+
+                </div>
+
+                <!--FIN Div der-->
+
+            </div>
+
+
+        </div><!--/.container-->
+    </section><!--/about-us-->
+</div>
+
+
+
+<script>
+$("#estud").click(function(){
+  $(this).addClass("activo");
+  $("#exp_lab, #certifi, #idio").removeClass("activo");
+	$("#academicos").css("display", "block");
+	$("#empleos, #certificaciones, #idiomas").css("display", "none");
+
+
+	});
+
+$("#exp_lab").click(function(){
+  $(this).addClass("activo");
+  $("#estud, #certifi, #idio").removeClass("activo");
+	$("#empleos").css("display", "block");
+	$("#academicos, #certificaciones, #idiomas").css("display", "none");
+
+
+	});
+
+$("#certifi").click(function(){
+  $(this).addClass("activo");
+  $("#exp_lab, #estud, #idio").removeClass("activo");
+		$("#certificaciones").css("display", "block");
+	$("#academicos, #empleos, #idiomas").css("display", "none");
+
+
+	});
+
+$("#idio").click(function(){
+  $(this).addClass("activo");
+  $("#exp_lab, #certifi, #estud").removeClass("activo");
+		$("#idiomas").css("display", "block");
+	$("#academicos, #certificaciones, #empleos").css("display", "none");
+
+
+	});
+
+</script>
+
+<script>
+
+function setupUploadfile() {
+
+    $('#uploadbutton').on('click', function () {
+
+        var data = new FormData();
+
+        var files = $("#fileselect").get(0).files;
+
+        // Add the uploaded image content to the form data collection
+        if (files.length > 0) {
+            data.append("UploadedImage", files[0]);
+        }
+
+
+        // Make Ajax request with the contentType = false, and procesDate = false
+        var ajaxRequest = $.ajax({
+            type: "POST",
+            url: "/api/Account/UploadImageUser",
+            contentType: false,
+            processData: false,
+            data: data
+        });
+
+        ajaxRequest.done(function (responseData, textStatus) {
+            if (textStatus == 'success') {
+                if (responseData != null) {
+                    if (responseData.Key) {
+                        //alert(responseData.Value);
+                        var fileuser = $("#fileselect").val();
+                        UpdateImageUser(fileuser);
+
+                        $("#fileselect").val('');
+                    } else {
+                        alert(responseData.Value);
+                    }
+                }
+            } else {
+                alert(responseData.Value);
+            }
+        });
+    });
+
+}
+</script>

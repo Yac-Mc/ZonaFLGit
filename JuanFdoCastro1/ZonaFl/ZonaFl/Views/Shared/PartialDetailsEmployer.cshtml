@@ -1,0 +1,809 @@
+﻿@using ZonaFl.Models;
+
+
+<!--Popup postulados-->
+<div id="postulados" class="emer">
+    <div class="emer-postulados">
+        <a id="closer" href="#">x</a>
+        <div class="head-postu">
+            <h2>Nombre de la oferta</h2>
+            <h3>Postulados: <span style="font-weight:bold; color:white;" id="noPostulados">0</span></h3>
+        </div>
+        <div class="body-postu">
+            <table class="table table-hover table-striped aplies"  id="table-example-5" data-bind="koTable: { pageSize: 5, initialSortProperty: 'Id', initialSortDirection: 'NameUser'  }" >
+                <thead>
+                    <tr>
+                        <th data-sort-property="Id" >Id</th>
+                        <th data-sort-property="NameUser">Nombre Freelance</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody  data-bind="foreach: koTable.pagedItems">
+                    <tr >
+                        <td><span data-bind="text: Id"></span></td>
+                        <td><span data-bind="text: NameUser"></span><a class="plist" href='#' target="_blank" data-bind="attr: { href: Url }">&emsp;&emsp;Perfil&ensp;&ensp;</a></td>
+                        <td><button class="adjud" type="button" id="btnadjud" data-bind='click: $root.GetSetProjetToUser'>Adjudicar </button></td>
+                    </tr>
+
+
+
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+</div>
+
+
+<!--Fin Popup postulados-->
+
+  <div class="tab-projects col-xs-12">
+
+    <a id="applied-btn" class="project-tab project-tab-selected" href="@Url.Action("Index","Projects" )?statusProject=0"><i class="fa fa-check-square-o"></i> Publicados</a>
+    <a id="incourse-btn" class="project-tab" href="@Url.Action("Index","Projects" )?statusProject=1"><i class="fa fa-tasks"></i> En curso</a>
+    <a id="finished-btn" class="project-tab" href="@Url.Action("Index","Projects" )?statusProject=2"><i class="fa fa-trophy"></i> Finalizados</a>
+    <a id="deleted-btn" class="project-tab" href="@Url.Action("Index","Projects" )?statusProject=3"><i class="fa fa-eraser"></i> Eliminados</a>
+      
+     
+</div>
+@foreach (var project in Model)
+{
+    
+        <div id="anchor" class="Offers_all_freelance">
+
+            @if (ViewBag.Status == 0)
+            {
+            <div id="applied" class="col-xs-12">
+
+                <!--nueva publicación de oferta-->
+
+                <div class="col-xs-12 newoffer" id="@("newoffer" + project.Id)">
+
+                    <div class="col-xs-12 header-offer">
+                        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                            <p class="title-offer">@project.TitleOffer</p>
+                            @if (project.Category != null)
+                            {
+                            <p class="cat-offer"><strong>Categoría: </strong><span class="categ">@project.Category.Name</span></p>
+                            }
+                            else
+                            {
+                                <p class="cat-offer"><strong>Categoría: </strong><span class="categ"></span></p>
+                            }
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                            <p class="cat-offer"><strong>Publicado por: </strong><span class="autor">@project.NameContractor</span></p>
+                            <p class="cat-offer"><i class="fa fa-clock-o">&nbsp;</i><span class="date-offer">@project.DateOffer.Date.ToString("dd/MM/yyyy")</span> | <span class="time-offer">@project.DateOffer.ToString("hh:mm tt")</span> | <i class="fa fa-map-marker">&nbsp;</i><span class="city-offer">@project.ContractorCity</span>, <span class="country-offer">@project.ContractorCountry</span></p>
+                        </div>
+                    </div>
+
+                    <div class="col-xs-12 text-offer widing">
+                        <p class="desc-offer"><strong>Descripción del proyecto: </strong><span class="offer-full">@project.Description</span></p>
+                    </div>
+
+                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 data-offer">
+                        @if (project.ValueFixedProject != 0)
+                        {
+                            <p class="title-text">PRESUPUESTO: <span class="info-text"><strong>COP </strong></span><span class="budget-offer info-text">@project.ValueFixedProject</span></p>
+                        }
+                        else
+                        {
+                            <p class="title-text">PRESUPUESTO: <span class="info-text"><strong>COP </strong></span><span class="budget-offer info-text">@project.RangoValor</span></p>
+                        }
+                        <p class="title-text">NRO. POSTULADOS: <span class="number-aplies info-text">@project.NoPostulados</span><a id="@("postulados" + project.Id)" href="#postulados" class="postulados" >&nbsp;<i class="fa fa-search"></i> Ver </a></p>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 data-offer">
+                        <p class="title-text">INICIO ESTIMADO: <span class="ini-proy info-text">@project.InicioEst</span></p>
+                        <p class="title-text">FIN ESTIMADO: <span class="fin-proy info-text">@project.FinEst</span></p>
+                    </div>
+
+                    <div class="col-xs-12 exe-offer">
+                        @if (project.OfferPhases != null)
+                        {
+                        <p><strong>Ejecución: </strong><span class="num-fases">@project.OfferPhases.Count fases</span></p>
+                        }
+                        else
+                        {
+                            <p><strong>Ejecución: </strong><span class="num-fases">0 fases</span></p>
+                        }
+                    </div>
+
+                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 widing">
+                        <ul>
+@if (project.OfferPhases != null)
+{
+    foreach (var phase in project.OfferPhases)
+    {
+                                <li class="title-text">Fase  @(project.OfferPhases.IndexOf(phase) + 1): <span class="name-fase1 info-text">@phase.Name</span></li>
+                                <li class="pricing-fase"><span class="info-text"><strong>COP </strong></span> <span class="price-fase">@phase.Value</span></li>
+
+    }
+}
+
+                             @*<li class="title-text">FASE 1: <span class="name-fase1 info-text">Nombre fase 1 </span></li>
+                            <li class="pricing-fase"><span class="info-text"><strong>COP </strong></span> <span class="price-fase">200000</span></li>
+                            <li class="title-text">FASE 2: <span class="name-fase2 info-text">Nombre fase 2 </span></li>
+                            <li class="pricing-fase"><span class="info-text"><strong>COP </strong></span> <span class="price-fase">500000</span></li>
+                            <li class="title-text">FASE 3: <span class="name-fase3 info-text">Nombre fase 3 </span></li>
+                            <li class="pricing-fase"><span class="info-text"><strong>COP </strong></span> <span class="price-fase">1000000</span></li>
+                            <li class="title-text">FASE 4: <span class="name-fase4 info-text">Nombre fase 4 </span></li>
+                            <li class="pricing-fase"><span class="info-text"><strong>COP </strong></span> <span class="price-fase">300000</span></li>*@
+
+                        </ul>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 offer-btns widing">
+                        <button type="button" class="btno btn-ctrl-apply btn-apply colapsa" id=@project.Id>CERRAR</button>
+                    </div>
+
+                    <div class="col-xs-12 pie-btn">
+                        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                            @if (ViewBag.Status == 0)
+                            {
+                            <button type="button" class="btn-crud" onclick="window.location.href = '/Offer/Edit?id=@project.Id#nuevoproyect'"><i class="fa fa-edit" title="Editar oferta" ></i></button>
+                            <button type="button" class="btn-crud btn-del" id="@("button" + project.Id)" ><i class="fa fa-trash-o" title="Eliminar oferta" ></i></button>
+                            }
+                        </div>
+                        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                            <button type="button" class="btno btn-apply btn-wide" id=@project.Id>AMPLIAR OFERTA</button>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!--fin nueva publicación de oferta-->
+
+
+
+
+            </div>
+            }
+            else if (ViewBag.Status == 1)
+            {
+            <div id="incourse" class="col-xs-12" style="display: block;">
+
+
+
+                <!--nuevo proyecto en curso-->
+
+                <div class="col-xs-12 newoffer" id="@("newoffer" + project.Id)">
+
+                    <div class="col-xs-12 header-offer">
+                        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                            <p class="title-offer">@project.TitleOffer</p>
+                            @if (project.Category != null)
+                            {
+                                <p class="cat-offer"><strong>Categoría: </strong><span class="categ">@project.Category.Name</span></p>
+                            }
+                            else
+                            {
+                                <p class="cat-offer"><strong>Categoría: </strong><span class="categ"></span></p>
+                            }
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                            <p class="cat-offer"><strong>Contratante: </strong><span class="autor">@project.NameContractor</span></p>
+                            <p class="cat-offer"><i class="fa fa-map-marker">&nbsp;</i><span class="city-offer">@project.ContractorCity</span>, <span class="country-offer">@project.ContractorCountry</span></p>
+                        </div>
+                    </div>
+
+                    <div class="col-xs-12 text-offer widing">
+                        <p class="desc-offer"><strong>Descripción del proyecto: </strong><span class="offer-full">@project.Description</span></p>
+                    </div>
+
+                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 data-offer">
+                        <p class="title-text">AVANCE: <span class="progress-proj info-text">0</span><span style="color:#666;">%</span></p>
+                        <div class="progress-wrap">
+                            <div class="progress">
+                                <div class="progress-bar" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 data-offer">
+                        <p class="title-text">INICIADO: <span class="ini-proy info-text">@project.InicioEst</span></p>
+                        <p class="title-text">FIN ESTIMADO: <span class="fin-proy info-text">@project.FinEst</span></p>
+                    @if (project.ValueFixedProject != 0)
+                    {
+                        <p class="title-text">PRESUPUESTO: <span class="info-text"><strong>COP </strong></span><span class="budget-offer info-text">@project.ValueFixedProject</span></p>
+                    }
+                    else
+                    {
+                        <p class="title-text">PRESUPUESTO: <span class="info-text"><strong>COP </strong></span><span class="budget-offer info-text">@project.RangoValor</span></p>
+                    }
+                    </div>
+
+                    <div class="col-xs-12 exe-offer widing">
+                        @if (project.OfferPhases != null)
+                        {
+                            <p><strong>Ejecución: </strong><span class="num-fases">@project.OfferPhases.Count fases</span></p>
+                        }
+                        else
+                        {
+                            <p><strong>Ejecución: </strong><span class="num-fases">0 fases</span></p>
+                        }
+                    </div>
+
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 widing">
+@if (project.OfferPhases != null)
+{
+    foreach (var phase in project.OfferPhases)
+    {
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 status-fase">
+
+        <form id="hiddenPay" action="https://gateway.payulatam.com/ppp-web-gateway">
+           
+            @*Campos ocultos para manejo de pasarela; se creó un Form envolviendo las cuatro fases del proyecto.*@
+
+            <input type="hidden" name="merchantId" id="merchantId" value="@phase.pagos.merchantId" />
+            <input type="hidden" name="ApiKey" id="ApiKey" value="@phase.pagos.ApiKey" />
+            <input type="hidden" name="referenceCode" id="referenceCode" value="@phase.pagos.referenceCode" />
+            <input type="hidden" name="accountId" id="accountId" value="@phase.pagos.accountId" />
+            <input type="hidden" name="description" id="description" value="@phase.pagos.description" />
+            <input type="hidden"  name="amount" id="amount"  value="@phase.pagos.amount" />
+            <input type="hidden" name="tax" id="tax" value="@phase.pagos.tax" />
+            <input type="hidden" name="taxReturnBase" id="taxReturnBase" value="@phase.pagos.taxReturnBase" />
+            <input type="hidden" name="currency" id="currency" value="@phase.pagos.currency" />
+            <input type="hidden" name="signature" id="signature" value="@phase.Signature" />
+            <input type="hidden" name="responseUrl" id="responseUrl" value="http:zonafl.com/Projects/DetailsPay" />
+            <input type="hidden" name="test" id="test" value="0" />
+            <input type="hidden" name="buyerEmail" id="buyerEmail" value="@phase.pagos.buyerEmail" />
+
+            <p class="title-text">Fase  @(project.OfferPhases.IndexOf(phase) + 1):  <span class="name-fase1 info-text">@phase.Name</span></p>
+            @if (((StatusPhase)@phase.StatusPhase) == StatusPhase.SinIniciar)
+            {
+
+                <p><span class="statusnoyet" id="statusnoyet">No iniciada</span><button type="submit" id="@("button" + phase.Id)" class="managefases StartPhase"><i class="fa fa-power-off"></i> Iniciar fase</button></p>
+
+            }
+            else if (((StatusPhase)@phase.StatusPhase) == StatusPhase.EnCurso)
+            {
+                <p><span class="statusincouse">En curso</span><button type="button" class="managefases EndPhase" Id="@("button" + phase.Id + "-" + phase.IdOffer)"><i class="fa fa-flag-checkered"></i> Finalizar fase</button></p>
+            }
+            else if (((StatusPhase)@phase.StatusPhase) == StatusPhase.Finalizada)
+            {
+                <p><span class="statusfinished">Finalizada</span></p>
+            }
+
+        </form>
+
+    </div>
+    }
+}
+                        @*<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 status-fase">
+                            <p class="title-text">FASE 1: <span class="name-fase1 info-text">Nombre fase 1</span></p>
+                            <p><span class="statusfinished">Finalizada</span></p>
+
+                        </div>
+
+                        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 status-fase">
+                            <p class="title-text">FASE 2: <span class="name-fase2 info-text">Nombre fase 2 </span></p>
+                            <p><span class="statusincouse">En curso</span><button type="button" class="managefases"><i class="fa fa-flag-checkered"></i> Finalizar fase</button></p>
+                        </div>
+
+                        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 status-fase">
+                            <p class="title-text">FASE 3: <span class="name-fase3 info-text">Nombre fase 3 </span></p>
+                            <p><span class="statusnoyet">No iniciada</span><button type="button" class="managefases"><i class="fa fa-power-off"></i> Iniciar fase</button></p>
+                        </div>
+
+                        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 status-fase">
+                            <p class="title-text">FASE 4: <span class="name-fase4 info-text">Nombre fase 4 </span></p>
+                            <p><span class="statusnoyet">No iniciada</span><button type="button" class="managefases"><i class="fa fa-power-off"></i> Iniciar fase</button></p>
+                        </div>*@
+
+                    </div>
+
+
+                    <!--div de comentarios y calificación-->
+
+                    <div id="comments" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 widing">
+                        <form id="comentarios_pro">
+                            <h3><strong><i class="fa fa-comment-o"></i> Comentarios al proyecto:</strong></h3>
+                            @if (project.IsForFinally)
+                            {
+                            <textarea class="form-control" id="@("comm" + project.Id)" placeholder ="¿Qué tienes para decir sobre este proyecto?" rows="5" ></textarea>
+                            }
+                            else
+                            {
+                                <textarea class="form-control" id="@("comm" + project.Id)" placeholder="¿Qué tienes para decir sobre este proyecto?" rows="5" disabled></textarea>
+                            }
+                            <h3 style="display: inline-block;"><strong><i class="fa fa-thumbs-up"></i> Califica este proyecto:</strong></h3>
+                            @if (project.IsForFinally)
+                            {
+                            <select id="@("rate" + project.Id)" style="display: inline-block;" >
+                                <option value="5">5</option>
+                                <option value="4">4</option>
+                                <option value="3">3</option>
+                                <option value="2">2</option>
+                                <option value="1">1</option>
+                            </select>
+                            }
+                            else
+                            {
+                                <select id="@("rate" + project.Id)" style="display: inline-block;" disabled>
+                                    <option value="5">5</option>
+                                    <option value="4">4</option>
+                                    <option value="3">3</option>
+                                    <option value="2">2</option>
+                                    <option value="1">1</option>
+                                </select>
+                            }
+
+
+                        </form>
+                    </div>
+
+                    <!--Fin div de comentarios y calificación-->
+
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 widing" style="padding-right:2em;">
+                        <button type="button" class="btno btn-ctrl-apply btn-apply colapsa" style="float:right;" id=@project.Id>CERRAR</button>
+                    </div>
+
+                    <div class="col-xs-12 pie-btn">
+                        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                        </div>
+                        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                            <button type="button" class="btno btn-apply btn-wide" id=@project.Id >ABRIR PROYECTO</button>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!--fin nuevo proyecto en curso-->   
+
+            </div>
+            }
+            else if (ViewBag.Status == 2)
+            {
+            <div id="finished" class="col-xs-12" style="display: block;">
+
+                    <!--Proyecto finalizado-->
+
+                    <div class="col-xs-12 newoffer" id="@("newoffer" + project.Id)">
+
+                        <div class="col-xs-12 header-offer">
+                            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                                <p class="title-offer">@project.TitleOffer</p>
+                                @if (project.Category != null)
+                                {
+                                <p class="cat-offer"><strong>Categoría: </strong><span class="categ">@project.Category.Name</span></p>
+                                }
+                                else
+                                {
+                                    <p class="cat-offer"><strong>Categoría: </strong><span class="categ"></span></p>
+                                }
+                            </div>
+                            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                                <p class="cat-offer"><strong>Contratante: </strong><span class="autor">@project.NameContractor</span></p>
+                                <p class="cat-offer"><i class="fa fa-map-marker">&nbsp;</i><span class="city-offer">@project.ContractorCity</span>, <span class="country-offer">@project.ContractorCountry</span></p>
+                            </div>
+                        </div>
+
+                        <div class="col-xs-12 text-offer widing">
+                            <p class="desc-offer"><strong>Descripción del proyecto: </strong><span class="offer-full">@project.Description</span></p>
+                        </div>
+
+                        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 data-offer">
+                            <p class="title-text">INICIO: <span class="ini-proy info-text">@project.InicioEst</span></p>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 data-offer">
+                            <p class="title-text">FIN: <span class="fin-proy info-text">@project.FinEst</span></p>
+                        </div>
+
+                        <div class="col-xs-12 exe-offer">
+                            @if (project.OfferPhases != null)
+                            {
+                            <p><strong>Se ejecutó en: </strong><span class="num-fases">@project.OfferPhases.Count fases</span></p>
+                            }
+                            else
+                            {
+                                <p><strong>Se ejecutó en: </strong><span class="num-fases"></span></p>
+                            }
+                        </div>
+
+                        <div class="col-xs-12 text-offer widing">
+                            <p class="desc-offer"><strong>Comentarios contratante: </strong><span class="offer-full"> @project.Comments</span></p>
+                            <p class="title-text">CALIFICACIÓN: <span class="rate info-text">@project.Qualification</span></p>
+                        </div>
+
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 offer-btns widing" style="padding-right:2em;">
+                            <button type="button" class="btno btn-ctrl-apply btn-apply colapsa" style="float:right;" id=@project.Id>CERRAR</button>
+                        </div>
+
+                        <div class="col-xs-12 pie-btn">
+                            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                                <!--  <button type="submit" class="btn-crud"><i class="fa fa-trash-o" title="Eliminar"></i></button> -->
+                            </div>
+                            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                                <button type="button" class="btno btn-apply btn-wide" id=@project.Id>AMPLIAR</button>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!--fin proyecto finalizado-->
+
+                </div>
+            }
+            else if (ViewBag.Status == 3)
+            {
+            <div id="deleted" class="col-xs-12" style="display: block;">
+
+                    <!--nueva oferta eliminada-->
+
+                    <div class="col-xs-12 newoffer" id="@("newoffer" + project.Id)">
+
+                        <div class="col-xs-12 header-offer">
+                           
+                            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                                <p class="title-offer">@project.TitleOffer</p>
+                                <p class="cat-offer"><strong>Categoría: </strong><span class="categ">@project.Category.Name</span></p>
+                                
+                            </div>
+                            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                                <p class="cat-offer"><strong>Publicado por: </strong><span class="autor">@project.NameContractor</span></p>
+                                <p class="cat-offer"><i class="fa fa-clock-o">&nbsp;</i><span class="date-offer">@project.DateOffer.Date</span> | <span class="time-offer">@project.DateOffer.ToString("hh:mm tt")</span> | <i class="fa fa-map-marker">&nbsp;</i><span class="city-offer">@project.ContractorCity</span>, <span class="country-offer">@project.ContractorCountry</span></p>
+                            </div>
+                            
+                        </div>
+
+                        <div class="col-xs-12 text-offer widing">
+                            <p class="desc-offer"><strong>Descripción del proyecto: </strong><span class="offer-full">@project.Description</span></p>
+                        </div>
+
+                        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 data-offer">
+                            @if (project.ValueFixedProject != 0)
+                            {
+                                <p class="title-text">PRESUPUESTO: <span class="info-text"><strong>COP </strong></span><span class="budget-offer info-text">@project.ValueFixedProject</span></p>
+                            }
+                            else
+                            {
+                                <p class="title-text">PRESUPUESTO: <span class="info-text"><strong>COP </strong></span><span class="budget-offer info-text">@project.RangoValor</span></p>
+                            }
+                            <p class="title-text">NRO. POSTULADOS: <span class="number-aplies info-text">@project.NoPostulados</span></p>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 data-offer">
+                            <p class="title-text">INICIO ESTIMADO: <span class="ini-proy info-text">@project.InicioEst</span></p>
+                            <p class="title-text">FIN ESTIMADO: <span class="fin-proy info-text">@project.FinEst</span></p>
+                        </div>
+
+                        <div class="col-xs-12 exe-offer">
+                           
+                            @if (project.OfferPhases != null)
+                            {
+                                <p><strong>Ejecución: </strong><span class="num-fases">@project.OfferPhases.Count fases</span></p>
+                            }
+                            else
+                            {
+                                <p><strong>Ejecución: </strong><span class="num-fases">0 fases</span></p>
+                            }
+
+                        </div>
+
+                        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 widing">
+                            <ul>
+@foreach (var phase in project.OfferPhases)
+            {
+                                <li class="title-text">Fase  @(project.OfferPhases.IndexOf(phase) + 1): <span class="name-fase1 info-text">@phase.Name</span></li>
+                                <li class="pricing-fase"><span class="info-text"><strong>COP </strong></span> <span class="price-fase">@phase.Value</span></li>
+}
+                                @*<li class="title-text">FASE 2: <span class="name-fase2 info-text">Nombre fase 2 </span></li>
+                                <li class="pricing-fase"><span class="info-text"><strong>COP </strong></span> <span class="price-fase">500000</span></li>
+                                <li class="title-text">FASE 3: <span class="name-fase3 info-text">Nombre fase 3 </span></li>
+                                <li class="pricing-fase"><span class="info-text"><strong>COP </strong></span> <span class="price-fase">1000000</span></li>
+                                <li class="title-text">FASE 4: <span class="name-fase4 info-text">Nombre fase 4 </span></li>
+                                <li class="pricing-fase"><span class="info-text"><strong>COP </strong></span> <span class="price-fase">300000</span></li>*@
+
+                            </ul>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 offer-btns widing">
+                            <button type="button" class="btno btn-ctrl-apply btn-apply colapsa" id=@project.Id>CERRAR</button>
+                        </div>
+
+                        <div class="col-xs-12 pie-btn">
+                            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                                <!--  <button type="submit" class="btn-crud"><i class="fa fa-trash-o" title="Eliminar oferta"></i></button> -->
+                            </div>
+                            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                                <button type="button" class="btno btn-apply btn-wide" id=@project.Id>AMPLIAR OFERTA</button>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!--fin nueva oferta eliminada-->
+
+
+
+             </div>
+                
+            }
+
+
+                </div>
+   
+
+
+}
+<script>
+
+  $(function () {
+        $(".btn-del").click(function (event) {
+            var id = this.id.replace("button", "");
+            event.preventDefault();
+            $('<div title="Confirmar"></div>').dialog({
+                open: function (event, ui) {
+                    $(this).html("Esta seguro de eliminar la oferta?");
+                },
+                close: function () {
+                    $(this).remove();
+                },
+                resizable: false,
+                height: 140,
+                modal: true,
+                buttons: {
+                    'Si': function () {
+                        $(this).dialog('close');
+
+                        $.post('/Offer/Delete/' + id, function (data) {
+                            if (data == -1) {
+                                var errMsg = "<ul>";
+                                errMsg = errMsg + "<li>No se ha eliminado la oferta correctamente</li>";
+                                errMsg = errMsg + "</ul>";
+                                $('<div title="Mensaje"></div>').dialog({
+                                    open: function (event, ui) {
+                                        $(this).html("No se ha eliminado la oferta correctamente");
+                                    },
+                                    close: function () {
+                                        $(this).remove();
+                                    },
+                                    resizable: false,
+                                    height: 140,
+                                    modal: true,
+                                    buttons: {
+                                        'Si': function () {
+                                            $(this).dialog('close');
+                                        },
+                                    },
+                                    'No': function () {
+                                        $(this).dialog('close');
+
+                                    }
+
+
+
+                                });
+                            }
+                            else {
+                                var okMsg = "<ul>";
+                                okMsg = okMsg + "<li>Se ha eliminado correctamente la oferta</li>";
+                                okMsg = okMsg + "</ul>";
+                                var errMsg = "<ul>";
+
+                                $('<div title="Mensaje"></div>').dialog({
+                                    open: function (event, ui) {
+                                        $(this).html("Se ha eliminado correctamente la oferta");
+                                    },
+                                    close: function () {
+                                        $(this).remove();
+                                    },
+                                    resizable: false,
+                                    height: 140,
+                                    modal: true,
+                                    buttons: {
+                                        'Cerrar': function () {
+                                            $(this).dialog('close');
+                                            location.reload();
+                                        },
+                                    }
+
+
+
+
+                                });
+
+                            }
+
+                        });
+
+                    },
+                    'No': function () {
+                        $(this).dialog('close');
+
+                    }
+                }
+            });
+        });
+  });
+
+  $(function () {
+      $(".EndPhase").click(function (event) {
+
+          var id = this.id.replace("button", "").split("-")[0];
+          var offer = this.id.replace("button", "").split("-")[1];
+          debugger;
+          event.preventDefault();
+          $('<div title="Confirmar"></div>').dialog({
+              open: function (event, ui) {
+                  $(this).html("Esta seguro de finalizar la fase?");
+              },
+              close: function () {
+                  $(this).remove();
+              },
+              resizable: false,
+              height: 140,
+              modal: true,
+              buttons: {
+                  'Si': function () {
+                      $(this).dialog('close');
+
+                      $.post('/Contratante/EndPhase/' + id + "?Cali=" + $('#rate'+offer).val() + "&Coment=" + $('#comm' + offer).val(), function (data) {
+                          if (data.success == -1) {
+                              var errMsg = "<ul>";
+                              errMsg = errMsg + "<li>No se ha finalizado la fase correctamente</li>";
+                              errMsg = errMsg + "</ul>";
+                              $('<div title="Mensaje"></div>').dialog({
+                                  open: function (event, ui) {
+                                      $(this).html("No se ha finalizado la fase correctamente");
+                                  },
+                                  close: function () {
+                                      $(this).remove();
+                                  },
+                                  resizable: false,
+                                  height: 140,
+                                  modal: true,
+                                  buttons: {
+                                      'Si': function () {
+                                          $(this).dialog('close');
+                                      },
+                                  },
+                                  'No': function () {
+                                      $(this).dialog('close');
+
+                                  }
+
+
+
+                              });
+                          }
+                          else {
+                              var okMsg = "<ul>";
+                              okMsg = okMsg + "<li>Se ha finalizado correctamente la fase</li>";
+                              okMsg = okMsg + "</ul>";
+                              var errMsg = "<ul>";
+
+                              $('<div title="Mensaje"></div>').dialog({
+                                  open: function (event, ui) {
+                                      if (data.Endproject==1)
+                                      {
+                                          var oferta = data.Oferta;
+                                          
+                                          $('#comm' + oferta).prop('disabled', false);
+
+                                      }
+                                      $(this).html("Se ha finalizado correctamente la fase");
+
+                                  },
+                                  close: function () {
+                                      $(this).remove();
+                                  },
+                                  resizable: false,
+                                  height: 140,
+                                  modal: true,
+                                  buttons: {
+                                      'Cerrar': function () {
+                                          $(this).dialog('close');
+                                          location.reload();
+                                      },
+                                  }
+
+
+
+
+                              });
+
+                          }
+
+                      });
+
+                  },
+                  'No': function () {
+                      $(this).dialog('close');
+
+                  }
+              }
+          });
+
+      });
+  });
+
+  //$(function () {
+  //    $(".StartPhase").click(function (event) {
+  //        var id = this.id.replace("button", "");
+  //        event.preventDefault();
+  //        $('<div title="Confirmar"></div>').dialog({
+  //            open: function (event, ui) {
+  //                $(this).html("Esta seguro de iniciar la fase?");
+  //            },
+  //            close: function () {
+  //                $(this).remove();
+  //            },
+  //            resizable: false,
+  //            height: 140,
+  //            modal: true,
+  //            buttons: {
+  //                'Si': function () {
+  //                    $(this).dialog('close');
+
+  //                    $.post('/Contratante/StartPhase/' + id, function (data) {
+  //                        if (data == -1) {
+  //                            var errMsg = "<ul>";
+  //                            errMsg = errMsg + "<li>No se ha iniciado la fase correctamente</li>";
+  //                            errMsg = errMsg + "</ul>";
+  //                            $('<div title="Mensaje"></div>').dialog({
+  //                                open: function (event, ui) {
+  //                                    $(this).html("No se ha iniciado la fase correctamente");
+  //                                },
+  //                                close: function () {
+  //                                    $(this).remove();
+  //                                },
+  //                                resizable: false,
+  //                                height: 140,
+  //                                modal: true,
+  //                                buttons: {
+  //                                    'Si': function () {
+  //                                        $(this).dialog('close');
+  //                                    },
+  //                                },
+  //                                'No': function () {
+  //                                    $(this).dialog('close');
+
+  //                                }
+
+
+
+  //                            });
+  //                        }
+  //                        else {
+  //                            var okMsg = "<ul>";
+  //                            okMsg = okMsg + "<li>Se ha iniciado correctamente la fase</li>";
+  //                            okMsg = okMsg + "</ul>";
+  //                            var errMsg = "<ul>";
+
+  //                            $('<div title="Mensaje"></div>').dialog({
+  //                                open: function (event, ui) {
+  //                                    $(this).html("Se ha iniciado correctamente la fase");
+
+  //                                },
+  //                                close: function () {
+  //                                    $(this).remove();
+  //                                },
+  //                                resizable: false,
+  //                                height: 140,
+  //                                modal: true,
+  //                                buttons: {
+  //                                    'Cerrar': function () {
+  //                                        $(this).dialog('close');
+  //                                        //$("#statusnoyet").attr('class', 'statusincouse')
+  //                                        location.reload();
+  //                                    },
+  //                                }
+
+
+
+
+  //                            });
+
+  //                        }
+
+  //                    });
+
+  //                },
+  //                'No': function () {
+  //                    $(this).dialog('close');
+
+  //                }
+  //            }
+  //        });
+
+  //    });
+  //});
+</script>

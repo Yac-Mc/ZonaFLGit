@@ -1,0 +1,448 @@
+﻿@model ZonaFl.Models.RegisterBindingModel
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_LayoutContratanteLog.cshtml";
+}
+
+
+<script src="~/Static/js/jquery.js"></script>
+<script src="~/Static/js/bootstrap.min.js"></script>
+<script src="~/Static/js/jquery.prettyPhoto.js"></script>
+<script src="~/Static/js/jquery.isotope.min.js"></script>
+<script src="~/Static/js/main.js"></script>
+<script src="~/Static/js/wow.min.js"></script>
+<script src="~/Static/js/jquery-1.10.2.js"></script>
+<script src="/Scripts/jquery.validate.js"></script>
+<script src="~/Static/js/jquery-ui.min.js"></script>
+<script src="/Scripts/knockout-3.4.0.js"></script>
+<script src="/Scripts/DropdownController2.js"></script>
+
+  <!--/pop up foto perfil-->
+
+<div id="foto_profile" class="ontop">
+    <div class="emer-foto">
+        <a href="#" onClick="hide('foto_profile')">x</a>
+        <hr>
+        <h2 class="title_pop">Cambia tu foto de perfil</h2>
+
+        <div id="content_chf">
+            <form id="cambiodefoto_profiles" name="cambiodefoto_profiles">
+                <input type="file" name="fileselect" id="fileselect" class="inputfile" data-multiple-caption="{count} files selected" multiple />
+
+                <label for="fileselect"><i class="fa fa-upload"></i> Buscar imagen</label>
+                <br />
+                <br />
+                <output id="list"><div class="thumb pre_foto"></div></output>
+                <hr>
+                <a href="#" onClick="hide('foto_profile')"><h2 class="btn-cancel_cambio-foto">Cancelar</h2></a>
+                <input type="button" value="Establecer imagen" class="btn-cambio-foto" id="uploadbutton">
+
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>
+<!--/ fin pop up foto perfil-->
+
+<div id="wrap_perfiles">
+    <section id="about-us">
+        <div>
+            <div class="container">
+
+
+
+                <!-- our-team -->
+                <div class="team">
+                    <div class="center wow fadeInDown">
+                        <h2>Registro Empresa</h2>
+                        <p class="lead">Cuéntanos un poco más sobre ti:</p>
+                    </div>
+                    <form id="datos-freelance" class="contact-form" name="contact-form" method="post" action="@Url.Action("Edit","Freelance")">
+                        <div class="col-lg-12 sobremi">
+
+                @Html.HiddenFor(e => e.Id)
+                            @Html.HiddenFor(e => e.Empresa)
+                            @Html.HiddenFor(e => e.Freelance)
+                            <div id="wrap_fotoperfil" class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+                                <div class="foto_e_username">
+                                    <a href="#" onClick="pop('foto_profile')">
+                                        <div id="foto_freelance" class="fotodeperfil recent-work-wrap">
+
+                                            @if (!String.IsNullOrEmpty(ViewBag.ImageUser))
+                                            {
+                                                <img src='~/UploadedFiles/@ViewBag.ImageUser' alt="" id="preview_img_prof" />
+
+                                            }
+                                            else
+                                            {
+                                                <img src="~/Static/images/user_default.png" alt="" id="preview_img_prof" />
+                                                
+                                            }
+                                            <input type="hidden" name="imagename" value="" id="imagename">
+                                            <div class="overlay_f">
+                                                <i class="fa fa-camera"></i>
+                                                <p>Cambiar imagen</p>
+                                                <div class="recent-work-inner">
+
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </a>
+                                    <div id="username_freel" class="saludops col-xs-12">
+                                        @*<input id="username_prof" type="text" name="username_prof" class="form-control" placeholder="Usuario tal">*@
+                                        @Html.TextBoxFor(e=>e.UserName, new { @id="username_prof", @class = "form-control",@placeholder= "Usuario tal" })
+                                        @Html.HiddenFor(e => e.Email, new { @id = "emailuser" })
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-5 col-md-5">
+
+                                <label>Descripción (sobre mí)</label>
+                                @*<textarea name="descuser" id="descuser" required="required" class="form-control" rows="7" placeholder="Háblanos un poco de tu experiencia profesional y tus logros en el campo creativo..." >@Model.DescUser</textarea>*@
+                              
+                                @Html.TextAreaFor(e => e.DescUser, new { @id = "descuser", @class = "form-control", @placeholder = "Háblanos un poco de tu experiencia profesional y tus logros en el campo creativo...", @rows = 7 })
+                                
+                            </div>
+
+                            <div class="col-lg-4 col-md-4 infouser" ng-app="ZonaFl" id="countrycities">
+
+                                @*<input type="number" class="form-control" required="required" placeholder="Teléfono" id="PhoneNumber" minlength="5" data-msg-minlength="Ingrese mínimo 5 caracteres" value="@Model.PhoneNumber">*@
+                                @Html.TextBoxFor(e => e.PhoneNumber, new { type = "number", @class = "form-control", @placeholder = "Teléfono",  @minlength="5" })
+                               
+                                <div>
+
+                                    <p data-bind="visible: countrieses().length > 0">
+                                        @*<b>Pais :</b> @Html.DropDownList("Country", ViewBag.Country as SelectList,  new { @class="btn btn-primary dropdown-toggle form-control", @data_bind = "event: { change: $parent.fetchStates }" })*@
+                                        <b>Pais :</b> <select id="Country" data-bind="options: countrieses, optionsText: 'CountryName', optionsValue: 'CountryID', optionsCaption: 'Escoja el pais..',event:{change: fetchStates}" class="btn btn-primary dropdown-toggle form-control"></select>
+                                    </p>
+
+                                   
+                                    <p data-bind="visible: states().length > 0">
+
+                                        <b>Ciudad :</b> <select id="cities" data-bind="options: states, optionsText: 'Name', optionsValue: 'Id', optionsCaption: 'Escoja la ciudad..',value: Id" class="btn btn-primary dropdown-toggle form-control"></select>
+                                    </p>
+
+
+
+                                        @*<div class="error">{{message}}</div>
+            <select class="btn btn-primary dropdown-toggle form-control" ng-model="$scope.register.selectedId" ng-options="I.CountryID as I.CountryName for I in register.countries" ng-change="GetCities()" id="countryuser"   >
+                <option value="">Seleccione Pais</option>
+            </select>
+
+
+            <select class="btn btn-primary dropdown-toggle form-control" ng-model="cities" ng-options="I.Id as I.Name for I in cities" ng-disabled="!cities" id="ciudaduser">
+                <option value="">-- Seleccionar Ciudad --</option>
+            </select>*@
+                                        @*<select class="btn btn-primary dropdown-toggle" ng-model="CountryID" ng-options="I.CountryID as I.CountryName for I in CountryList" ng-change="GetState()">
+                <option value="">Select Country</option>
+            </select>
+
+            State :
+            <select class="btn btn-primary dropdown-toggle" ng-model="StateID" ng-options="I.StateID as I.StateName for I in StateList">
+                <option value="">{{StateTextToShow}}</option>
+            </select>*@
+
+</div>
+                            </div>
+
+
+                        </div>
+
+                        <!--/inicio infoempresa-->
+                 
+                        <div id="infoemp" class="col-lg-12" style="display:block">
+                            <center><p class="lead" style="font-weight:bold;">DATOS EMPRESA</p></center>
+
+                            <div class="col-lg-6 col-md-6 col-xs-12">
+                                
+                                <input type="text" class="form-control" required="required" placeholder="Nombre comercial de la empresa" id="nombemp" minlength="6" data-msg-minlength="Ingrese mínimo 6 caracteres" value="@Model.Company.FirstOrDefault().Name">
+                                <input type="email" class="form-control" required="required" placeholder="Email empresa" id="mailemp" value="@Model.Company.FirstOrDefault().Mail">
+                                <input type="url" class="form-control" required="required" placeholder="Website empresa" id="sitemp" value="@Model.Company.FirstOrDefault().Site">
+                                <input type="text" class="form-control" required="required" placeholder="Sector empresa" id="sectemp" value="@Model.Company.FirstOrDefault().Sector">
+                            </div>
+
+                            <div class="col-lg-6 col-md-6 col-xs-12">
+                                <input type="text" class="form-control" required="required" placeholder="Razón social de la empresa" id="razemp" minlength="6" data-msg-minlength="Ingrese mínimo 6 caracteres" value="@Model.Company.FirstOrDefault().RazonSocial">
+                                <input type="number" class="form-control" required="required" placeholder="Teléfono empresa" id="telemp" minlength="5" data-msg-minlength="Ingrese mínimo 5 caracteres" value="@Model.Company.FirstOrDefault().Telefono">
+                                <input type="number" class="form-control" required="required" placeholder="NIT empresa" id="nitemp" minlength="9" data-msg-minlength="Ingrese mínimo 9 caracteres" value="@Model.Company.FirstOrDefault().Nit">
+                                <input type="number" class="form-control" required="required" placeholder="Número de empleados" id="empemp" value="@Model.Company.FirstOrDefault().NumeroEmp">
+                            </div>
+
+                            <label id="tellus">Descripción de la empresa</label>
+                            <textarea name="descemp" id="descemp" required="required" class="form-control" rows="5" placeholder="Cuéntanos más a detalle lo que quieras que sepamos acerca de tu empresa, esto la hará más atractiva en ZonaFL..." >@Model.Company.FirstOrDefault().Description</textarea>
+
+
+                        </div>
+                  
+
+
+
+
+                        <!--/fin infoempresa-->
+
+                        <input type="button" value="Guardar cambios" class="btn-cambios-fl" style="float:right; margin-bottom:50px;">
+                       
+                </div>	<!--/.row-->
+            </div><!--section-->
+        </div><!--/.container-->
+    </section><!--/about-us-->
+</div>
+
+
+<script>
+        var useremail;
+        function getParameterByName(name, url) {
+            if (!url) url = window.location.href;
+            name = name.replace(/[\[\]]/g, "\\$&");
+            var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+                results = regex.exec(url);
+            if (!results) return null;
+            if (!results[2]) return '';
+            return decodeURIComponent(results[2].replace(/\+/g, " "));
+        }
+        $(document).ready(function () {
+
+
+            var dropdowncountry = new CascadingDDLViewModel('@ViewBag.Countrysel','@ViewBag.Ciudadsel');
+            ko.applyBindings(dropdowncountry, document.getElementById("countrycities"));
+
+
+
+
+            setupUploadfile();
+            $("#preview_img_prof").clone().prependTo(".pre_foto");
+            //alert(userid);
+        });
+
+
+        function setupUploadfile() {
+
+            $('#uploadbutton').on('click', function () {
+
+                var data = new FormData();
+
+                var files = $("#fileselect").get(0).files;
+
+                // Add the uploaded image content to the form data collection
+                if (files.length > 0) {
+                    data.append("UploadedImage", files[0]);
+                }
+
+
+                // Make Ajax request with the contentType = false, and procesDate = false
+                var ajaxRequest = $.ajax({
+                    type: "POST",
+                    url: "/api/Account/UploadImageUser",
+                    contentType: false,
+                    processData: false,
+                    data: data
+                });
+
+                ajaxRequest.done(function (responseData, textStatus) {
+                    if (textStatus == 'success') {
+                        if (responseData != null) {
+                            if (responseData.Key) {
+                                //alert(responseData.Value);
+                                var fileuser = $("#fileselect").val();
+                                UpdateImageUser(fileuser);
+
+                                $("#fileselect").val('');
+                            } else {
+                                alert(responseData.Value);
+                            }
+                        }
+                    } else {
+                        alert(responseData.Value);
+                    }
+                });
+            });
+
+        }
+
+        function UpdateImageUser(fileuser) {
+            var newUser = [{
+                Email: $('#emailuser').val(),
+                UserName: '',
+                Password: '',
+                ConfirmPassword: '',
+                Freelance: '',
+                Empresa: '',
+                City: $('#ciudaduser').val(),
+                Country: $('#countryuser').val(),
+                DescUser: $('#descuser').val(),
+                PhoneNumber: $('#numbertelreg').val(),
+                FirstMiddleName: $('#username_prof').val(),
+                Image: fileuser
+
+
+            }];
+            $.ajax({
+                url: "/api/Account/UpdateImageUser",
+                data: JSON.stringify(newUser),
+                type: "POST",
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                success: function (response) {
+                    if (response.success) {
+                        // do something clever
+                       // $("#datos-freelance")[0].reset();
+
+                        alert("Se ha guardado correctamente la imagen del usuario");
+                        $("#miniaturaima").attr("src", $("#preview_img_prof").attr("src"));
+                        hide('foto_profile');
+
+
+                    } else {
+
+                        alert('Ha ocurrido un error: ' + response.errors);
+                        $('#preview_img_prof').attr("src", 'images/user_default.png');
+
+                        hide('foto_profile');
+
+
+
+                    }
+                },
+
+                error: function (xhr, ajaxOptions, thrownError) {
+                    alert(xhr.status);
+                    alert(thrownError);
+                }
+
+            });
+
+
+        }
+        function RegisterHabilidades(newUser) {
+
+            $.ajax({
+                url: "/api/Account/InsertSkills",
+                data: JSON.stringify(newUser),
+                type: "POST",
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                success: function (response) {
+                    if (response.success) {
+                        // do something clever
+                        $("#datos-freelance")[0].reset();
+                        alert("Se ha guardado correctamente la información, se ha enviado un correo de confirmación de usuario a su cuenta de correo, favor verificar!!!");
+                        getDetailsFreelance(response.tipo);
+
+                    } else {
+                        alert('Ha ocurrido un error: ' + response.errors)
+
+                    }
+                                          },
+
+                error: function (xhr, ajaxOptions, thrownError) {
+                    alert(xhr.status);
+                    alert(thrownError);
+                }
+
+            });
+
+
+        }
+
+        function getDetailsFreelance(user)
+        {
+            if (!user.Empresa) {
+                window.location.href = "/Freelance/DetailsById/" + user.Id // redirect to another page
+            }
+            else
+            {
+                window.location.href = "/Contratante/DetailsById/" + user.Id
+            }
+
+        }
+
+
+        var habilidades = { "habilidadesData": [] };
+
+        $('.btn-cambios-fl').click(function () {
+
+           var newUser = [{
+               Email: $('#emailuser').val(),
+                UserName: $('#username_prof').val(),
+                Password: '',
+                ConfirmPassword: '',
+                Freelance: $("#Freelance").val(),
+                Empresa: $("#Empresa").val(),
+                City: $("#cities option:selected").text(),            //$('#ciudaduser').text(),
+                Country: $("#Country option:selected").text(),//$('#countryuser').text(),
+                DescUser: $('#descuser').val(),
+                PhoneNumber: $('#PhoneNumber').val(),
+                FirstMiddleName: '',
+                Image:$("#imagename").val(),
+                Skills: data.skills,
+                NombreEmpresa:$("#nombemp").val(),
+                RazonSocial: $("#razemp").val(),
+                Nit: $("#nitemp").val(),
+                SecIndustrial: $("#sectemp").val(),
+                NumeroEmp: $("#empemp").val(),
+                DesEmpresa: $("#descemp").val(),
+                UrlEmpresa: $("#sitemp").val(),
+                Telefono: $("#telemp").val(),
+
+
+
+            }];
+
+            RegisterHabilidades(newUser)
+
+
+
+        });
+
+
+
+        $("#datos-freelance").validate();
+</script>
+
+
+<script>
+        // Funcion cargar y visualizar nueva foto de perfil
+
+        function archivo(evt) {
+            var files = evt.target.files; // FileList object
+
+        //   //Obtenemos la imagen del campo "file".
+          for (var i = 0, f; f = files[i]; i++) {
+              //Solo admitimos imágenes.
+          if (!f.type.match('image.*')) {
+                 continue;
+             }
+
+            var reader = new FileReader();
+
+             reader.onload = (function (theFile) {
+                  return function (e) {
+                       // Creamos la imagen.
+                      document.getElementById("list").innerHTML = ['<img class="thumb" id="thumbfoto" src="', e.target.result, '" title="', escape(theFile.name), '"/>'].join('');
+                   $('#preview_img_prof').attr("src", e.target.result);
+                   $('#imagename').val(theFile.name);
+                };
+             })(f);
+
+               reader.readAsDataURL(f);
+          }
+       }
+
+       document.getElementById('fileselect').addEventListener('change', archivo, false);
+
+
+        // mantener actualizada imagen de perfil
+    
+       
+</script>

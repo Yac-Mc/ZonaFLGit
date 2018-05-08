@@ -1,0 +1,621 @@
+﻿@model ZonaFl.Models.RegisterBindingModel
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutAdminLog.cshtml";
+}
+
+
+
+ <!--/pop up ampliación trabajo-->
+
+<div id="ampliawork" class="emer">
+    <div class="emer-addwork">
+        <a href="#">x</a>
+        <hr>
+        <h2 id="tit_port_amp" class="title_pop">Título del trabajo</h2>
+
+
+        <div id="content_nw">
+            <h4>Categoría: <span id="cat_port_amp" style="font-style:normal; font-size:14px;"> Diseño gráfico</span></h4>
+
+            <h4>Cliente: <span id="clien_port_amp" style="font-style:normal; font-size:14px;">Nombre del cliente</span></h4>
+            <br>
+
+            <div id="portaf_img" class="preview_porta_big"><img src="images/ads/ad3.png" /></div>
+            <div id="portaf_descri">
+                <p id="describe_port">Descripción del trabajo, en qué campaña se realizó, qué cliente lo solicitó, etc...</p>
+            </div>
+
+
+        </div>
+
+        <hr>
+
+    </div>
+
+</div>
+<!--/ fin pop up ampliación trabajo-->
+
+<div id="wrap_perfiles">
+    <section id="principal">
+        <div class="container">
+            <div id="columnahide" class="col-lg-2"></div>
+            <div id="columna" class="col-md-12 col-lg-12">
+
+                <!-- Div izq-->
+                <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+                    <div class="saludoperfi">
+                        <div id="fotop" class="fotodeperfil">
+                           
+                            @if (String.IsNullOrEmpty((string)ViewBag.ImageUser))
+                            {
+                                <img src="~/Static/images/user_default.png" alt="" />
+                            }
+                            else
+                            {
+                                <img src='~/UploadedFiles/@ViewBag.ImageUser' alt="" />
+                            }
+                         
+                        </div>
+                        <div id="saludop" class="saludops">
+                            <h5 id="username_profile">@Html.DisplayFor(m=>m.UserName)</h5>
+                            <h6 id="tipo_usuario_profile"><i>Freelance</i></h6>
+                            <h6 id="ciudad_profile">>@Html.DisplayFor(m => m.City)</h6>
+                            <h6 id="pais_profile">@Html.DisplayFor(m => m.Country)</h6>
+
+                        </div>
+
+                    </div>
+                    <div id="calificaciones" class="col-xs-12">
+                        <div id="stars">
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star-half-o"></i>
+                            <i class="fa fa-star-o"></i>
+                        </div>
+                                           
+                    </div>
+                                      
+                     <div id="verify" class="col-xs-12">
+                        <p style="margin-top:13px;"><strong>Verificaciones</strong></p>
+                        <div id="verify_wrap">
+                            <div class="col-xs-4 verify_item">
+                                <a href="#"><img src="~/Static/images/verificacion/verificacion_pago-G.png" /></a>
+                                <p><strong>Pagos</strong></p>
+                            </div>
+
+                            <div class="col-xs-4 verify_item">
+                                <a href="#"><img class="verified" src="~/Static/images/verificacion/verificacionemail.png" /></a>
+                                <p><strong>Email</strong></p>
+                            </div>
+
+                            <div class="col-xs-4 verify_item">
+                                <a href="#"><img src="~/Static/images/verificacion/verificacion_movil_G.png" /></a>
+                                <p><strong>Móvil</strong></p>
+                            </div>
+                        </div>
+                    </div> 
+
+                    <div id="terminados_freelance" class="col-xs-12">
+                        <h3><strong>Proyecto más reciente:</strong></h3>
+                        <hr>
+                        <div class="progress-wrap">
+                            <h3><span class="latest-cat">Categoría proyecto</span>: <span class="latest-prog">0</span>%</h3>
+                            <div class="progress">
+                                <div class="progress-bar" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div id="comentarios_freelance" class="col-xs-12 col-sm-12 col-md-12">
+                        <h3><strong><i class="fa fa-comment-o"></i> Comentarios:</strong></h3>
+                        <hr>
+                        <div id="comentarios_recopil">
+
+                            <!--comentario-->
+                            <div class="single_comments">
+                                <img id="com_reciente_img" src="~/Static/images/blog/avatar3.png" alt="" />
+                                <p id="com_reciente_com">"Excelente trabajo, dentro de los tiempos establecidos."</p>
+                                <div class="entry-meta small muted">
+                                    <span>Por: <a id="com_reciente_user" href="#">Otro usuario</a></span>
+                                </div>
+                            </div>
+
+                            <!--Fin comentario-->
+
+                        </div>
+                    </div> 
+                    <br>
+                </div>
+                <!--FIN Div izq-->
+                <!--Div central-->
+
+                <div class="col-xs-12 col-sm-7 col-md-7 col-lg-7">
+                    <div id="aux_control">
+                        <a id="tab_perfil" class="activ" href="#">PERFIL |</a>
+                        <a id="tab_hv" href="#">HOJA DE VIDA |</a>
+                        <a id="tab_portafolio" href="#">PORTAFOLIO |</a>
+                        <a id="tab_proyectos" href="#">PROYECTOS |</a>
+                    </div>
+
+                    <!--inicio sección perfil-->
+
+                    <div id="seccion_perfil">
+
+                        <h2><i class="fa fa-user"></i> &nbsp;Perfil:</h2>
+
+                        <hr>
+                        <div class="media-body post_reply_comments acercade">
+                            <h3><strong><i class="fa fa-user"></i> &nbsp;Acerca de mi:</strong></h3>
+                            <hr>
+                            <p id="descripcion_profile">@Model.DescUser</p>
+                        </div>
+
+                        <div id="habilidades" class="cat_selec">
+                            <h3><strong><i class="fa fa-hand-o-right"></i> Mis habilidades:</strong></h3>
+                            <hr>
+                            <div id="skills_scroll">
+                                <ul id="habilidades_freelance_profile" class="tag skills_selected">
+
+                                    @foreach (var skill in Model.Skills)
+                                    {
+                                        <li id="@skill.IdHtml">@skill.Name</li>
+                                    }
+
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- <div id="hojavida">
+            </div>-->
+
+                        <div id="portafolio_vistaprevia_freelance">
+                            <h3><strong><i class="fa fa-bookmark-o"></i> &nbsp;Algunos de mis trabajos:</strong></h3>
+                            <hr>
+                            <!-- about us slider -->
+                            <div id="about-slider">
+                                <div id="carousel-slider" class="carousel slide" data-ride="carousel">
+                                    <!-- Indicators -->
+                                    <ol class="carousel-indicators visible-xs visible-sm visible-md visible-lg">
+                                        <li data-target="#carousel-slider" data-slide-to="0" class="active"></li>
+                                        <li data-target="#carousel-slider" data-slide-to="1"></li>
+                                        <li data-target="#carousel-slider" data-slide-to="2"></li>
+                                    </ol>
+
+                                    <div class="carousel-inner">
+                                        <div class="item active">
+                                            <div id="portaf_1" class="preview_porta"></div>
+                                            <div id="portaf_2" class="preview_porta"></div>
+                                            <div id="portaf_3" class="preview_porta"></div>
+
+                                        </div>
+                                        <div class="item">
+                                            <div id="portaf_4" class="preview_porta"></div>
+                                            <div id="portaf_5" class="preview_porta"></div>
+                                            <div id="portaf_6" class="preview_porta"></div>
+                                        </div>
+                                        <div class="item">
+                                            <div id="portaf_7" class="preview_porta"></div>
+                                            <div id="portaf_8" class="preview_porta"></div>
+                                            <div id="portaf_9" class="preview_porta"></div>
+                                        </div>
+                                    </div>
+
+
+                                </div> <!--/#carousel-slider-->
+                            </div><!--/#about-slider-->
+                        </div>
+
+                    </div>
+
+                    <!--Fin sección perfil-->
+                    <!--inicio sección hv-->
+
+                    <div id="seccion_hv" style="display: none;">
+                        @Html.Partial("_CurriculumFreelance")
+                    </div>
+
+                    <!--Fin sección hv-->
+                    <!--inicio sección portafolio-->
+
+                    <div id="seccion_portafolio" style="display: none;">
+
+                        <h2><i class="fa fa-file-text-o"></i> &nbsp;Portafolio:</h2>
+                        <hr>
+                        <div id="portfolio_scroll">
+
+
+                            <!--trabajo de portafolio-->
+
+                            <div id="portafolio_work">
+                                <a href="#ampliawork"><h3 class="title_work"><strong><i class="fa fa-bookmark-o"></i> &nbsp;Título del trabajo</strong></h3></a>
+                                <h5 id="cat_port">Categoría</h5>
+                                <h5>Cliente: <span id="clie_port">Nombre del cliente</span></h5>
+                                <hr>
+                                <a href="#ampliawork"><div id="portaf_1" class="preview_porta"><img src="images/ads/ad3.png" /></div></a>
+
+                                <hr>
+
+                            </div>
+                            <!--FIN trabajo portafolio-->
+
+
+
+                        </div>
+
+                    </div>
+
+                    <!--fin sección portafolio-->
+                    <!--inicio sección proyectos-->
+
+                    <div id="seccion_proyectos" style="display: none;">
+
+                        <h2><i class="fa fa-flag"></i> &nbsp;Proyectos:</h2>
+
+                        <div class="tab-projects col-xs-12">
+
+                            <a id="applied-btn" class="project-tab project-tab-selected" href="#"><i class="fa fa-check-square-o"></i> Aplicados</a>
+                            <a id="incourse-btn" class="project-tab" href="#"><i class="fa fa-tasks"></i> En curso</a>
+                            <a id="finished-btn" class="project-tab" href="#"><i class="fa fa-trophy"></i> Finalizados</a>
+
+                        </div>
+
+                        <div id="anchor" class="ofertas_all_freelance">
+
+
+                            <div id="applied" class="col-xs-12">
+
+                                <!--nueva aplicación a oferta-->
+
+                                <div class="col-xs-12 newoffer" id="newoffer1">
+
+                                    <div class="col-xs-12 header-offer">
+                                        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                                            <p class="title-offer">TITULO DEL TRABAJO</p>
+                                            <p class="cat-offer"><strong>Categoría: </strong><span class="categ">Categoría del trabajo</span></p>
+                                        </div>
+                                        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                                            <p class="cat-offer"><strong>Publicado por: </strong><span class="autor">Nombre de contratante</span></p>
+                                            <p class="cat-offer"><i class="fa fa-clock-o">&nbsp;</i><span class="date-offer">2016/11/08</span> | <span class="time-offer">1:06 am</span> | <i class="fa fa-map-marker">&nbsp;</i><span class="city-offer">Bogotá</span>, <span class="country-offer">Colombia</span></p>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-xs-12 text-offer widing">
+                                        <p class="desc-offer"><strong>Descripción del proyecto: </strong><span class="offer-full">Requiero sitio web totalmente responsive con las siguientes características: Se trata de una página Web para un restaurante, en la cual se ofrezcan todos los platos y menús del establecimiento, y maneje un sistema de reserva de mesas.</span></p>
+                                    </div>
+
+                                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 data-offer">
+                                        <p class="title-text">PRESUPUESTO: <span class="info-text"><strong>COP </strong></span><span class="budget-offer info-text">2000000</span></p>
+                                        <p class="title-text">NRO. POSTULADOS: <span class="number-aplies info-text">25</span></p>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 data-offer">
+                                        <p class="title-text">INICIO ESTIMADO: <span class="ini-proy info-text">2016/08/24</span></p>
+                                        <p class="title-text">FIN ESTIMADO: <span class="fin-proy info-text">2016/09/31</span></p>
+                                    </div>
+
+                                    <div class="col-xs-12 exe-offer">
+                                        <p><strong>Ejecución: </strong><span class="num-fases">4 fases</span></p>
+                                    </div>
+
+                                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 widing">
+                                        <ul>
+                                            <li class="title-text">FASE 1: <span class="name-fase1 info-text">Nombre fase 1 </span></li>
+                                            <li class="pricing-fase"><span class="info-text"><strong>COP </strong></span> <span class="price-fase">200000</span></li>
+                                            <li class="title-text">FASE 2: <span class="name-fase2 info-text">Nombre fase 2 </span></li>
+                                            <li class="pricing-fase"><span class="info-text"><strong>COP </strong></span> <span class="price-fase">500000</span></li>
+                                            <li class="title-text">FASE 3: <span class="name-fase3 info-text">Nombre fase 3 </span></li>
+                                            <li class="pricing-fase"><span class="info-text"><strong>COP </strong></span> <span class="price-fase">1000000</span></li>
+                                            <li class="title-text">FASE 4: <span class="name-fase4 info-text">Nombre fase 4 </span></li>
+                                            <li class="pricing-fase"><span class="info-text"><strong>COP </strong></span> <span class="price-fase">300000</span></li>
+
+                                        </ul>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 offer-btns widing">
+
+                                        <button type="button" class="btno btn-ctrl-apply btn-apply colapsa" id="1">CERRAR</button>
+                                    </div>
+
+                                    <div class="col-xs-12 pie-btn">
+                                        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+
+                                        </div>
+                                        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                                            <button type="button" class="btno btn-apply btn-wide" id="1">AMPLIAR OFERTA</button>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <!--fin nueva aplicación a oferta-->
+
+
+
+                            </div>
+
+                            <div id="incourse" class="col-xs-12">
+
+
+
+                                <!--nuevo proyecto en curso-->
+
+                                <div class="col-xs-12 newoffer" id="newoffer2">
+
+                                    <div class="col-xs-12 header-offer">
+                                        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                                            <p class="title-offer">TITULO DEL TRABAJO</p>
+                                            <p class="cat-offer"><strong>Categoría: </strong><span class="categ">Categoría del trabajo</span></p>
+                                        </div>
+                                        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                                            <p class="cat-offer"><strong>Contratante: </strong><span class="autor">Nombre de contratante</span></p>
+                                            <p class="cat-offer"><i class="fa fa-map-marker">&nbsp;</i><span class="city-offer">Bogotá</span>, <span class="country-offer">Colombia</span></p>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-xs-12 text-offer widing">
+                                        <p class="desc-offer"><strong>Descripción del proyecto: </strong><span class="offer-full">Requiero sitio web totalmente responsive con las siguientes características: Se trata de una página Web para un restaurante, en la cual se ofrezcan todos los platos y menús del establecimiento, y maneje un sistema de reserva de mesas.</span></p>
+                                    </div>
+
+                                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 data-offer">
+                                        <p class="title-text">AVANCE: <span class="progress-proj info-text">0</span><span style="color:#666;">%</span></p>
+                                        <div class="progress-wrap">
+                                            <div class="progress">
+                                                <div class="progress-bar" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 data-offer">
+                                        <p class="title-text">INICIADO: <span class="ini-proy info-text">2016/08/24</span></p>
+                                        <p class="title-text">FIN ESTIMADO: <span class="fin-proy info-text">2016/09/31</span></p>
+                                        <p class="title-text widing">PRESUPUESTO: <span class="info-text"><strong>COP </strong></span><span class="budget-offer info-text">2000000</span></p>
+                                    </div>
+
+                                    <div class="col-xs-12 exe-offer widing">
+                                        <p><strong>Ejecución: </strong><span class="num-fases">4 fases</span></p>
+                                    </div>
+
+                                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 widing">
+
+                                        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 status-fase">
+                                            <p class="title-text">FASE 1: <span class="name-fase1 info-text">Nombre fase 1</span></p>
+                                            <p><span class="statusfinished">Finalizada</span></p>
+                                        </div>
+
+                                        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 status-fase">
+                                            <p class="title-text">FASE 2: <span class="name-fase2 info-text">Nombre fase 2 </span></p>
+                                            <p><span class="statusincouse">En curso</span></p>
+                                        </div>
+
+                                        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 status-fase">
+                                            <p class="title-text">FASE 3: <span class="name-fase3 info-text">Nombre fase 3 </span></p>
+                                            <p><span class="statusnoyet">Sin iniciar</span></p>
+                                        </div>
+
+                                        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 status-fase">
+                                            <p class="title-text">FASE 4: <span class="name-fase4 info-text">Nombre fase 4 </span></p>
+                                            <p><span class="statusnoyet">Sin iniciar</span></p>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 widing" style="padding-right:2em;">
+                                        <button type="button" class="btno btn-ctrl-apply btn-apply colapsa" style="float:right;" id="2">CERRAR</button>
+                                    </div>
+
+                                    <div class="col-xs-12 pie-btn">
+                                        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                                        </div>
+                                        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                                            <button type="button" class="btno btn-apply btn-wide" id="2">ABRIR PROYECTO</button>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <!--fin nuevo proyecto en curso-->
+
+                            </div>
+
+                            <div id="finished" class="col-xs-12">
+
+                                <!--Proyecto finalizado-->
+
+                                <div class="col-xs-12 newoffer" id="newoffer3">
+
+                                    <div class="col-xs-12 header-offer">
+                                        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                                            <p class="title-offer">TITULO DEL TRABAJO</p>
+                                            <p class="cat-offer"><strong>Categoría: </strong><span class="categ">Categoría del trabajo</span></p>
+                                        </div>
+                                        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                                            <p class="cat-offer"><strong>Contratante: </strong><span class="autor">Nombre de contratante</span></p>
+                                            <p class="cat-offer"><i class="fa fa-map-marker">&nbsp;</i><span class="city-offer">Bogotá</span>, <span class="country-offer">Colombia</span></p>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-xs-12 text-offer widing">
+                                        <p class="desc-offer"><strong>Descripción del proyecto: </strong><span class="offer-full">Requiero sitio web totalmente responsive con las siguientes características: Se trata de una página Web para un restaurante, en la cual se ofrezcan todos los platos y menús del establecimiento, y maneje un sistema de reserva de mesas.</span></p>
+                                    </div>
+
+                                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 data-offer">
+                                        <p class="title-text">INICIO: <span class="ini-proy info-text">2016/08/24</span></p>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 data-offer">
+                                        <p class="title-text">FIN: <span class="fin-proy info-text">2016/09/31</span></p>
+                                    </div>
+
+                                    <div class="col-xs-12 exe-offer">
+                                        <p><strong>Se ejecutó en: </strong><span class="num-fases">4 fases</span></p>
+                                    </div>
+
+                                    <div class="col-xs-12 text-offer widing">
+                                        <p class="desc-offer"><strong>Comentarios contratante: </strong><span class="offer-full">En este espacio aparecerán los comentarios realizados por la persona que contrató el trabajo.</span></p>
+                                        <p class="title-text">CALIFICACIÓN: <span class="rate info-text">5</span></p>
+                                    </div>
+
+                                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 offer-btns widing" style="padding-right:2em;">
+                                        <button type="button" class="btno btn-ctrl-apply btn-apply colapsa" style="float:right;" id="3">CERRAR</button>
+                                    </div>
+
+                                    <div class="col-xs-12 pie-btn">
+                                        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+
+                                        </div>
+                                        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                                            <button type="button" class="btno btn-apply btn-wide" id="3">AMPLIAR</button>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <!--fin proyecto finalizado-->
+
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                    <!--fin sección proyectos-->
+
+
+
+
+
+
+
+
+                </div>
+
+                <!--FIN Div central--> 
+                <!-- Div der-->
+
+                <div id="secder_free" class="col-xs-12 col-sm-2 col-md-2 col-lg-2">
+
+                    <div id="ads_zona">
+                        (Espacio reservado para publicidad y avisos varios)
+                        <hr>
+                        (Espacio reservado para publicidad y avisos varios)
+                        <hr>
+                        (Espacio reservado para publicidad y avisos varios)
+                        <hr>
+                        (Espacio reservado para publicidad y avisos varios)
+                    </div>
+
+
+                </div>
+
+                <!--FIN Div der-->  
+
+            </div>
+
+
+        </div><!--/.container-->
+    </section><!--/about-us-->
+</div>
+
+
+<script>
+$("#estud").click(function(){
+	$("#academicos").css("display", "block");
+	$("#empleos").css("display", "none");
+	$("#certificaciones").css("display", "none");
+		$("#idiomas").css("display", "none");
+	});
+
+$("#exp_lab").click(function(){
+	$("#empleos").css("display", "block");
+	$("#academicos").css("display", "none");
+		$("#certificaciones").css("display", "none");
+			$("#idiomas").css("display", "none");
+
+	});
+
+$("#certifi").click(function(){
+		$("#certificaciones").css("display", "block");
+	$("#academicos").css("display", "none");
+	$("#empleos").css("display", "none");
+	$("#idiomas").css("display", "none");
+	});
+
+$("#idio").click(function(){
+		$("#idiomas").css("display", "block");
+	$("#academicos").css("display", "none");
+	$("#certificaciones").css("display", "none");
+	$("#empleos").css("display", "none");
+	});
+
+</script>
+
+<script>
+  $(document).ready(function(){
+$("#exp_lab").addClass("activo");
+
+	   });
+
+$(".hv_cat").click(function(){
+	$("#exp_lab").removeClass("activo");
+
+	});
+</script>
+
+
+<script>
+       // código notificaciones
+
+ $("#bell").on( "click", function() {
+          $('.notificaciones').toggle("slow");
+           });
+
+$("#closenotif").click(function(){
+  $('.notificaciones').hide("slow");
+  });
+
+$("#iconotif").mouseleave(function(){
+    $(this).css("color", "#000");
+});
+</script>
+
+
+<script>
+       // cambio de tab secciones freelance
+
+  $("#tab_perfil").click(function(){
+    $(this).addClass("activ");
+    $("#seccion_perfil").show("slow");
+    $("#seccion_hv, #seccion_portafolio, #seccion_proyectos").hide("slow");
+     $("#tab_hv, #tab_portafolio, #tab_proyectos").removeClass("activ");
+
+  });
+
+   $("#tab_hv").click(function(){
+    $(this).addClass("activ");
+    $("#seccion_hv").show("slow");
+    $("#seccion_perfil, #seccion_portafolio, #seccion_proyectos").hide("slow");
+     $("#tab_perfil, #tab_portafolio, #tab_proyectos").removeClass("activ");
+
+
+  });
+
+    $("#tab_portafolio").click(function(){
+      $(this).addClass("activ");
+    $("#seccion_portafolio").show("slow");
+    $("#seccion_hv, #seccion_perfil, #seccion_proyectos").hide("slow");
+     $("#tab_hv, #tab_perfil, #tab_proyectos").removeClass("activ");
+
+  });
+
+      $("#tab_proyectos").click(function(){
+        $(this).addClass("activ");
+    $("#seccion_proyectos").show("slow");
+    $("#seccion_perfil, #seccion_portafolio, #seccion_hv").hide("slow");
+    $("#tab_perfil, #tab_portafolio, #tab_hv").removeClass("activ");
+
+  });
+
+
+</script>

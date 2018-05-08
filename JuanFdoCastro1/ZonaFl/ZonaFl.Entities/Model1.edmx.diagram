@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="36cc66f56be441d380cb3ad4162d6764" Name="Diagram1" ZoomLevel="75">
+        <EntityTypeShape EntityType="DB_102707_zonaflModel.AspNetRole" Width="1.5" PointX="0.75" PointY="21" />
+        <EntityTypeShape EntityType="DB_102707_zonaflModel.AspNetUserClaim" Width="1.5" PointX="5.25" PointY="40.5" />
+        <EntityTypeShape EntityType="DB_102707_zonaflModel.AspNetUserLogin" Width="1.5" PointX="5.25" PointY="33.5" />
+        <EntityTypeShape EntityType="DB_102707_zonaflModel.AspNetUser" Width="1.5" PointX="3" PointY="17.25" />
+        <EntityTypeShape EntityType="DB_102707_zonaflModel.Category" Width="1.5" PointX="3" PointY="13.625" />
+        <EntityTypeShape EntityType="DB_102707_zonaflModel.Certification" Width="1.5" PointX="5.25" PointY="9" />
+        <EntityTypeShape EntityType="DB_102707_zonaflModel.ChatMessageDetail" Width="1.5" PointX="0.75" PointY="3.75" />
+        <EntityTypeShape EntityType="DB_102707_zonaflModel.ChatPrivateMessageDetail" Width="1.5" PointX="0.75" PointY="6.75" />
+        <EntityTypeShape EntityType="DB_102707_zonaflModel.ChatPrivateMessageMaster" Width="1.5" PointX="7.75" PointY="0.75" />
+        <EntityTypeShape EntityType="DB_102707_zonaflModel.ChatUserDetail" Width="1.5" PointX="7.75" PointY="3.75" />
+        <EntityTypeShape EntityType="DB_102707_zonaflModel.CityMaster" Width="1.5" PointX="5.25" PointY="1" />
+        <EntityTypeShape EntityType="DB_102707_zonaflModel.Company" Width="1.5" PointX="5.25" PointY="36.125" />
+        <EntityTypeShape EntityType="DB_102707_zonaflModel.Country" Width="1.5" PointX="2.75" PointY="3.75" />
+        <EntityTypeShape EntityType="DB_102707_zonaflModel.CountryMaster" Width="1.5" PointX="0.75" PointY="1" />
+        <EntityTypeShape EntityType="DB_102707_zonaflModel.Education" Width="1.5" PointX="5.25" PointY="12.375" />
+        <EntityTypeShape EntityType="DB_102707_zonaflModel.Experience" Width="1.5" PointX="5.25" PointY="15.875" />
+        <EntityTypeShape EntityType="DB_102707_zonaflModel.Offer" Width="1.5" PointX="5.25" PointY="19.625" />
+        <EntityTypeShape EntityType="DB_102707_zonaflModel.OfferPhas" Width="1.5" PointX="7.5" PointY="27" />
+        <EntityTypeShape EntityType="DB_102707_zonaflModel.OfferUser" Width="1.5" PointX="7.5" PointY="17.875" />
+        <EntityTypeShape EntityType="DB_102707_zonaflModel.PortFolio" Width="1.5" PointX="5.25" PointY="30.25" />
+        <EntityTypeShape EntityType="DB_102707_zonaflModel.Project" Width="1.5" PointX="10.5" PointY="20.375" />
+        <EntityTypeShape EntityType="DB_102707_zonaflModel.ProjectUser" Width="1.5" PointX="12.75" PointY="20.875" />
+        <EntityTypeShape EntityType="DB_102707_zonaflModel.Skill" Width="1.5" PointX="8.25" PointY="20.75" />
+        <EntityTypeShape EntityType="DB_102707_zonaflModel.StateMaster" Width="1.5" PointX="3" PointY="0.875" />
+        <EntityTypeShape EntityType="DB_102707_zonaflModel.SubCategory" Width="1.5" PointX="5.25" PointY="5.875" />
+        <EntityTypeShape EntityType="DB_102707_zonaflModel.sysdiagram" Width="1.5" PointX="7.75" PointY="6.75" />
+        <EntityTypeShape EntityType="DB_102707_zonaflModel.Language" Width="1.5" PointX="5.25" PointY="27.375" />
+        <AssociationConnector Association="DB_102707_zonaflModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" />
+        <AssociationConnector Association="DB_102707_zonaflModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" />
+        <AssociationConnector Association="DB_102707_zonaflModel.FK_Certifications_AspNetUsers" />
+        <AssociationConnector Association="DB_102707_zonaflModel.FK_Company_AspNetUsers" />
+        <AssociationConnector Association="DB_102707_zonaflModel.FK_Education_AspNetUsers" />
+        <AssociationConnector Association="DB_102707_zonaflModel.FK_Experience_AspNetUsers" />
+        <AssociationConnector Association="DB_102707_zonaflModel.FK_Language_AspNetUsers" />
+        <AssociationConnector Association="DB_102707_zonaflModel.FK_Offer_AspNetUsers" />
+        <AssociationConnector Association="DB_102707_zonaflModel.FK_OfferUser_AspNetUsers" />
+        <AssociationConnector Association="DB_102707_zonaflModel.FK_PortFolio_AspNetUsers" />
+        <AssociationConnector Association="DB_102707_zonaflModel.FK_ProjectUser_AspNetUsers" />
+        <AssociationConnector Association="DB_102707_zonaflModel.FK_Offer_Category" />
+        <AssociationConnector Association="DB_102707_zonaflModel.FK_Project_Category1" />
+        <AssociationConnector Association="DB_102707_zonaflModel.FK_Skill_Category" />
+        <AssociationConnector Association="DB_102707_zonaflModel.FK_SubCategory_Category" />
+        <AssociationConnector Association="DB_102707_zonaflModel.FK_CityMaster_StateMaster" />
+        <AssociationConnector Association="DB_102707_zonaflModel.FK_Company_Company" />
+        <AssociationConnector Association="DB_102707_zonaflModel.FK_StateMaster_CountryMaster" />
+        <AssociationConnector Association="DB_102707_zonaflModel.FK_OfferPhases_Offer" />
+        <AssociationConnector Association="DB_102707_zonaflModel.FK_OfferUser_Offer" />
+        <AssociationConnector Association="DB_102707_zonaflModel.FK_Project_Offer" />
+        <AssociationConnector Association="DB_102707_zonaflModel.FK_ProjectUser_Project" />
+        <AssociationConnector Association="DB_102707_zonaflModel.AspNetUserRoles" />
+        <AssociationConnector Association="DB_102707_zonaflModel.UserSkill" />
+        <EntityTypeShape EntityType="DB_102707_zonaflModel.Log4Net_Error" Width="1.5" PointX="0.75" PointY="9.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

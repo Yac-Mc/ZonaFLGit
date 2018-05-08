@@ -1,0 +1,216 @@
+﻿@model ZonaFl.Models.RegisterBindingModel
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutContratanteLog.cshtml";
+}
+
+<div id="wrap_perfiles">
+    <section id="principal">
+        <div class="container">
+            <div id="columnahide" class="col-lg-2"></div>
+            <div id="columna" class=" col-md-12 col-lg-12">
+
+                <!-- Div izq-->
+                <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+                    <div class="saludoperfi">
+                        <div id="fotop" class="fotodeperfil">
+                          
+                            @if (ViewBag.ImageUser == null)
+                            {
+                                <img  src="/static/images/user_default.png" alt="" />
+                            }
+                            else
+                            {
+                                <img  src='~/UploadedFiles/@ViewBag.ImageUser' alt="" />
+                            }
+                        </div>
+                        <div id="saludop" class="saludops">
+                            <h5 id="username_profile">@Html.DisplayFor(m=>m.UserName)</h5>
+                            <h6 id="tipo_usuario_profile"><i>Contratante</i></h6>
+                            <h6 id="ciudad_profile">@Html.DisplayFor(m => m.City)</h6>
+                            <h6 id="pais_profile">@Html.DisplayFor(m => m.Country)</h6>
+
+                        </div>
+
+                    </div>
+                    <div id="calificaciones" class="col-xs-12">
+                        <div id="stars">
+                            @if (ViewBag.Calification != null)
+                            {
+                                if (ViewBag.Calification == 0)
+                                {
+                                    <i class="fa fa-star-o"></i>
+                                    <i class="fa fa-star-o"></i>
+                                    <i class="fa fa-star-o"></i>
+                                    <i class="fa fa-star-o"></i>
+                                    <i class="fa fa-star-o"></i>
+                                }
+                                else if (ViewBag.Calification == 1)
+                                {
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star-o"></i>
+                                    <i class="fa fa-star-o"></i>
+                                    <i class="fa fa-star-o"></i>
+                                    <i class="fa fa-star-o"></i>
+                                }
+                                else if (ViewBag.Calification == 2)
+                                {
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star-o"></i>
+                                    <i class="fa fa-star-o"></i>
+                                    <i class="fa fa-star-o"></i>
+                                }
+                                else if (ViewBag.Calification == 3)
+                                {
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star-o"></i>
+                                    <i class="fa fa-star-o"></i>
+                                }
+                                else if (ViewBag.Calification == 4)
+                                {
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star-o"></i>
+                                }
+                                else if (ViewBag.Calification == 5)
+                                {
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                }
+
+
+
+                            }
+                        </div>
+                    </div>
+
+                    <center> <a id="edicion_perfil" href='/Contratante/EditById/@ViewBag.IdUser'>Editar perfil &nbsp;<i class="fa fa-edit"></i></a></center>
+
+                    <div id="verify" class="col-xs-12">
+                        <p style="margin-top:13px;"><strong>Verificaciones</strong></p>
+                        <div id="verify_wrap">
+                            <div class="col-xs-4 verify_item">
+                                <a href="#"><img src="/static/images/verificacion/verificacion_pago-G.png" /></a>
+                                <p><strong>Pagos</strong></p>
+                            </div>
+
+                            <div class="col-xs-4 verify_item">
+                                <a href="#"><img class="verified" src="/static/images/verificacion/verificacionemail.png" /></a>
+                                <p><strong>Email</strong></p>
+                            </div>
+
+                            <div class="col-xs-4 verify_item">
+                                <a href="#"><img src="/static/images/verificacion/verificacion_movil_G.png" /></a>
+                                <p><strong>Móvil</strong></p>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div id="comentarios_freelance" class="col-xs-12 col-sm-12 col-md-12">
+                        <h3><strong><i class="fa fa-comment-o"></i> Comentarios:</strong></h3>
+                        <hr>
+                        <div id="comentarios_recopil">
+                            <div class="single_comments">
+
+                                @if (ViewBag.Commentaries != null)
+                                {
+                                    foreach (ZonaFl.Models.Project comment in ((List<ZonaFl.Models.Project>)ViewBag.Commentaries))
+                                    {
+                                        if (string.IsNullOrEmpty(comment.Image))
+                                        {
+                                            <img id="com_reciente_img" src="/static/images/blog/avatar3.png" alt="" />
+                                        }
+                                        else
+                                        {
+                                            <img width="20" height="20" id="com_reciente_img" src='~/UploadedFiles/@comment.Image' alt="" />
+                                        }
+                                        <p id="com_reciente_com">@comment.Comments</p>
+
+                                        <div class="entry-meta small muted">
+                                            <span>Por: <a id="com_reciente_user" href="#">@comment.UserName</a></span>
+                                        </div>
+                                    }
+                                }
+
+
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <br>
+                </div>
+                <!--FIN Div izq-->
+                <!--Div central-->
+                <div class="col-xs-12 col-sm-7 col-md-7 col-lg-7">
+                    <div id="aux_control">
+                        <a class="activ" href="#">PERFIL |</a>
+                        <a href="#">HOJA DE VIDA |</a>
+                        <a href="#">PORTAFOLIO |</a>
+                    </div>
+                    
+                    <div class="media-body post_reply_comments acercade">
+                        <h3><strong><i class="fa fa-user"></i> &nbsp;Acerca de mi:</strong></h3>
+                        <hr>
+                        <p id="descripcion_profile">@Html.DisplayFor(m => m.DescUser)</p>
+                    </div>
+
+                    <div id="info_empresas">
+                        @if (Model.Company != null)
+                        {
+                        <h3><strong><i class="fa fa-building-o"></i> &nbsp;Información de la empresa:</strong></h3>
+                        <hr>
+                        <p><span id="namecomercial">@Html.DisplayFor(m => m.Company.FirstOrDefault().Name)</span>:</p>
+                        <p>
+                            <span id="aboutcompany">
+                               @Html.DisplayFor(m => m.Company.FirstOrDefault().Description)
+                            </span>
+                        </p>
+                        <p><strong>Website: </strong><span id="sitecompany">@Html.DisplayFor(m => m.Company.FirstOrDefault().Site)</span></p>
+
+                        <hr>
+
+                        <p><strong>NIT: </strong><span id="nitcompany">@Html.DisplayFor(m => m.Company.FirstOrDefault().Nit)</span></p>
+                        <p><strong>Sector empresa: </strong><span id="sectorcompany">@Html.DisplayFor(m => m.Company.FirstOrDefault().Sector)</span></p>
+                        <p><strong>Número de empleados: </strong><span id="amountemployer">@Html.DisplayFor(m => m.Company.FirstOrDefault().NumeroEmp)</span></p>
+                        }
+                    </div>
+
+
+                </div>
+
+                <!--FIN Div central-->
+                <!-- Div der-->
+
+                <div id="secder_free" class="col-xs-12 col-sm-2 col-md-2 col-lg-2">
+
+                    <div id="ads_zona">
+                        (Espacio reservado para publicidad y avisos varios)
+                        <hr>
+                        (Espacio reservado para publicidad y avisos varios)
+                        <hr>
+                        (Espacio reservado para publicidad y avisos varios)
+                        <hr>
+                        (Espacio reservado para publicidad y avisos varios)
+                    </div>
+
+
+                </div>
+
+                <!--FIN Div der-->  	
+
+            </div>
+
+        </div><!--/.container-->
+    </section><!--/about-us-->
+</div>
+

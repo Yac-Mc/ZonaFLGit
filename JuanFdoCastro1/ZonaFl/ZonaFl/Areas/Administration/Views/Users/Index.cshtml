@@ -1,0 +1,251 @@
+﻿@model ZonaFl.Persistence.Entities.AspNetUsers
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutAdminLog.cshtml";
+}
+
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title> Admin | Zona FL</title>
+
+    <!-- core CSS -->
+    <link href="/static/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/static/css/font-awesome.min.css" rel="stylesheet">
+    <link href="/static/css/prettyPhoto.css" rel="stylesheet">
+    <link href="/static/css/animate.min.css" rel="stylesheet">
+    <link href="/static/css/main.css" rel="stylesheet">
+    <link href="/static/css/responsive.css" rel="stylesheet">
+    @*<link href="http://cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css" rel="stylesheet">*@
+
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.js"></script>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->
+    <link rel="shortcut icon" href="images/ico/logo.png">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/static/images/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/static/images/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/static/images/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="/static/images/ico/apple-touch-icon-57-precomposed.png">
+</head><!--/head-->
+
+
+
+<header id="header">
+    <nav class="navbar navbar-inverse navbar navbar-fixed-top" role="banner">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.html"><img src="/static/images/logo.png" alt="logo"></a>
+            </div>
+
+            <div class="collapse navbar-collapse navbar-right">
+                <ul class="nav navbar-nav">
+                   
+                    <li><p>¡Hola,<span id="username_bar"> @Model.FirstMiddleName</span>!</p></li>
+                    <li id="bell"><a id="iconotif" class="iconbar" href="#"><i class="fa fa-bell"></i></a></li>
+
+                    <li><a href="index.html#contact-page" class="scroll">Contacto</a></li>
+                    <li><a href='@Url.Action("Logout", "Users")' class="scroll">Cerrar sesión</a></li>
+
+                </ul>
+            </div>
+        </div><!--/.container-->
+    </nav><!--/nav-->
+    <!--/Contenedor notificaciones-->
+    <div class="notificaciones">
+        <a id="closenotif" href="#">x Cerrar</a>
+        <br>
+
+        <!--/Notificación-->
+        <div id="single_notif">
+            <img id="single_notif_img" src="/static/images/user_default.png" alt="" />
+            <h6 id="single_notif_desc"><span id="usernotif">Nombre de usuario</span><span id="descrinotif">recién calificó tu proyecto</span><span id="proyectnotif">Nombre de proyecto</span></h6>
+        </div>
+        <!--/Fin notificación-->
+    </div>
+
+    <!--/Fin Contenedor notificaciones-->
+
+
+
+</header><!--/header-->
+
+<section>
+    <div class="container">
+
+        <div id="admintable" class=" col-xs-12" style="text-align: center;">
+            <h2>Tabla de administración de usuarios ZonaFL</h2>
+            <br><br>
+            <div class="table-responsive" style="overflow-x: scroll; padding-bottom: 15px;">
+                <table class="table table-hover table-striped aplies" id="tableUsers" data-bind="koTable: {showSearch:true,showEditButton:false,showNewButton:false,allowsort:true, pageSize: 5, initialSortProperty: 'Id', initialSortDirection: 'FirstMiddleName'  }">
+                    <thead style="background-color: #333; color: white;">
+                        <tr>
+                           
+                            <th data-sort-property="Id" class="hidden">Id</th>
+                            <th>Usuario</th>
+                            <th data-sort-property="FirstMiddleName">Nombres/Apellidos</th>
+                            <th data-sort-property="Email">Email</th>
+                            <th data-sort-property="PhoneNumber">Teléfono</th>
+                            <th data-sort-property="Country">País</th>
+                            <th data-sort-property="City">Ciudad</th>
+                            <th data-sort-property="Rol">Rol</th>
+                            <th data-sort-property="DateCreate">Fecha creación</th>
+                            <th data-sort-property="LastAccess">Último acceso</th>
+                            <th data-sort-property="Status">Estado</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody data-bind="foreach: koTable.pagedItems">
+                        <tr>
+                            <td class="hidden"><span data-bind="text: Id"></span></td>
+                            <td><a class="plist" href="#" target="_blank" data-bind="text: UserName,attr:{ href: Url}">Postulado 1</a></td>
+                            <td><span data-bind="text: FirstMiddleName"></span></td>
+                            <td><span data-bind="text: Email"></span></td>
+                            <td><span data-bind="text: PhoneNumber"></span></td>
+                            <td><span data-bind="text: Country"></span></td>
+                            <td><span data-bind="text: City"></span></td>
+                            <td><span data-bind="text: Rol"></span></td>
+                            <td><span data-bind="text: DateCreate"></span></td>
+                            <td><span data-bind="text: LastAccess"></span></td>
+                            <td><span data-bind="text: Status"></span></td>
+
+                            <td>
+                            <button   type="button" data-bind="text: Accion, click: $root.suspendUser,css: Estilo"> </button>
+                                
+                            </td> 
+                           
+                        
+
+                        </tr>
+
+
+
+                    </tbody>
+                </table>
+            </div>
+            <br>
+            <div id="newadmin" class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <button id="newadmin-btn" type="button" class="newadmin-btn" onClick="pop('nuevo_admin')">Crear nuevo admin</button>
+                <br><br>
+         
+                <!--/popup nuevo admin-->
+                <div id="nuevo_admin" class="ontop">
+                    <div class="emer-foto">
+                        <a href="#" onClick="hide('nuevo_admin')">x</a>
+                        <hr>
+                        <h2 class="title_pop">Nuevo Admin Zona FL</h2>
+                        <form id="createadmin">
+
+                            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                <input id="useradmin" type="text" name="useradmin" class="form-control" placeholder="Nombre de usuario">
+                                <input id="mailadmin" type="email" name="mailadmin" class="form-control" placeholder="Email">
+                                <input id="nameadmin" type="text" name="nameadmin" class="form-control" placeholder="Nombre y Apellidos">
+                            </div>
+
+                            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                <input id="passadmin" type="password" name="passadmin" class="form-control" placeholder="Contraseña">
+                                <input id="passadmin2" type="password" name="passadmin2" class="form-control" placeholder="Confirma Contraseña">
+                                <button id="sendnewadmin" type="submit" class="newadmin-btn" data-bind="click: $root.CreateAdmin">Crear Admin</button>
+                                <button id="cancelnewadmin" type="button" class="newadmin-btn" style="margin-left: .4em; background-color: #999;" onClick="hide('nuevo_admin')">Cancelar</button>
+                            </div>
+
+                        </form>
+
+                    </div>
+                </div>
+                <!--/Fin popup nuevo admin-->
+
+            </div>
+        </div>
+        </div>
+    </section>
+
+
+   
+        <script src="~/Scripts/jquery-2.1.4.min.js"></script>
+
+
+        <script src="~/Scripts/knockout-3.4.0.js"></script>
+        <script src="~/Scripts/knockout.mapping-latest.js"></script>
+        <script src="~/Scripts/toastr.min.js"></script>
+        <script src="~/Scripts/koTable.min.js"></script>
+        <script src="~/Scripts/ModelsKo/ViewModel.js"></script>
+       
+
+        <script>
+            $(document).ready(function () {
+                vm = new ViewModelUsers();
+                //ko.applyBindings(vm, $("#tableUsers").get(0));
+                ko.applyBindings(vm);
+                //vmua = new ViewModelUsersAdmin();
+                //ko.applyBindings(vmua);
+                //$(function () {
+
+                //    $('.postulados').click(function () {
+
+                //        var idoffer = this.id.replace("postulados", "");
+                //        vm.getPostuladosFilterFromServer(idoffer);
+
+                //    });
+
+                //});
+            });
+        </script>
+
+<script>
+           // código notificaciones
+
+ $("#bell").on( "click", function() {
+            $('.notificaciones').toggle("slow");
+             });
+
+$("#closenotif").click(function(){
+    $('.notificaciones').hide("slow");
+    });
+
+$("#iconotif").mouseleave(function(){
+    $(this).css("color", "#000");
+});
+
+
+
+
+  //subasta o precio fijo
+
+  $("input[type=checkbox]").click(function() {
+
+
+    if($(this).is(':checked')) {
+
+     $("#rango_val, .valsubasta").show("slow");
+      $("#valor_fijo, .valfijo").hide("slow");
+      $("#valorproy").attr('value', '000');
+
+    } else {
+
+     $("#rango_val, .valsubasta").hide("slow");
+      $("#valor_fijo, .valfijo").show("slow");
+      $("#valorproy").attr('value', '0');
+
+    }
+  });
+
+</script>
+
+<script>
+$("#newadmin-btn").on("click", function(){
+$("#createadmin").show("slow");
+});
+</script>
+

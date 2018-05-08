@@ -1,0 +1,206 @@
+﻿<!DOCTYPE html>
+
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>@ViewBag.Title</title>
+        <!-- core CSS -->
+    <link href="~/Static/css/bootstrap.min.css" rel="stylesheet" />
+       
+   
+        <link href="~/Static/css/font-awesome.min.css" rel="stylesheet">
+        <link href="~/Static/css/prettyPhoto.css" rel="stylesheet">
+        <link href="~/Static/css/animate.min.css" rel="stylesheet">
+    <link href="~/Static/css/main.css" rel="stylesheet">
+        <link href="~/Static/css/responsive.css" rel="stylesheet">
+ 
+
+   
+
+        <!--[if lt IE 9]>
+        <script src="js/html5shiv.js"></script>
+        <script src="js/respond.min.js"></script>
+        <![endif]-->
+        <link rel="shortcut icon" href="~/Static/images/ico/logo.png">
+        <link rel="apple-touch-icon-precomposed" sizes="144x144" href="~/Static/images/ico/apple-touch-icon-144-precomposed.png">
+        <link rel="apple-touch-icon-precomposed" sizes="114x114" href="~/Static/images/ico/apple-touch-icon-114-precomposed.png">
+        <link rel="apple-touch-icon-precomposed" sizes="72x72" href="~/Static/images/ico/apple-touch-icon-72-precomposed.png">
+        <link rel="apple-touch-icon-precomposed" href="~/Static/images/ico/apple-touch-icon-57-precomposed.png">
+
+    <script src="~/Static/js/jquery.js"></script>
+    <script src="~/Static/js/bootstrap.min.js"></script>
+    <script src="~/Static/js/jquery.prettyPhoto.js"></script>
+    <script src="~/Static/js/jquery.isotope.min.js"></script>
+
+    <script src="~/Static/js/main.js"></script>
+    <script src="~/Static/js/wow.min.js"></script>
+    <script src="~/Static/js/jquery-1.10.2.js"></script>
+    <script src="~/Scripts/jquery-ui.min.js"></script>
+
+    
+</head>
+<body>
+    <header id="header">
+        <nav class="navbar navbar-inverse navbar navbar-fixed-top" role="banner">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="index.html"><img src="~/Static/images/logo.png" alt="logo"></a>
+                </div>
+
+                <div class="collapse navbar-collapse navbar-right">
+                    <ul class="nav navbar-nav">
+                       
+                        <li><p>¡Hola,<span id="username_bar"> @ViewBag.User</span>!</p></li>
+                        <li id="bell"><a id="iconotif" class="iconbar" href="#"><i class="fa fa-bell"></i></a></li>
+                      
+
+
+
+                     <li><a href="/Home/index#contact-page" class="scroll">Contacto</a></li>
+                        <li><a href='@Url.Action("Logout", "Freelance")'>Cerrar sesión</a></li>
+
+
+                    </ul>
+                </div>
+            </div><!--/.container-->
+        </nav><!--/nav-->
+
+        <!--/Contenedor notificaciones-->
+        <div class="notificaciones">
+            <a id="closenotif" href="#">x Cerrar</a>
+            <br>
+
+            <!--/Notificación-->
+            <div id="single_notif">
+                <img id="single_notif_img" src="images/user_default.png" alt="" />
+                <h6 id="single_notif_desc"><span id="usernotif">Nombre de usuario</span><span id="descrinotif">recién calificó tu proyecto</span><span id="proyectnotif">Nombre de proyecto</span></h6>
+            </div>
+            <!--/Fin notificación-->
+        </div>
+
+        <!--/Fin Contenedor notificaciones-->
+
+
+
+    </header><!--/header-->
+
+    <section id="submenu">
+        <div class="container">
+            <div class="row">
+
+                <ul class="pull-right">
+                   
+                    <li><a href="~/Offer/index/@ViewBag.IdUser">ZONA</a></li>
+                    <li><a href="~/Freelance/DetailsById/@ViewBag.IdUser">Admin</a></li>
+                        
+                </ul>
+           </div>
+        </div>
+
+    </section>
+
+
+    <div>
+        @RenderBody()
+    </div>
+    <div id="dialogchat">
+
+    </div>
+    <footer id="footer" class="midnight-blue">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6">
+                    &copy; 2016 <a target="_blank" href="#" title="EnMarca Digital">EnMarca Digital</a >. Todos los derechos reservados.
+                </div>
+                <div class="col-sm-6">
+                    <ul class="pull-right">
+                        <li><a href="index.html#contact-page">Contacto </a></ li>
+                        <li><a href="#">Términos de uso </a></ li>
+                        <li><a href="#">Política de privacidad </a></ li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer><!--/#footer-->
+   
+  
+</body>
+</html>
+<script>
+
+    var dialog;
+    $(document).ready(function () {
+
+      @if (SessionBag.Current.User == null)
+                {
+
+                     <text>
+
+        window.location.href = "/Home/Index";
+
+</text>
+}
+
+        dialog = $("#dialogchat").dialog({
+
+            autoOpen: false,
+            height: 450,
+            width: 1000,
+            modal: true,
+            resizable: false,
+            buttons: {
+                Cancel: function () {
+                    dialog.dialog("close");
+                }
+            },
+            open: function (event, ui) {
+    @if (SessionBag.Current.User != null)
+    {
+
+        <text>
+
+                    $('#txtNickName').val(SessionBag.Current.User.UserName);
+                    $('#txtEmailId').val(SessionBag.Current.User.Email);
+
+</text>
+}
+
+                //$(this).load('/Index.html');
+
+            }
+        });
+
+    });
+
+    $('#btn-chat').click(function () {
+
+        $('#dialogchat').load('/index.html', function () {
+            dialog.dialog('open');
+        });
+
+    });
+
+
+    $("#bell").on("click", function () {
+        $('.notificaciones').toggle("slow");
+    });
+
+    $("#closenotif").click(function () {
+        $('.notificaciones').hide("slow");
+    });
+
+    $("#iconotif").mouseleave(function () {
+        $(this).css("color", "#000");
+    });
+</script>
+
+

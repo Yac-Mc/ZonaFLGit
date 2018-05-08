@@ -1,0 +1,1146 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title> Registro | Zona FL</title>
+
+    <!-- core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/font-awesome.min.css" rel="stylesheet">
+    <link href="css/prettyPhoto.css" rel="stylesheet">
+    <link href="css/animate.min.css" rel="stylesheet">
+    <link href="css/main.css" rel="stylesheet">
+    <link href="css/responsive.css" rel="stylesheet">
+
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.js"></script>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->
+    <link rel="shortcut icon" href="images/ico/logo.png">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="images/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="images/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="images/ico/apple-touch-icon-57-precomposed.png">
+
+    <script src="../Scripts/angular.js"></script>
+    <script src="../Scripts/angular-route.js"></script>
+    <script src="../Scripts/DropdownController.js"></script>
+
+</head><!--/head-->
+
+<body>
+
+    <header id="header">
+        <nav class="navbar navbar-inverse navbar navbar-fixed-top" role="banner">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="index.html"><img src="images/logo.png" alt="logo"></a>
+                </div>
+
+                <div class="collapse navbar-collapse navbar-right">
+                    <ul class="nav navbar-nav">
+                        <li><a href="/Freelance/Logout">Inicio</a></li>
+                        <li><a href="index.html#contact-page" class="scroll">Contacto</a></li>
+
+                    </ul>
+                </div>
+            </div><!--/.container-->
+        </nav><!--/nav-->
+        <!--/pop up foto perfil-->
+
+        <div id="foto_profile" class="ontop">
+            <div class="emer-foto">
+                <a href="#" onClick="hide('foto_profile')">x</a>
+                <hr>
+                <h2 class="title_pop">Cambia tu foto de perfil</h2>
+
+                <div id="content_chf">
+                    <form id="cambiodefoto_profiles" name="cambiodefoto_profiles">
+                        <input type="file" name="fileselect" id="fileselect" class="inputfile" data-multiple-caption="{count} files selected" multiple />
+
+                        <label for="fileselect"><i class="fa fa-upload"></i> Buscar imagen</label>
+                        <br />
+                        <br />
+                        <output id="list"><div class="thumb pre_foto"></div></output>
+                        <hr>
+                        <a href="#" onClick="hide('foto_profile')"><h2 class="btn-cancel_cambio-foto">Cancelar</h2></a>
+                        <input type="button" value="Establecer imagen" class="btn-cambio-foto" id="uploadbutton">
+
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+        <!--/ fin pop up foto perfil-->
+
+
+
+    </header><!--/header-->
+
+
+
+
+    <div id="about-us">
+        <div class="container">
+            <div class="team" style="margin-top:120px; margin-bottom:50px; padding-bottom:40px;">
+                <form id="datos-freelance" class="contact-form" name="contact-form" method="post" action="sendemail.php">
+
+                    <div class="center wow fadeInDown">
+                        <h2>Registro</h2>
+                        <p class="lead">Cuéntanos un poco más sobre ti:</p>
+                    </div>
+
+                    <!--/.inicio sobre mi-->
+                    <div class="col-lg-12 sobremi">
+                        <div id="wrap_fotoperfil" class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+                            <div class="foto_e_username">
+                                <a href="#" onClick="pop('foto_profile')">
+                                    <div id="foto_freelance" class="fotodeperfil recent-work-wrap">
+
+                                        <img id="preview_img_prof" src="images/user_default.png" />
+                                        <input type="hidden" name="imagename" value="" id="imagename">
+                                        <div class="overlay_f">
+                                            <i class="fa fa-camera"></i>
+                                            <p>Cambiar imagen</p>
+                                            <div class="recent-work-inner">
+
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </a>
+                                <div id="username_freel" class="saludops col-xs-12">
+                                    <input id="username_prof" type="text" name="username_prof" class="form-control" disabled>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-5 col-md-5">
+
+                            <label>Descripción (sobre mí)</label>
+                            <textarea name="message" id="descuser" required="required" class="form-control" rows="10" placeholder="Háblanos un poco de tu experiencia profesional, tus logros y expectativas en el campo creativo y tu interés en ZonaFL..."></textarea>
+
+                        </div>
+
+                        <div class="col-lg-4 col-md-4 infouser" ng-app="ZonaFl">
+
+                            <input type="text" class="form-control" required="required" placeholder="Nombre y apellidos" id="nombape" minlength="6" data-msg-minlength="Ingresa mínimo 6 caracteres">
+
+                            <input type="number" class="form-control" required="required" placeholder="Teléfono" id="numbertelreg" minlength="5" data-msg-minlength="Ingresa mínimo 5 caracteres">
+
+
+                            <div ng-controller="DropdownController">
+                                <div class="error">{{message}}</div>
+                                <select class="btn btn-primary dropdown-toggle form-control" ng-model="country" ng-options="I.CountryID as I.CountryName for I in countries" ng-change="GetCities()" id="countryuser">
+                                    <option value="">Selecciona Pais</option>
+                                </select>
+
+
+                                <select class="btn btn-primary dropdown-toggle form-control" ng-model="city" ng-options="I.Id as I.Name for I in cities" ng-disabled="!cities" id="ciudaduser">
+                                    <option value="">-- Selecciona una Ciudad --</option>
+                                </select>
+
+                                <div id="esempresa">
+                                    <input type="checkbox" id="soyempresa" name="soyempresa" data-bind="checked: Empresa"><label for="soyempresa"><span></span> Soy una empresa</label>
+                                </div>
+
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <!--/.fin sobre mi-->
+                    <!--/inicio infoempresa-->
+
+                    <div id="infoemp" class="col-lg-12">
+                        <center><p class="lead" style="font-weight:bold;">DATOS EMPRESA</p></center>
+
+                        <div class="col-lg-6 col-md-6 col-xs-12">
+                            <input type="text" class="form-control" required="required" placeholder="Nombre comercial de la empresa" id="nombemp" minlength="6" data-msg-minlength="Ingresa mínimo 6 caracteres...">
+                            <input type="email" class="form-control" required="required" placeholder="Email empresa" id="mailemp" data-msg-email="Ingresa un email válido...">
+                            <input type="url" class="form-control" placeholder="Website empresa" id="sitemp" name="sitemp" onblur="checkURL(this)">
+                            <input type="text" class="form-control" placeholder="Sector empresa" id="sectemp" name="sectemp">
+                        </div>
+
+                        <div class="col-lg-6 col-md-6 col-xs-12">
+                            <input type="text" class="form-control" required="required" placeholder="Razón social de la empresa" id="razemp" data-msg-required="Ingresa la razón social de tu empresa...">
+                            <input type="number" class="form-control" placeholder="Teléfono empresa" id="telemp" name="telemp">
+                            <input type="number" class="form-control" placeholder="NIT empresa" id="nitemp" name="nitemp">
+                            <input type="number" class="form-control" placeholder="Número de empleados" id="empemp" name="empemp">
+                        </div>
+
+                        <label id="tellus">Descripción de la empresa</label>
+                        <textarea name="descemp" id="descemp" required="required" data-msg-required="Cuéntanos más sobre tu empresa..." class="form-control" rows="5" placeholder="Cuéntanos más a detalle lo que quieras que sepamos acerca de tu empresa, esto la hará más atractiva en ZonaFL..."></textarea>
+
+
+                    </div>
+
+
+
+                    <!--/fin infoempresa-->
+                    <!--/.inicio categorías-->
+
+                    <div id="contenedor_categorias" class="row clearfix">
+
+
+                        <div class="col-md-8">
+
+                            <div class="single-profile-top wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="300ms">
+                                <div class="media">
+
+                                    <div class="media-body">
+                                        <h4>Selector de habilidades</h4>
+                                        <h5>Selecciona habilidades de cada categoría según tu experiencia y adicionalas a tu perfil:</h5>
+                                        <hr>
+                                        <center><h4>Categoría:</h4></center>
+
+                                        <div id="eightcat">
+
+                                            <div id="8_categorias">
+
+                                                <a href="#8_categorias">
+                                                    <div id="i-websoft" class="portfolio-item wordpress html apps col-xs-12 col-sm-4 col-md-3 change">
+                                                        <div class="recent-work-wrap">
+                                                            <img class="img-responsive" src="images/categorias/PG_S.png" alt="" >
+                                                            <div class="overlay categoria" id="categoria17">
+                                                                <p>Páginas Web y Software</p>
+                                                                <div class="recent-work-inner">
+
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </a><!--/.portfolio-item-->
+
+                                                <a href="#8_categorias">
+                                                    <div id="i-appmov" class="portfolio-item wordpress html apps col-xs-12 col-sm-4 col-md-3 change">
+                                                        <div class="recent-work-wrap">
+                                                            <img class="img-responsive" src="images/categorias/APPS.png" alt="">
+                                                            <div class="overlay categoria" id="categoria21">
+                                                                <p>Aplicaciones para móviles</p>
+                                                                <div class="recent-work-inner">
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </a><!--/.portfolio-item-->
+
+                                                <a href="#8_categorias">
+                                                    <div id="i-diseno" class="portfolio-item wordpress html apps col-xs-12 col-sm-4 col-md-3 change">
+                                                        <div class="recent-work-wrap">
+                                                            <img class="img-responsive" src="images/categorias/DG.png" alt="">
+                                                            <div class="overlay categoria" id="categoria20">
+                                                                <p>Diseño Gráfico</p>
+                                                                <div class="recent-work-inner">
+
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </a><!--/.portfolio-item-->
+
+                                                <a href="#8_categorias">
+                                                    <div id="i-pmulti" class="portfolio-item wordpress html apps col-xs-12 col-sm-4 col-md-3 change">
+                                                        <div class="recent-work-wrap">
+                                                            <img class="img-responsive" src="images/categorias/produc.png" alt="">
+                                                            <div class="overlay categoria" id="categoria23">
+                                                                <p>Producción Multimedia</p>
+                                                                <div class="recent-work-inner">
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </a><!--/.portfolio-item-->
+
+                                                <a href="#8_categorias">
+                                                    <div id="i-ani3d" class="portfolio-item wordpress html apps col-xs-12 col-sm-4 col-md-3 change">
+                                                        <div class="recent-work-wrap">
+                                                            <img class="img-responsive" src="images/categorias/3D.png" alt="">
+                                                            <div class="overlay categoria" id="categoria18">
+                                                                <p>Animación 3D</p>
+                                                                <div class="recent-work-inner">
+
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </a><!--/.portfolio-item-->
+
+                                                <a href="#8_categorias">
+                                                    <div id="i-office" class="portfolio-item wordpress html apps col-xs-12 col-sm-4 col-md-3 change">
+                                                        <div class="recent-work-wrap">
+                                                            <img class="img-responsive" src="images/categorias/officce.png" alt="">
+                                                            <div class="overlay categoria" id="categoria24">
+                                                                <p>Office</p>
+                                                                <div class="recent-work-inner">
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </a><!--/.portfolio-item-->
+
+                                                <a href="#8_categorias">
+                                                    <div id="i-tradu" class="portfolio-item wordpress html apps col-xs-12 col-sm-4 col-md-3 change">
+                                                        <div class="recent-work-wrap">
+                                                            <img class="img-responsive" src="images/categorias/traductor.png" alt="">
+                                                            <div class="overlay categoria" id="categoria16">
+                                                                <p>Traducción y redacción</p>
+                                                                <div class="recent-work-inner">
+
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </a><!--/.portfolio-item-->
+
+                                                <a href="#8_categorias">
+                                                    <div id="i-inge" class="portfolio-item wordpress html apps col-xs-12 col-sm-4 col-md-3 change">
+                                                        <div class="recent-work-wrap">
+                                                            <img class="img-responsive" src="images/categorias/ING.png" alt="">
+                                                            <div class="overlay categoria" id="categoria25">
+                                                                <p>Ingeniería y Arquitectura</p>
+                                                                <div class="recent-work-inner">
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </a><!--/.portfolio-item-->
+
+
+
+                                            </div><!--/div 8-categorias-->
+                                        </div><!--/div eightcat-->
+
+                                        <div class="reverse">
+                                            <div id="websoft">
+
+                                                <center><h4>Páginas Web y Software</h4></center>
+                                                <center><a id="r-websoft" href="#8-eightcat" class="back-cat return">Volver a categorias <i class="fa fa-angle-double-left"></i></a></center>
+                                                <br>
+                                                <div class="col-xs-12 col-sm-4 col-md-4">
+
+                                                    <img id="chao" class="img-responsive" src="images/categorias/PG_S.png" alt="">
+
+                                                </div>
+
+                                                <div class="col-xs-12 col-sm-8 col-md-8" style="height:300px; overflow-y:scroll;">
+                                                    <ul class="tag skills" data-bind="foreach: skillsList17" >
+                                                        <li class="padre" ><input type="checkbox"  data-bind="value: Name,attr: { 'id': 'h-'+ $.trim(IdHtml)}" onchange="toggleCheckbox(this)" /><label data-bind="text: Name"></label></li>
+
+                                                        <!--<li class="padre"><input type="checkbox" id="h-pw1" value="php" /><label>PHP</label></li>
+                                                        <li class="padre"><input type="checkbox" id="h-pw2" value="html" /><label>HTML</label></li>
+                                                        <li class="padre"><input type="checkbox" id="h-pw3" value="Arquitectura de Software" /><label>Arquitectura de Software</label></li>
+                                                        <li class="padre"><input type="checkbox" id="h-pw4" value="Wordpress" /><label>Wordpress</label></li>-->
+
+
+                                                    </ul>
+                                                </div>
+                                            </div><!--/div habilidades -->
+                                        </div>
+
+                                        <div id="appmov">
+
+                                            <center><h4>Aplicaciones para móviles</h4></center>
+                                            <center><a id="r-appmov" href="#8-eightcat" class="back-cat return">Volver a categorias <i class="fa fa-angle-double-left"></i></a></center>
+                                            <br>
+                                            <div class="col-xs-12 col-sm-4 col-md-4">
+
+                                                <img class="img-responsive" src="images/categorias/APPS.png" alt="">
+
+                                            </div>
+
+                                            <div class="col-xs-12 col-sm-8 col-md-8" style="height:300px; overflow-y:scroll;">
+                                                <ul class="tag skills" data-bind="foreach: skillsList21">
+                                                    <li class="padre"><input type="checkbox" data-bind="value: Name,attr: { 'id': 'h-'+ $.trim(IdHtml)}" onchange="toggleCheckbox(this)" /><label data-bind="text: Name"></label></li>
+                                                    <!--<li class="padre"><input type="checkbox" id="h-apm1" value="Android" /><label>Android</label></li>
+                                                    <li class="padre"><input type="checkbox" id="h-apm2" value="iPhone" /><label>iPhone</label></li>
+                                                    <li class="padre"><input type="checkbox" id="h-apm3" value="Windows Phone" /><label>Windows Phone</label></li>
+                                                    <li class="padre"><input type="checkbox" id="h-apm4" value="BlackBerry" /><label>BlackBerry</label></li>-->
+                                                </ul>
+                                            </div>
+                                        </div><!--/div habilidades -->
+
+
+                                        <div id="diseno">
+
+                                            <center><h4>Diseño gráfico</h4></center>
+                                            <center><a id="r-diseno" href="#8-eightcat" class="back-cat return">Volver a categorias <i class="fa fa-angle-double-left"></i></a></center>
+                                            <br>
+                                            <div class="col-xs-12 col-sm-4 col-md-4">
+
+                                                <img class="img-responsive" src="images/categorias/DG.png" alt="">
+
+                                            </div>
+
+                                            <div class="col-xs-12 col-sm-8 col-md-8" style="height:300px; overflow-y:scroll;">
+                                                <ul class="tag skills" data-bind="foreach: skillsList20">
+                                                    <li class="padre"><input type="checkbox" data-bind="value: Name,attr: { 'id': 'h-'+ $.trim(IdHtml)}" onchange="toggleCheckbox(this)" /><label data-bind="text: Name"></label></li>
+                                                    <!--<li class="padre"><input type="checkbox" id="h-dig1" value="Ilustración" /><label>Ilustración</label></li>
+                                                    <li class="padre"><input type="checkbox" id="h-dig2" value="Concepto" /><label>Concepto</label></li>
+                                                    <li class="padre"><input type="checkbox" id="h-dig3" value="Vectorización" /><label>Vectorización</label></li>
+                                                    <li class="padre"><input type="checkbox" id="h-dig4" value="Dibujo" /><label>Dibujo</label></li>-->
+                                                </ul>
+                                            </div>
+                                        </div><!--/div habilidades -->
+
+                                        <div id="pmulti">
+
+                                            <center><h4>Producción multimedia</h4></center>
+                                            <center><a id="r-pmulti" href="#8-eightcat" class="back-cat return">Volver a categorias <i class="fa fa-angle-double-left"></i></a></center>
+                                            <br>
+                                            <div class="col-xs-12 col-sm-4 col-md-4">
+
+                                                <img class="img-responsive" src="images/categorias/produc.png" alt="">
+
+                                            </div>
+
+                                            <div class="col-xs-12 col-sm-8 col-md-8" style="height:300px; overflow-y:scroll;">
+                                                <ul class="tag skills" data-bind="foreach: skillsList23">
+                                                    <li class="padre"><input type="checkbox" data-bind="value: Name,attr: { 'id': 'h-'+ $.trim(IdHtml)}" onchange="toggleCheckbox(this)"/><label data-bind="text: Name"></label></li>
+                                                    <!--<li class="padre"><input type="checkbox" id="h-pmu1" value="Fotografía" /><label>Fotografía</label></li>
+                                                    <li class="padre"><input type="checkbox" id="h-pmu2" value="Producción de video" /><label>Producción de video</label></li>
+                                                    <li class="padre"><input type="checkbox" id="h-pmu3" value="Videojuegos" /><label>Videojuegos</label></li>
+                                                    <li class="padre"><input type="checkbox" id="h-pmu4" value="Producción de audio" /><label>Producción de audio</label></li>-->
+                                                </ul>
+                                            </div>
+                                        </div><!--/div habilidades -->
+
+
+
+                                        <div id="ani3d">
+
+                                            <center><h4>Animación 3D</h4></center>
+                                            <center><a id="r-ani3d" href="#8-eightcat" class="back-cat return">Volver a categorias <i class="fa fa-angle-double-left"></i></a></center>
+                                            <br>
+                                            <div class="col-xs-12 col-sm-4 col-md-4">
+
+                                                <img class="img-responsive" src="images/categorias/3D.png" alt="">
+
+                                            </div>
+
+                                            <div class="col-xs-12 col-sm-8 col-md-8" style="height:300px; overflow-y:scroll;">
+                                                <ul class="tag skills" data-bind="foreach: skillsList18">
+                                                    <li class="padre"><input type="checkbox" data-bind="value: Name,attr: { 'id': 'h-'+ $.trim(IdHtml)}" onchange="toggleCheckbox(this)"/><label data-bind="text: Name"></label></li>
+                                                    <!--<li class="padre"><input type="checkbox" id="h-atd1" value="Modelado" /><label>Modelado</label></li>
+                                                    <li class="padre"><input type="checkbox" id="h-atd2" value="Modelado orgánico" /><label>Modelado orgánico</label></li>
+                                                    <li class="padre"><input type="checkbox" id="h-atd3" value="Preproducción 3D" /><label>Preproducción 3D</label></li>
+                                                    <li class="padre"><input type="checkbox" id="h-atd4" value="Postproducción 3D" /><label>Postproducción 3D</label></li>-->
+                                                </ul>
+                                            </div>
+                                        </div><!--/div habilidades -->
+
+                                        <div id="office">
+
+                                            <center><h4>Office</h4></center>
+                                            <center><a id="r-office" href="#8-eightcat" class="back-cat return">Volver a categorias <i class="fa fa-angle-double-left"></i></a></center>
+                                            <br>
+                                            <div class="col-xs-12 col-sm-4 col-md-4">
+
+                                                <img class="img-responsive" src="images/categorias/officce.png" alt="">
+
+                                            </div>
+
+                                            <div class="col-xs-12 col-sm-8 col-md-8" style="height:300px; overflow-y:scroll;">
+                                                <ul class="tag skills" data-bind="foreach: skillsList24">
+                                                    <li class="padre"><input type="checkbox" data-bind="value: Name,attr: { 'id': 'h-'+ $.trim(IdHtml)}" onchange="toggleCheckbox(this)"/><label data-bind="text: Name"></label></li>
+                                                    <!--<li class="padre"><input type="checkbox" id="h-off1" value="Word" /><label>Word</label></li>
+                                                    <li class="padre"><input type="checkbox" id="h-off2" value="PowerPoint" /><label>PowerPoint</label></li>
+                                                    <li class="padre"><input type="checkbox" id="h-off3" value="Access" /><label>Access</label></li>
+                                                    <li class="padre"><input type="checkbox" id="h-off4" value="Publisher" /><label>Publisher</label></li>-->
+                                                </ul>
+                                            </div>
+                                        </div><!--/div habilidades -->
+
+
+                                        <div id="tradu">
+
+                                            <center><h4>Traducción y redacción</h4></center>
+                                            <center><a id="r-tradu" href="#8-eightcat" class="back-cat return">Volver a categorias <i class="fa fa-angle-double-left"></i></a></center>
+                                            <br>
+                                            <div class="col-xs-12 col-sm-4 col-md-4">
+
+                                                <img class="img-responsive" src="images/categorias/traductor.png" alt="">
+
+                                            </div>
+
+                                            <div class="col-xs-12 col-sm-8 col-md-8" style="height:300px; overflow-y:scroll;">
+                                                <ul class="tag skills" data-bind="foreach: skillsList16">
+                                                    <li class="padre"><input type="checkbox" data-bind="value: Name,attr: { 'id': 'h-'+ $.trim(IdHtml)}" onchange="toggleCheckbox(this)"/><label data-bind="text: Name"></label></li>
+                                                    <!--<li class="padre"><input type="checkbox" id="h-tra1" value="Redacción Blogs" /><label>Redacción Blogs</label></li>
+                                                    <li class="padre"><input type="checkbox" id="h-tra2" value="Redacción técnica" /><label>Redacción técnica</label></li>
+                                                    <li class="padre"><input type="checkbox" id="h-tra3" value="Traducción Inglés" /><label>Traducción Inglés</label></li>
+                                                    <li class="padre"><input type="checkbox" id="h-tra4" value="Traducción Francés" /><label>Traducción Francés</label></li>-->
+
+                                                </ul>
+                                            </div>
+                                        </div><!--/div habilidades -->
+
+                                        <div id="inge">
+
+                                            <center><h4>Ingeniería y Arquitectura</h4></center>
+                                            <center><a id="r-inge" href="#8-eightcat" class="back-cat return">Volver a categorias <i class="fa fa-angle-double-left"></i></a></center>
+                                            <br>
+                                            <div class="col-xs-12 col-sm-4 col-md-4">
+
+                                                <img class="img-responsive" src="images/categorias/ING.png" alt="">
+
+                                            </div>
+
+                                            <div class="col-xs-12 col-sm-8 col-md-8" style="height:300px; overflow-y:scroll;">
+                                                <ul class="tag skills" data-bind="foreach: skillsList25">
+                                                    <li class="padre"><input type="checkbox" data-bind="value: Name,attr: { 'id': 'h-'+ $.trim(IdHtml)}" onchange="toggleCheckbox(this)"/><label data-bind="text: Name"></label></li>
+                                                    <!--<li class="padre"><input type="checkbox" id="h-ina1" value="Autocad" /><label>Autocad</label></li>
+                                                    <li class="padre"><input type="checkbox" id="h-ina2" value="Diseño de interiores" /><label>Diseño de interiores</label></li>
+                                                    <li class="padre"><input type="checkbox" id="h-ina3" value="Corrección de planos" /><label>Corrección de planos</label></li>
+                                                    <li class="padre"><input type="checkbox" id="h-ina4" value="Presupuesto" /><label>Presupuesto</label></li>-->
+                                                </ul>
+                                            </div>
+                                        </div><!--/div habilidades -->
+
+
+
+                                    </div>
+
+                                </div><!--/.media -->
+
+
+
+
+                            </div>
+                        </div><!--/.col-lg-8 -->
+
+
+                        <div class="col-md-4">
+                            <div class="media">
+                                <div class="pull-left">
+
+                                </div>
+                                <div class="media-body">
+                                    <center><h4>Habilidades seleccionadas: <span id="allcatcount">(0)</span></h4></center>
+                                    <hr>
+                                    <div id="pw" class="cat_selec">
+                                        <h5>Páginas Web y Software <span id="pwcount">(0)</span></h5>
+
+                                        <ul class="tag skillspre" data-bind="foreach: skillsList17">
+                                            <li data-bind="text: Name,attr: { 'id':  $.trim(IdHtml),'style':'display:none'}"></li>
+                                            <!--<li id="pw1">PHP</li>
+                                            <li id="pw2">HTML</li>
+                                            <li id="pw3">Arquitectura de Software</li>
+                                            <li id="pw4">Wordpress</li>-->
+                                        </ul>
+                                    </div>
+
+                                    <div id="disgraf" class="cat_selec">
+                                        <h5>Aplicaciones para móviles: <span id="disgrafcount">(0)</span></h5>
+
+                                        <ul class="tag skillspre" data-bind="foreach: skillsList21">
+                                            <li data-bind="text: Name,attr: { 'id':  $.trim(IdHtml),'style':'display:none'}"></li>
+                                            <!--<li id="apm1">Android</li>
+                                            <li id="apm2">iPhone</li>
+                                            <li id="apm3">Windows Phone</li>
+                                            <li id="apm4">BlackBerry</li>-->
+                                        </ul>
+                                    </div>
+
+                                    <div id="web" class="cat_selec">
+                                        <h5>Diseño gráfico: <span id="webcount">(0)</span></h5>
+
+                                        <ul class="tag skillspre" data-bind="foreach: skillsList20">
+                                            <li data-bind="text: Name,attr: { 'id':  $.trim(IdHtml),'style':'display:none'}"></li>
+                                            <!--<li id="dig1">Ilustración</li>
+                                            <li id="dig2">Concepto</li>
+                                            <li id="dig3">Vectorización</li>
+                                            <li id="dig4">Dibujo</li>-->
+                                        </ul>
+                                    </div>
+
+                                    <div id="promul" class="cat_selec">
+                                        <h5>Producción multimedia: <span id="promulcount">(0)</span></h5>
+
+                                        <ul class="tag skillspre" data-bind="foreach: skillsList23">
+                                            <li data-bind="text: Name,attr: { 'id':  $.trim(IdHtml),'style':'display:none'}"></li>
+                                            <!--<li id="pmu1">Fotografía</li>
+                                            <li id="pmu2">Producción de video</li>
+                                            <li id="pmu3">Videojuegos</li>
+                                            <li id="pmu4">Producción de audio</li>-->
+                                        </ul>
+                                    </div>
+
+                                    <div id="anima" class="cat_selec">
+                                        <h5>Animación 3D: <span id="animacount">(0)</span></h5>
+
+                                        <ul class="tag skillspre" data-bind="foreach: skillsList18">
+                                            <li data-bind="text: Name,attr: { 'id':  $.trim(IdHtml),'style':'display:none'}"></li>
+                                            <!--<li id="atd1">Modelado</li>
+                                            <li id="atd2">Modelado orgánico</li>
+                                            <li id="atd3">Preproducción 3D</li>
+                                            <li id="atd4">Postproducción 3D</li>-->
+                                        </ul>
+                                    </div>
+
+
+                                    <div id="moffice" class="cat_selec">
+                                        <h5>Office: <span id="mofficecount">(0)</span></h5>
+
+                                        <ul class="tag skillspre" data-bind="foreach: skillsList24">
+                                            <li data-bind="text: Name,attr: { 'id':  $.trim(IdHtml),'style':'display:none'}"></li>
+                                            <!--<li id="off1">Word</li>
+                                            <li id="off2">PowerPoint</li>
+                                            <li id="off3">Access</li>
+                                            <li id="off4">Publisher</li>-->
+                                        </ul>
+                                    </div>
+
+                                    <div id="trad" class="cat_selec">
+                                        <h5>Traducción y Redacción: <span id="tradcount">(0)</span></h5>
+
+                                        <ul class="tag skillspre" data-bind="foreach: skillsList16">
+                                            <li data-bind="text: Name,attr: { 'id':  $.trim(IdHtml),'style':'display:none'}"></li>
+                                            <!--<li id="tra1">Redacción Blogs</li>
+                                            <li id="tra2">Redacción técnica</li>
+                                            <li id="tra3">Traducción Inglés</li>
+                                            <li id="tra4">Traducción Francés</li>-->
+                                        </ul>
+                                    </div>
+
+                                    <div id="ingen" class="cat_selec">
+                                        <h5>Ingeniería y Arquitectura: <span id="ingencount">(0)</span></h5>
+
+                                        <ul class="tag skillspre" data-bind="foreach: skillsList25">
+                                            <li data-bind="text: Name,attr: { 'id':  $.trim(IdHtml),'style':'display:none'}"></li>
+                                            <!--<li id="ina1">Autocad</li>
+                                            <li id="ina2">Diseño de interiores</li>
+                                            <li id="ina3">Corrección de planos</li>
+                                            <li id="ina4">Presupuesto</li>-->
+                                        </ul>
+                                    </div>
+                                   
+
+                                </div>
+                            </div><!--/.media -->
+                        </div>
+
+                    </div>
+
+                    <!--/.fin categorías-->
+
+                    <input id="save_changes" type="button" value="Guardar cambios" class="btn-cambios-fl" style="float:right; margin-bottom:50px;">
+
+                </form>
+
+            </div><!--team-->
+        </div><!--/.container-->
+    </div><!--/about-us-->
+
+
+    <footer id="footer" class="midnight-blue">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6">
+                    &copy; 2016 <a target="_blank" href="#" title="EnMarca Digital">EnMarca Digital</a>. Todos los derechos reservados.
+                </div>
+                <div class="col-sm-6">
+                    <ul class="pull-right">
+                        <li><a href="contacto">Contacto | nosotros</a></li>
+                        <li><a href="#">Términos de uso</a></li>
+                        <li><a href="#">Política de privacidad</a></li>
+                        <li><a href="index.html">Volver al inicio</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer><!--/#footer-->
+
+    <script src="js/jquery.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.prettyPhoto.js"></script>
+    <script src="js/jquery.isotope.min.js"></script>
+    <script src="js/main.js"></script>
+   
+    <script src="js/wow.min.js"></script>
+    <script src="js/jquery-1.10.2.js"></script>
+    <script src="../Scripts/jquery.validate.min.js"></script>
+
+    <script src="../Scripts/knockout-3.4.0.js"></script>
+    <script src="../Scripts/knockout.mapping-latest.js"></script>
+    <script src="../Scripts/toastr.min.js"></script>
+    <script src="../Scripts/koTable.min.js"></script>
+    <script src="../Scripts/ModelsKo/ViewModel.js"></script>
+
+   
+    <script>
+        var useremail;
+        function getParameterByName(name, url) {
+            if (!url) url = window.location.href;
+            name = name.replace(/[\[\]]/g, "\\$&");
+            var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+                results = regex.exec(url);
+            if (!results) return null;
+            if (!results[2]) return '';
+            return decodeURIComponent(results[2].replace(/\+/g, " "));
+        }
+        $(document).ready(function () {
+            
+           
+            vm = new ViewModelRegister();
+            ko.applyBindings(vm);
+         
+            $(function () {
+
+                $('.categoria').click(function () {
+
+                    var idoffer = this.id.replace("categoria", "");
+                    vm.getSkillsFromServer(idoffer);
+
+                });
+
+            });
+
+            //var data = { skills: [], company: [] };
+            //$(".checkbox").click(function () {
+            //    if (this.id.indexOf("-") > 0) {
+
+            //        if ($(this).is(':checked')) {
+            //            $(this).parents(".padre").addClass("checkchecked");
+            //            $("#" + this.id.split("-")[1]).css("display", "inline-block");
+            //            var id = this.id.split("-")[1];
+            //            var name = $("#" + this.id.split("-")[1]).text();
+            //            var categorySkill = category
+            //            data.skills.push({ Id: id, Name: name, CategorySkill: categorySkill, IdHtml: id });
+            //        } else {
+            //            $(this).parents(".padre").removeClass("checkchecked");
+            //            $("#" + this.id.split("-")[1]).css("display", "none");
+            //        }
+            //    }
+            //});
+
+
+                //var data = { skills: [], company: [] };
+                //$("input[type=checkbox]").click(function () {
+                //    if (this.id.indexOf("-") > 0) {
+
+                //        if ($(this).is(':checked')) {
+                //            $(this).parents(".padre").addClass("checkchecked");
+                //            $("#" + this.id.split("-")[1]).css("display", "inline-block");
+                //            var id = this.id.split("-")[1];
+                //            var name = $("#" + this.id.split("-")[1]).text();
+                //            var categorySkill = category
+                //            data.skills.push({ Id: id, Name: name, CategorySkill: categorySkill, IdHtml: id });
+                //        } else {
+                //            $(this).parents(".padre").removeClass("checkchecked");
+                //            $("#" + this.id.split("-")[1]).css("display", "none");
+                //        }
+                //    }
+                //});
+
+                //$(":checkbox").click(function (evt) {
+                //    if (evt.target.type !== 'checkbox') {
+                //        var $checkbox = $(":checkbox", this);
+                //        $checkbox.attr('checked', !$checkbox.attr('checked'));
+                //        $checkbox.change();
+                //    }
+                //});
+
+          
+
+
+
+            var siono = getParameterByName('freelance'); // "lorem"
+
+            if (siono != "True") {
+                
+                $('#contenedor_categorias').hide();
+                $('#esempresa').show();
+               
+            }
+            else {
+                
+                $('#contenedor_categorias').show();
+                $('#esempresa').hide();
+            }
+            setupUploadfile();
+            $("#preview_img_prof").clone().prependTo(".pre_foto");
+            useremail = getParameterByName('UserEmail'); //
+            GetUserName(useremail);
+
+            $("#datos-freelance").validate();
+
+        });
+
+
+        function GetUserName(useremail) {
+
+            var newUser = [{
+                Email: useremail,
+                UserName: '',
+                PasswordHash: '',
+                ConfirmPassword: '',
+                Freelance: '',
+                Empresa: '',
+                City: $('#ciudaduser').val(),
+                Country: $('#countryuser').val(),
+                DescUser: $('#descuser').val(),
+                PhoneNumber: $('#numbertelreg').val(),
+                FirstMiddleName: $('#username_prof').val(),
+                Image: ''
+
+
+            }];
+            $.ajax({
+                url: "/api/Account/GetuserNameByEmail",
+                data: JSON.stringify(newUser),
+                type: "POST",
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                success: function (response) {
+                    if (response.success) {
+                        // do something clever
+                        $('#username_prof').val(response.tipo.UserName)
+                        $('#username_bar').html('').append(response.tipo.UserName);
+                        $('#nombape').val(response.tipo.FirstMiddleName)
+                    } else {
+
+                        alert('Ha ocurrido un error: ' + response.errors);
+
+
+
+                    }
+                },
+
+                error: function (xhr, ajaxOptions, thrownError) {
+                    alert(xhr.status);
+                    alert(thrownError);
+                }
+
+            });
+
+        }
+
+        function setupUploadfile() {
+
+            $('#uploadbutton').on('click', function () {
+
+                var data = new FormData();
+
+                var files = $("#fileselect").get(0).files;
+
+                // Add the uploaded image content to the form data collection
+                if (files.length > 0) {
+                    data.append("UploadedImage", files[0]);
+                }
+
+
+                // Make Ajax request with the contentType = false, and procesDate = false
+                var ajaxRequest = $.ajax({
+                    type: "POST",
+                    url: "/api/Account/UploadImageUser",
+                    contentType: false,
+                    processData: false,
+                    data: data
+                });
+
+                ajaxRequest.done(function (responseData, textStatus) {
+                    if (textStatus == 'success') {
+                        if (responseData != null) {
+                            if (responseData.Key) {
+                                //alert(responseData.Value);
+                                var fileuser = $("#fileselect").val();
+                                UpdateImageUser(fileuser);
+
+                                $("#fileselect").val('');
+                            } else {
+                                alert(responseData.Value);
+                            }
+                        }
+                    } else {
+                        alert(responseData.Value);
+                    }
+                });
+            });
+
+        }
+
+        function UpdateImageUser(fileuser) {
+            var newUser = [{
+                Email: useremail,
+                UserName: '',
+                PasswordHash: '',
+                ConfirmPassword: '',
+                Freelance: '',
+                Empresa: '',
+                City: $('#ciudaduser').val(),
+                Country: $('#countryuser').val(),
+                DescUser: $('#descuser').val(),
+                PhoneNumber: $('#numbertelreg').val(),
+                FirstMiddleName: $('#username_prof').val(),
+                Image: fileuser
+
+
+            }];
+            $.ajax({
+                url: "/api/Account/UpdateImageUser",
+                data: JSON.stringify(newUser),
+                type: "POST",
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                success: function (response) {
+                    if (response.success) {
+                        // do something clever
+                        // $("#datos-freelance")[0].reset();
+
+                        alert("Se ha guardado correctamente la imagen del usuario");
+                        hide('foto_profile');
+
+
+                    } else {
+
+                        alert('Ha ocurrido un error: ' + response.errors);
+                        $('#preview_img_prof').attr("src", 'images/user_default.png');
+
+                        hide('foto_profile');
+
+
+
+                    }
+                },
+
+                error: function (xhr, ajaxOptions, thrownError) {
+                    alert(xhr.status);
+                    alert(thrownError);
+                }
+
+            });
+
+
+        }
+        function RegisterHabilidades(newUser) {
+            
+            var empresa = vm.Empresa();
+            newUser[0].Empresa = empresa
+            if (empresa == true)
+            {
+                
+                newUser[0].Freelance = 'false';
+            }
+            else
+            {
+               
+                newUser[0].Freelance = 'true';
+            }
+
+
+
+            $.ajax({
+                url: "/api/Account/InsertSkills",
+                data: JSON.stringify(newUser),
+                type: "POST",
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                success: function (response) {
+                    if (response.success) {
+                        // do something clever
+                        $("#datos-freelance")[0].reset();
+                        alert("Se ha guardado correctamente la información");
+                        getDetails(response.tipo.Id, response.tipo.Freelance);
+
+                    } else {
+                        alert('Ha ocurrido un error: ' + response.errors)
+
+                    }
+                },
+
+                error: function (xhr, ajaxOptions, thrownError) {
+                    alert(xhr.status);
+                    alert(thrownError);
+                }
+
+            });
+
+
+        }
+
+        function getDetails(Id, Freelance) {
+
+            if (Freelance.toString().toUpperCase() == "TRUE") {
+                window.location.href = "/Freelance/DetailsById/" + Id
+
+            }
+            else {
+                window.location.href = "/Contratante/DetailsById/" + Id
+            }
+
+            // redirect to another page
+            //$.get("/Freelance/DetailsById/" + Id, function (data, status) {
+            //    alert("Data: " + data + "\nStatus: " + status);
+            //});
+            //$.ajax({
+            //    url: "/Freelance/DetailsById/"+Id,
+            //     type: "POST",
+
+            //    success: function (response) {
+            //        if (response.success) {
+            //            // do something clever
+
+
+
+
+            //        } else {
+            //            alert('Ha ocurrido un error: ' + response.errors)
+
+            //        }
+            //    },
+
+            //    error: function (xhr, ajaxOptions, thrownError) {
+            //        alert(xhr.status);
+            //        alert(thrownError);
+            //    }
+
+            //});
+        }
+
+
+        var habilidades = { "habilidadesData": [] };
+
+        $('.btn-cambios-fl').click(function () {
+            data.company.push({ Name: $('#nombemp').val(), Mail: $('#mailemp').val(), Site: $('#sitemp').val(), Sector: $('#sectemp').val(), RazonSocial: $('#razemp').val(), Telefono: $('#telemp').val(), Nit: $('#nitemp').val(), NumeroEmp: $('#empemp').val(), Description: $('#descemp').val() });
+            var newUser = [{
+                Email: useremail,
+                UserName: $('#username_prof').val(),
+                PasswordHash: '',
+                ConfirmPassword: '',
+                Freelance: '',
+                Empresa: '',
+                City: $("#ciudaduser option:selected").text(),            //$('#ciudaduser').text(),
+                Country: $("#countryuser option:selected").text(),//$('#countryuser').text(),
+                DescUser: $('#descuser').val(),
+                PhoneNumber: $('#numbertelreg').val(),
+                FirstMiddleName: '',
+                Image: $("#imagename").val(),
+                Skills: data.skills,
+                Company: data.company
+
+            }];
+
+            RegisterHabilidades(newUser)
+
+
+
+        });
+
+
+
+       
+    </script>
+
+
+    <script>
+        // Funcion cargar y visualizar nueva foto de perfil
+
+        function archivo(evt) {
+            var files = evt.target.files; // FileList object
+
+            //   //Obtenemos la imagen del campo "file".
+            for (var i = 0, f; f = files[i]; i++) {
+                //Solo admitimos imágenes.
+                if (!f.type.match('image.*')) {
+                    continue;
+                }
+
+                var reader = new FileReader();
+
+                reader.onload = (function (theFile) {
+                    return function (e) {
+                        // Creamos la imagen.
+                        document.getElementById("list").innerHTML = ['<img class="thumb" id="thumbfoto" src="', e.target.result, '" title="', escape(theFile.name), '"/>'].join('');
+                        $('#preview_img_prof').attr("src", e.target.result);
+                        $('#miniatura_image').attr("src", e.target.result);
+                        $('#imagename').val(theFile.name);
+                    };
+                })(f);
+
+                reader.readAsDataURL(f);
+            }
+        }
+
+        document.getElementById('fileselect').addEventListener('change', archivo, false);
+
+
+        // mantener actualizada imagen de perfil
+
+
+        //function toggleCheckbox(element) {
+
+        //    if (element.id.indexOf("-") > 0) {
+
+        //        if ($(element).is(':checked')) {
+        //            $(element).parents(".padre").addClass("checkchecked");
+        //            $("#" + element.id.split("-")[1]).css("display", "inline-block");
+        //            var id = element.id.split("-")[1];
+        //            var name = $("#" + element.id.split("-")[1]).text();
+        //            var categorySkill = category
+        //            data.skills.push({ Id: id, Name: name, CategorySkill: categorySkill, IdHtml: id });
+        //        } else {
+        //            $(element).parents(".padre").removeClass("checkchecked");
+        //            $("#" + element.id.split("-")[1]).css("display", "none");
+        //        }
+        //    }
+            //if (element.checked) {
+            //    document.getElementById("checked").style.display = "block";
+            //    document.getElementById("unchecked").style.display = "none";
+            //}
+            //else if (!element.checked) {
+            //    document.getElementById("checked").style.display = "none";
+            //    document.getElementById("unchecked").style.display = "block";
+            //}
+       // }
+
+    </script>
+
+    <!--Script para autocompletar URL-->
+
+    <script type="text/javascript">
+        function checkURL (abc) {
+              var string = abc.value;
+              if (!~string.indexOf("http")) {
+                string = "http://" + string;
+              }
+                abc.value = string;
+                return abc
+        }
+    </script>
+
+    <!--Script validación registro-->
+
+    
+               
+                
+
+
+</body>
+</html>

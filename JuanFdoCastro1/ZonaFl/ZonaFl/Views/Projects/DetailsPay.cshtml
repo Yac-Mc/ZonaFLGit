@@ -1,0 +1,161 @@
+﻿@model ZonaFl.Entities.CustomEntities.Pagos
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutContratanteLog.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Pagos</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.merchantId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.merchantId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ApiLogin)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ApiLogin)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ApiKey)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ApiKey)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.accountId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.accountId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.amount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.amount)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tax)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tax)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.taxReturnBase)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.taxReturnBase)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.currency)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.currency)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.signature)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.signature)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.test)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.test)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.buyerEmail)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.buyerEmail)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.responseUrl)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.responseUrl)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.confirmationUrl)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.confirmationUrl)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.urlprueba)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.urlprueba)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.refVenta)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.refVenta)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.referenceCode)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.referenceCode)
+        </dd>
+
+        <dd>
+            
+            @Html.Label("Estado de la transacción", Convert.ToString((string)ViewBag.transactionState)))
+            @Html.Label("Transacción no aprobada(Errores en la transacción):", Convert.ToString((string)ViewBag.Errors))
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

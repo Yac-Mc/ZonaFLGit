@@ -1,0 +1,96 @@
+﻿@model IEnumerable<ZonaFl.Persistence.Entities.Offer>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.PrecioFijo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Sale)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ValueFixedProject)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NumberPhases)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AutomaticValuePhases)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IdUser)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CategoryId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TitleOffer)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RangoValor)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DateOffer)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.PrecioFijo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Sale)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ValueFixedProject)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NumberPhases)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AutomaticValuePhases)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IdUser)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CategoryId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TitleOffer)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RangoValor)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DateOffer)
+        </td>
+        <td>
+            @*@Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })*@
+
+@Html.ActionLink("Pagos", "index","Pagos", new { id = item.Id },null)
+        </td>
+    </tr>
+}
+
+</table>

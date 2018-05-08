@@ -1,0 +1,197 @@
+﻿
+                             
+                                 
+                    <h2><i class="fa fa-file-text-o"></i> &nbsp;Hoja de vida:</h2>
+
+                    <hr>
+
+                    <a id="exp_lab" class="hv_cat" href="#"><i class="fa fa-suitcase"></i> Experiencia laboral</a>
+                    <a id="estud" class="hv_cat" href="#"><i class="fa fa-book"></i> Educación</a>
+                    <a id="certifi" class="hv_cat" href="#"><i class="fa fa-trophy"></i> Certificaciones</a>
+                    <a id="idio" class="hv_cat" href="#"><i class="fa fa-globe"></i> Idiomas</a>
+
+
+<div id="anchor" class="ofertas_all_freelance">
+    @if (Model.Experiences.Count == 0 && Model.Educations.Count == 0 && Model.Certifications.Count == 0 && Model.Languages.Count == 0)
+    {
+                        <br>
+                        <h4>Aún no has empezado a crear tu hoja de vida, puedes empezar <a href="/Curriculum/EditById/@ViewBag.UserId" style="color: #1992c2;">aquí:</a></h4>
+    }
+
+
+         <!--Experiencia laboral-->
+
+                        <div id="empleos">
+                            <div class="hv_content">
+
+                                <div class="header_div_hv"><h4>Experiencia Laboral<i id="addexper" class="fa fa-suitcase"></i></h4></div>
+                                <br>
+                             
+                                    <div id="contenedor">
+                         @foreach (var x in Model.Experiences)
+                              {
+                                       <!--item experiencia-->
+                                        <div class="added">
+                                            <label>Empresa:</label>
+                                            <p id="name_company_hv">@x.Company</p>
+                                            Inicio:<input type="text" id="ini_exp_hv" class="form-control fechas" value='@x.DateIni' disabled />
+                                            Final:<input type="text" id="fin_exp_hv" class="form-control fechas" value='@x.DateEnd' disabled />
+                                            Actualmente:<input type="checkbox" id="actual_exp_hv" class="form-control" checked='@x.CurrentEmploy' disabled /><br>
+                                            <label>Cargo:</label><p id="cargo_exp_hv">@x.Position</p>
+                                            <label>Resumen funciones:</label><p id="func_exp_hv">@x.FunctionPosition</p>
+                                            <hr>
+                                        </div>
+                                         <!--fin item experiencia-->
+                                    }
+                                    </div>             
+
+                            </div>
+                        </div>
+
+     <!--Fin experiencia laboral--> 
+
+
+    <!--Estudios-->
+
+                        <div id="academicos">
+                            <div class="hv_content">
+
+                                <div class="header_div_hv"><h4>Educación<i id="addexper_estudio" class="fa fa-book"></i></h4></div>
+                                <br>
+
+                                
+                                    <div id="contenedor_estudio">
+                                        @foreach (var x in Model.Educations)
+                                            {
+                                        <!--item estudio-->
+                                        <div class="added">
+                                            <label>Institución:</label>
+                                            <p id="insti_est_hv">@x.Institution</p>
+                                            <label>País:</label>
+                                            <p id="country_est_hv">@x.Country</p>
+                                            <label>Título:</label>
+                                            <p id="titulo_est_hv">@x.Title</p>
+                                            Inicio:<input type="text" id="ini_est_hv" class="form-control fechas" value='@x.DateIniE' disabled />
+                                            Final:<input type="text" id="fin_est_hv" class="form-control fechas" value='@x.DateEndE' disabled />
+                                            Actualmente<input type="checkbox" id="actual_est_hv" class="form-control inputs" checked='@x.Actually' disabled />
+                                            <hr>
+                                        </div>
+                                         <!--Fin item estudio-->
+                                        }
+                                    </div>               
+
+                            </div>
+
+                        </div>
+
+  <!--Fin estudios-->  
+
+
+
+ <!--Certificaciones-->
+
+                        <div id="certificaciones">
+                            <div class="hv_content">
+
+                                <div class="header_div_hv"><h4>Certificaciones<i id="addexper_certif" class="fa fa-trophy"></i></h4></div>
+                                <br>
+                              
+                                    <div id="contenedor_certificado">
+                                    @foreach (var x in Model.Certifications)
+                                        {
+                                  <!--item certificación-->   
+                                        <div class="added">
+                                            <label>Certificado:</label>
+                                            <p id="name_certif_hv">@x.Certificate</p>
+                                            <label>Organización otorgante:</label>
+                                            <p id="org_certif_hv">@x.Otorgante</p>
+                                            <label>Descripción Certificado:</label>
+                                            <p id="desc_cert_hv">@x.Description</p>
+                                            Fecha Certificado:<input type="text" id="date_certif_hv" class="form-control fechac" value='@x.DateCert' disabled />
+                                            Actualmente:<input type="checkbox" id="actual_certi_hv" class="form-control inputs" checked='@x.Actually' disabled />
+                                            <hr>
+                                        </div>
+                                           <!--Fin item certificación-->
+                                    }
+                                    </div>
+                 
+                            </div>
+                        </div>
+
+<!--Fin certificaciones-->  
+
+
+
+ <!--idiomas-->
+
+                        <div id="idiomas">
+                            <div class="hv_content">
+                                <div class="header_div_hv"><h4>Idiomas<i id="addexper_idiomas" class="fa fa-globe"></i></h4></div>
+                                <br>
+                                                             
+                                    <div id="contenedor_idiomas">
+                                    @foreach (var x in Model.Languages)
+                                            {
+                                     <!--item idioma-->
+                                        <div class="added">
+                                            <label>Idioma:</label>
+                                            <p id="name_idio_hv">@x.Name</p>
+                                            <label>Nivel:</label>
+                                            <p id="level_idio_hv">@x.LevelLang</p>
+                                            Con Certificado<input type="checkbox" id="certif_idio_hv" class="form-control inputs" checked='@x.Certificate' disabled />
+                                            <hr>
+                                        </div>
+                                        <!--Fin item idioma-->
+                                    }
+                                    </div>
+                
+
+                            </div>
+                        </div>
+
+ <!--Fin idiomas-->  
+
+                    </div>
+                
+
+             
+
+<script>
+$("#estud").click(function(){
+  $(this).addClass("activo");
+  $("#exp_lab, #certifi, #idio").removeClass("activo");
+	$("#academicos").css("display", "block");
+	$("#empleos, #certificaciones, #idiomas").css("display", "none");
+
+
+	});
+
+$("#exp_lab").click(function(){
+  $(this).addClass("activo");
+  $("#estud, #certifi, #idio").removeClass("activo");
+	$("#empleos").css("display", "block");
+	$("#academicos, #certificaciones, #idiomas").css("display", "none");
+
+
+	});
+
+$("#certifi").click(function(){
+  $(this).addClass("activo");
+  $("#exp_lab, #estud, #idio").removeClass("activo");
+		$("#certificaciones").css("display", "block");
+	$("#academicos, #empleos, #idiomas").css("display", "none");
+
+
+	});
+
+$("#idio").click(function(){
+  $(this).addClass("activo");
+  $("#exp_lab, #certifi, #estud").removeClass("activo");
+		$("#idiomas").css("display", "block");
+	$("#academicos, #certificaciones, #empleos").css("display", "none");
+
+
+	});
+
+</script>
+

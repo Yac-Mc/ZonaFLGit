@@ -1,0 +1,418 @@
+﻿    <div id="columnahide" class="col-lg-2"></div>
+    <div id="columna" class="col-md-12 col-lg-12">
+
+        <!-- Div izq-->
+        <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+            <h3><strong><i class="fa fa-filter"></i> Filtrar por:</strong></h3>
+            <div class="filtrocat">
+                <form id="filtros_categorias">
+                    <h3>Categoría:</h3>
+                    <div id="checkboxes">
+                        @foreach (var cat in ((List<ZonaFl.Persistence.Entities.Category>)ViewBag.Categories))
+                        {
+                            <input id='@("check"+cat.Id)' type="checkbox" name="@cat.Id" value="@cat.Id"  /> @cat.Name
+                            <br>
+
+                        }
+                    </div>
+                        @*<input id="apps" type="checkbox" name="apps" value="apps"> Aplicaciones para móviles
+            <br>
+            <input id="dise" type="checkbox" name="dise" value="dise"> Diseño gráfico
+            <br>
+            <input id="produ" type="checkbox" name="produ" value="produ"> Producción multimedia
+            <br>
+            <input id="anim" type="checkbox" name="anim" value="anim"> Animación 3D
+            <br>
+            <input id="officem" type="checkbox" name="officem" value="officem"> Microsoft Office
+            <br>
+            <input id="traduce" type="checkbox" name="traduce" value="traduce"> Traducción y redacción
+            <br>
+            <input id="ingeni" type="checkbox" name="ingeni" value="ingeni"> Ingeniería y arquitectura*@
+
+                        <h3>Valor del proyecto:</h3>
+                        <select id="valorfiltro" name="rango_valor" class="form-control">
+                            <option value="0">Escoja un Rango</option>
+                            <option value="1">Menos de 500.000 COP</option>
+                            <option value="2">500.000 - 1.000.000 COP</option>
+                            <option value="3">1.000.000 - 2.000.000 COP</option>
+                            <option value="4">2.000.000 - 3.000.000 COP</option>
+                            <option value="5">Más de 3.000.000 COP</option>
+                        </select>
+</form>
+                <h3>Fecha de publicación</h3>
+                <input type="date" id="fechafiltro" class="form-control" />
+            </div>
+            <hr>
+
+        </div>
+        <!--FIN Div izq-->
+        <!--Div central-->
+
+        <div class="col-xs-12 col-sm-7 col-md-7 col-lg-7">
+            <h2><i class="fa fa-bullhorn"></i> &nbsp;Ofertas recientes:</h2>
+            <hr>
+            <div class="ofertas_all_freelance">
+               
+                <!--nueva oferta-->
+
+                @foreach (var offer in Model)
+                {
+
+                    <form id="@("form"+offer.Id)" action="/Offer/AplicarOferta" method="post">
+
+                        <div class="col-xs-12 newoffer" id="@("newoffer"+offer.Id)">
+                           @Html.Hidden("Id", (object)offer.Id)
+                            <div class="col-xs-12 header-offer">
+                                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                                    <p class="title-offer">@offer.TitleOffer</p>
+                                   @if (offer.Category != null)
+                                   {
+                                    <p class="cat-offer"><strong>Categoría: </strong><span class="categ">@offer.Category.Name</span></p>
+                                   }
+                                   else
+                                   {
+                                    <p class="cat-offer"><strong>Categoría: </strong><span class="categ"></span></p>
+                                   }
+                                </div>
+                                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                                    <p class="cat-offer"><strong>Publicado por: </strong><span class="autor">@offer.NameContractor</span></p>
+                                    <p class="cat-offer"><i class="fa fa-clock-o">&nbsp;</i><span class="date-offer">@offer.DateOffer.Date.ToString("dd/MM/yyyy")</span> | <span class="time-offer">@offer.DateOffer.ToString("hh:mm tt")</span> | <i class="fa fa-map-marker">&nbsp;</i><span class="city-offer">@offer.ContractorCity</span>, <span class="country-offer">@offer.ContractorCountry</span></p>
+                                </div>
+                            </div>
+
+                            <div class="col-xs-12 text-offer widing">
+                                <p class="desc-offer"><strong>Descripción del proyecto: </strong><span class="offer-full">@offer.Description</span></p>
+                            </div>
+
+                            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 data-offer">
+                                @if (offer.ValueFixedProject != 0)
+                                {
+                                    <p class="title-text">PRESUPUESTO: <span class="info-text"><strong>COP </strong></span><span class="budget-offer info-text">@offer.ValueFixedProject</span></p>
+                                }
+                                else
+                                {
+                                    <p class="title-text">PRESUPUESTO: <span class="info-text"><strong>COP </strong></span><span class="budget-offer info-text">@offer.RangoValor</span></p>
+                                }
+                                <p class="title-text">NRO. POSTULADOS: <span class="number-aplies info-text"  id="@("nopostulados"+offer.Id)">@offer.NoPostulados</span></p>
+                            </div>
+                            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 data-offer">
+                                <p class="title-text">INICIO ESTIMADO: <span class="ini-proy info-text">@offer.DateIniPhase1</span></p>
+                                <p class="title-text">FIN ESTIMADO: <span class="fin-proy info-text">@offer.DateClose</span></p>
+                            </div>
+
+                            <div class="col-xs-12 exe-offer">
+@if (offer.OfferPhases != null)
+{
+                                <p><strong>Ejecución: </strong><span class="num-fases">@offer.OfferPhases.Count</span></p>
+}
+else
+{
+    <p><strong>Ejecución: </strong><span class="num-fases">0</span></p>
+}
+                            </div>
+
+                            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 widing">
+                                <ul>
+                                    @if (offer.OfferPhases != null)
+                                    {
+
+                                    foreach (var off in offer.OfferPhases)
+                                    {
+
+
+                                        <li class="title-text">@(offer.OfferPhases.IndexOf(off) + 1) <span class="name-fase1 info-text">@off.Name </span></li>
+                                        if (off.Value != 0)
+                                        {
+                                            <li class="pricing-fase"><span class="info-text"><strong>COP </strong></span> <span class="price-fase">@off.Value</span></li>
+                                        }
+                                        else
+                                        {
+
+                                            <li class="pricing-fase"><span class="info-text"><strong>COP </strong></span> <span class="price-fase">@off.Value</span></li>
+                                        }
+                                    }
+                                    }
+
+
+
+
+
+
+
+
+
+
+                                    @*<li class="title-text">FASE 2: <span class="name-fase2 info-text">Nombre fase 2 </span></li>
+                                        <li class="pricing-fase"><span class="info-text"><strong>COP </strong></span> <span class="price-fase">500000</span></li>
+                                        <li class="title-text">FASE 3: <span class="name-fase3 info-text">Nombre fase 3 </span></li>
+                                        <li class="pricing-fase"><span class="info-text"><strong>COP </strong></span> <span class="price-fase">1000000</span></li>
+                                        <li class="title-text">FASE 4: <span class="name-fase4 info-text">Nombre fase 4 </span></li>
+                                        <li class="pricing-fase"><span class="info-text"><strong>COP </strong></span> <span class="price-fase">300000</span></li>*@
+
+                                </ul>
+                            </div>
+                            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 offer-btns widing">
+                                @*<button type="submit" class="btno btn-apply btn-ctrl-apply">APLICAR</button>*@
+                                <button type="button" class="btno btn-apply btn-ctrl-apply applyoffer" id="@("button"+offer.Id)">APLICAR</button>
+                                <button type="button" class="btno btn-ctrl-apply btno-close colapsa" id=@offer.Id>CERRAR</button>
+
+                                <div id="@("message"+offer.Id)"></div>
+                                  
+                           
+                            </div>
+
+                            <div class="col-xs-12 pie-btn">
+                                <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                                    @if (!(SessionBag.Current.User).Freelance)
+                                    {
+                                        <button type="button" class="btn-crud" onclick="location.href='@Url.Action("Edit", "Offer", new { id = @offer.Id })'"> <i class="fa fa-edit" title="Editar oferta"></i></button>
+
+                                        <button type="submit" class="btn-crud" onclick="location.href='@Url.Action("Delete", "Offer", new { id = @offer.Id })'"><i class="fa fa-trash-o" title="Eliminar oferta"></i></button>
+                                    }
+                                </div>
+                                <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                                    <button type="button" class="btno btn-apply btn-wide" id=@offer.Id>AMPLIAR OFERTA</button>
+                                </div>
+                            </div>
+
+                        </div>
+                    </form>
+                        <!--fin nueva oferta-->
+                }
+            </div>
+        </div>
+
+        <!--FIN Div central-->
+        <!-- Div der-->
+
+        <div id="secder_free" class="col-xs-12 col-sm-2 col-md-2 col-lg-2">
+
+            <div id="ads_zona">
+                (Espacio reservado para publicidad y avisos varios)
+                <hr>
+                (Espacio reservado para publicidad y avisos varios)
+                <hr>
+                (Espacio reservado para publicidad y avisos varios)
+                <hr>
+                (Espacio reservado para publicidad y avisos varios)
+            </div>
+
+
+        </div>
+
+        <!--FIN Div der-->
+
+    </div>
+
+<script>
+    //$("#check16").change(function () {
+    //    var str = "";
+    //    var stridsChecked = "";
+    //    if ($(this).is(":checked")) {
+
+    //        $('input:checked').each(function () {
+
+    //            str += 'C.Id=' + $(this)[0].value + " or ";
+    //            stridsChecked += $(this)[0].id+",";
+    //        });
+
+    //        filterOffers(str, stridsChecked);
+
+    //    }
+    //    else {
+    //        str = str.replace($(this)[0].value, "");
+    //    }
+
+    //});
+
+    $('#fechafiltro').on('change',function(){
+        var str = "";
+        var stridsChecked = "";
+        var fechafiltro=$("#fechafiltro").val();
+        if(fechafiltro!="")
+            str+="O.DateOffer="+fechafiltro +' and ';
+        var valorfiltro=$("#valorfiltro").val();
+        if(valorfiltro!=0)
+            str+="O.RangoValor="+valorfiltro +' and ';
+        $('input:checked').each(function () {
+            str += 'C.Id=' + $(this)[0].value + " or ";
+            stridsChecked += $(this)[0].id + ",";
+        });
+        filterOffers(str, stridsChecked);
+    });
+
+    $('#valorfiltro').on('change', function() {
+        
+        var str = "";
+        var stridsChecked = "";
+        var valorfiltro=$("#valorfiltro").val();
+        if(valorfiltro!=0)
+            str+="O.RangoValor="+valorfiltro +' and ';
+        var fechafiltro=$("#fechafiltro").val();
+        if(fechafiltro!="")
+            str+="O.DateOffer="+fechafiltro +' and ';
+        $('input:checked').each(function () {
+            str += 'C.Id=' + $(this)[0].value + " or ";
+            stridsChecked += $(this)[0].id + ",";
+        });
+        filterOffers(str, stridsChecked);
+    })
+
+   
+    $('#filtros_categorias :checkbox').click(function () {
+
+
+        var $this = $(this);
+        var str = "";
+        var stridsChecked = "";
+        // $this will contain a reference to the checkbox
+
+        var ischecked = $(this).is(':checked');
+        var valorfiltro=$("#valorfiltro").val();
+        if(valorfiltro!=0)
+        str+="O.RangoValor="+valorfiltro +' and ';
+        var fechafiltro=$("#fechafiltro").val();
+        if(fechafiltro!="")
+            str+="O.DateOffer="+fechafiltro +' and ';
+        if (!ischecked) {
+            $('input:checked').each(function () {
+                str += 'C.Id=' + $(this)[0].value + " or ";
+                stridsChecked += $(this)[0].id + ",";
+            });
+            //var repl = str.text().replace($(this)[0].value, "");
+            
+        }
+        else {
+            $('input:checked').each(function () {
+                str += 'C.Id=' + $(this)[0].value + " or ";
+                stridsChecked += $(this)[0].id + ",";
+            });
+        }
+       
+        //if ($this.is(':checked')) {
+           
+        //    // the checkbox was checked
+        //} else {
+            
+                
+                
+            
+        //}
+        filterOffers(str, stridsChecked);
+    });
+
+
+    function filterOffers(filtervalue, stridsChecked)
+    {
+        var copiafv=filtervalue;
+        $.ajax({
+            url: '/Offer/Filter',
+            type: "POST",
+            data: JSON.stringify({ filter: filtervalue }),
+            dataType: "text",
+            contentType: "application/json; charset=utf-8",
+            processData: false,
+            success: function (data) {
+                $('#container').html(data);
+                var arr = stridsChecked.split(',');
+                $.each(arr, function (ids) {
+                    if (arr[ids]!="")
+                    $('#' + arr[ids]).prop('checked', true)
+                    //$('#list').append('<li><img src="img-' + TableOfContentsSplit[ids] + '.gif" /></li>\n');
+                });
+                if(copiafv!='nothing' && copiafv !="")
+                {
+                   
+                    var filtervalues = copiafv.split('and');
+
+                    for(var i = 0; i < filtervalues.length; i++)
+                    {
+                        if( $.trim(filtervalues[i])!=""){
+                            var filtervalue = $.trim(filtervalues[i].split('=')[1].replace(" and",""));
+                            if(filtervalues[i].split('=')[0].indexOf("RangoValor")>=0)
+                            {
+                                $('#valorfiltro option[value='+filtervalue+']').attr('selected', true)
+                            }
+                            else
+                            {
+                                $('#fechafiltro').val(filtervalue);
+                            }
+                        }
+                    }
+                  
+                   
+                }
+
+                //alert(data);
+            },
+            error: function (xhr) {
+                alert('error');
+            }
+        })
+    }
+    $(function(){
+        $(".applyoffer").click(function(event) {
+            var id=  this.id.replace("button","");
+            event.preventDefault();
+            $('<div title="Confirmar"></div>').dialog({
+                open: function (event, ui) {
+                    $(this).html("Esta seguro de aplicar a la oferta?");
+                },
+                close: function () {
+                    $(this).remove();
+                },
+                resizable: false,
+                height: 140,
+                modal: true,
+                buttons: {
+                    'Si': function () {
+                        $(this).dialog('close');
+                      
+                        $.post('/Offer/AplicarOferta/'+id, function(data){
+                            if(data==-1)
+                            {
+                                var errMsg = "<ul>";
+                                errMsg = errMsg + "<li>Ya aplicaste a esta oferta anteriormente</li>";
+                                errMsg = errMsg + "</ul>";
+                                $("#message"+id).css("background-color", "red");
+                                $("#message"+id).html(errMsg);
+                            }
+                            else {
+                                var sum = Number($('#nopostulados'+id)[0].innerHTML);
+                                sum += Number("1");
+                                $('#nopostulados'+id)[0].innerHTML=sum;
+
+                                var okMsg = "<ul>";
+
+                                okMsg = okMsg + "<li>Ha aplicado correctamente a esta oferta</li>";
+                                okMsg = okMsg + "</ul>";
+                                $("#message" + id).css("background-color", "#009ada");
+                                $("#message" + id).html(okMsg);
+
+                            }
+                           
+                        });
+
+                    },
+                    'No': function () {
+                        $(this).dialog('close');
+                       
+                    }
+                }
+            });
+        });
+    });
+
+    
+</script>
+<script src="~/Static/js/jquery.js"></script>
+<script src="~/Static/js/bootstrap.min.js"></script>
+<script src="~/Static/js/jquery.prettyPhoto.js"></script>
+<script src="~/Static/js/jquery.isotope.min.js"></script>
+
+<script src="~/Static/js/main.js"></script>
+<script src="~/Static/js/wow.min.js"></script>
+<script src="~/Static/js/jquery-2.1.4.js"></script>
+<script src="~/Scripts/jquery-ui.min.js"></script>
+
+

@@ -1,0 +1,369 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <!-- core CSS -->
+    <link href="~/Static/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Static/css/font-awesome.min.css" rel="stylesheet">
+    <link href="~/Static/css/prettyPhoto.css" rel="stylesheet">
+    <link href="~/Static/css/animate.min.css" rel="stylesheet">
+    <link href="~/Static/css/main.css" rel="stylesheet">
+    <link href="~/Static/css/responsive.css" rel="stylesheet">
+    <link href="~/Static/css/jquery-ui-themes-1.12.0/jquery-ui.min.css" rel="stylesheet" />
+
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.js"></script>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->
+    <link rel="shortcut icon" href="~/Static/images/ico/logo.png">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="~/Static/images/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="~/Static/images/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="~/Static/images/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="~/Static/images/ico/apple-touch-icon-57-precomposed.png">
+
+    <script src="~/Static/js/jquery.js"></script>
+    <script src="~/Static/js/bootstrap.min.js"></script>
+    <script src="~/Static/js/jquery.prettyPhoto.js"></script>
+    <script src="~/Static/js/jquery.isotope.min.js"></script>
+
+    <script src="~/Static/js/main.js"></script>
+    <script src="~/Static/js/wow.min.js"></script>
+    <script src="~/Static/js/jquery-1.10.2.js"></script>
+    <script src="~/Scripts/jquery-ui.min.js"></script>
+    <script src="~/Scripts/knockout-3.4.0.js"></script>
+   
+
+   
+   
+</head>
+<body>
+
+    <!-- Modal -->
+    <div id="contactModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+
+
+                <section id="contact-page">
+                    <div>
+                        <div class="center">
+                            <h2>Contacto</h2>
+                            <p class="lead">Déjanos saber tu inquietud con respecto a Zona FL aquí:</p>
+                        </div>
+                        <div class="row contact-wrap" id="contactform">
+                            <div class="status alert alert-success" style="display: none"></div>
+                            <form id="formulariocontacto" class="contact-form" name="contact-form" method="post" action='/Contact/Index'>
+                                <div class="col-sm-5 col-sm-offset-1">
+                                    <div class="form-group">
+                                        <label>Nombre *</label>
+                                        <input type="text" class="form-control" name="namecontact" id="namecontact" required="required">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Email *</label>
+                                        <input type="email" name="emailcontact" class="form-control" required="required" id="emailcontact" data-rule-email="true" data-msg-email="Ingrese un correo electrónico válido">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Teléfono</label>
+                                        <input type="number" class="form-control" required="required" name="numbercontact" id="numbercontact" minlength="6" data-msg-minlength="Ingrese mínimo 6 caracteres">
+
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Ciudad</label>
+                                        <input type="text" class="form-control" name="citycontact" id="citycontact" required="required">
+                                    </div>
+                                </div>
+                                <div class="col-sm-5">
+                                    <div class="form-group">
+                                        <label>Asunto *</label>
+                                        <input type="text" name="asuntocontact" id="asuntocontact" class="form-control" required="required">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Mensaje *</label>
+                                        <textarea name="mensajecontact" id="mensajecontact" required="required" class="form-control" rows="8"></textarea>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <button type="Button" name="SendContact" class="btn btn-primary btn-lg" id="SendContact">Enviar mensaje</button>
+                                    </div>
+                                </div>
+                            </form>
+
+                        </div><!--/.row-->
+                        <div id="oops" style="display:none">
+                            <p>
+                                Desafortunadanmente, algo resultado erroneo y su mensaje o comentarios no han sido enviados satisfactoriamente.
+                                El inconveniente se resolverá lo mas pronto posible.
+
+                            </p>
+                        </div>
+                        <div id="thanks" style="display:none">
+
+                            <p>
+                                Gracias por sus comentarios. Se ha enviado satisfactoriamente el correo.Trataremos de responder si es necesario lo mas pronto posible
+
+                            </p>
+                        </div>
+                    </div><!--/.container-->
+                </section><!--/#contact-page-->
+
+
+            </div>
+
+        </div>
+    </div>
+    <!-- Modal -->
+
+    <header id="header">
+        <nav class="navbar navbar-inverse navbar navbar-fixed-top" role="banner">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="index.html"><img src="~/Static/images/logo.png" alt="logo"></a>
+                </div>
+
+                <div class="collapse navbar-collapse navbar-right">
+                    <ul class="nav navbar-nav">
+                        @if (ViewBag.ImageUser == null)
+                        {
+                        <li><div id="miniatura_bar" class="miniatura"><img src="~/Static/images/user_default.png" /></div></li>
+                        
+                        }
+                        else
+                        {
+                            <li><div id="miniatura_bar" class="miniatura"><img src='~/UploadedFiles/@ViewBag.ImageUser' /></div></li>
+                            
+                        }
+                        <li><p>¡Hola <span id="username_bar">@ViewBag.User</span>!</p></li>
+                        <li id="bell"><a id="iconotif" class="iconbar" href="#" data-bind="click: getNotificationsByUser('@SessionBag.Current.User.Id')"><i class="fa fa-bell"></i></a></li>
+                        
+                                            
+                        @*<li><a href="index.html#contact-page" class="scroll">Contacto</a></li>*@
+                        @*<li><a href='@Url.Action("Logout", "Contratante")'>Cerrar sesión</a></li>*@
+
+
+                    </ul>
+                </div>
+            </div><!--/.container-->
+        </nav><!--/nav-->
+
+        <!--/Contenedor notificaciones-->
+        <div class="notificaciones">
+            <a id="closenotif" href="#">x Cerrar</a>
+            <br>
+
+            <!--/Notificación-->
+
+
+            <div id="single_notif" data-bind="foreach: notificationsUser">
+                <img id="single_notif_img" src="~/Static/images/user_default.png" alt="" />
+                <h6 id="single_notif_desc">
+                <span id="usernotif" data-bind="text: Date"></span>
+                <span id="descrinotif" data-bind="text: Message"></span>
+                <span id="proyectnotif" data-bind="text: Message"></span>
+                </h6>
+            </div>
+            <!--/Fin notificación-->
+        </div>
+
+        <!--/Fin Contenedor notificaciones-->
+ 
+
+    </header><!--/header-->
+
+    <section id="submenu">
+        <div class="container">
+            <div class="row">
+
+                @*<ul class="pull-right">
+                    <li><a id="btn-chat" href="#">Iniciar Chat <i class="fa fa-comment"></i></a></li>
+                    <li><a href="~/Offer/Index/@ViewBag.IdUser">ZONA</a></li>
+                    <li><a href="~/Contratante/DetailsById/@ViewBag.IdUser">Perfil</a></li>
+                    <li><a href="~/Projects/Index/@ViewBag.IdUser">Mis proyectos</a></li>
+                    <li><a id="nuevoproyecto" href="/offer/Create#nuevoproyect">Nuevo Proyecto <i class="fa fa-plus"></i></a></li>
+                                                    
+                </ul>*@
+                @*<div class=" col-sm-1 col-md-1 col-lg-1">
+                    <li class="dropdown cogg">
+                        <a href="#" class="dropdown-toggle iconbar" data-toggle="dropdown"><i class="fa fa-cog"></i></a>
+                        <ul class="dropdown-menu coggs">
+                            <li id="primero_cogg"><a href="~/Offer/Index/@ViewBag.IdUser">ZONA</a></li>
+                           <li><a href="~/Contratante/DetailsById/@ViewBag.IdUser">Perfil</a></li>                           
+                            <li><a href="~/Projects/Index/@ViewBag.IdUser">Mis proyectos</a></li>
+                            <li><a id="nuevoproyecto_cog" href="/offer/Create#nuevoproyect">Nuevo Proyecto <i class="fa fa-plus"></i></a></li>
+                            <hr>
+                            <hr>
+                            <li><a href="#">Bandeja de entrada</a></li>
+                            <li><a href='@Url.Action("Logout", "Contratante")'>Cerrar sesión</a></li>
+                            <li id="ultimo_cogg"><a href="#">Darse de baja</a></li>
+
+                        </ul>
+                    </li>
+                </div>*@
+
+            </div>
+        </div>
+    </section>
+    <div>
+        @RenderBody()
+      
+    </div>
+    <div id="dialogchat" >
+       
+    </div>
+
+    <footer id="footer" class="midnight-blue">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6">
+                    &copy; 2016 <a target="_blank" href="#" title="EnMarca Digital">EnMarca Digital</a>. Todos los derechos reservados.
+                </div>
+                <div class="col-sm-6">
+                    <ul class="pull-right">
+                        <li><a href="#" data-toggle="modal" data-target="#contactModal">Contacto </a></ li>
+                        <li><a href="#">Términos de uso </a></ li>
+                        <li><a href="#">Política de privacidad </a></ li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer><!--/#footer-->
+</body>
+</html>
+
+
+
+
+<script>
+    var dialog;
+    $(document).ready(function () {
+
+        @if (SessionBag.Current.User == null)
+                {
+
+                     <text>
+
+        window.location.href = "/Home/Index";
+        </text>
+        }
+        else
+        {
+            <text>
+        notificationsViewModel = new ViwModelNotifications();
+        ko.applyBindings(notificationsViewModel, document.getElementById("single_notif"));
+        </text>
+        }
+
+        dialog = $("#dialogchat").dialog({
+
+            autoOpen: false,
+            height: 450,
+            width: 1000,
+            modal: true,
+            resizable: false,
+            buttons: {
+                Cancel: function () {
+                    dialog.dialog("close");
+                }
+            },
+            open: function (event, ui) {
+                @if (SessionBag.Current.User != null)
+                {
+
+                     <text>
+                $('#txtNickName').val('@SessionBag.Current.User.UserName');
+                $('#txtEmailId').val('@SessionBag.Current.User.Email');
+
+                </text>
+
+
+}
+
+            }
+        });
+
+    });
+
+    $('#btn-chat').click(function () {
+
+        $('#dialogchat').load('/index.html', function () {
+            dialog.dialog('open');
+        });
+
+    });
+
+
+    $("#bell").on("click", function () {
+        $('.notificaciones').toggle("slow");
+    });
+
+    $("#closenotif").click(function () {
+        $('.notificaciones').hide("slow");
+    });
+
+    $("#iconotif").mouseleave(function () {
+        $(this).css("color", "#000");
+    });
+
+    function SendContact(newContact) {
+        $.ajax({
+            type: "POST",
+            data: JSON.stringify(newContact),
+            url: "/api/Contact/SendContact",
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            success: function (response) {
+                //$("#contactform").hide('slow')
+                if (response != null && response.success) {
+                    //alert(response.responseText);
+                    $("#thanks").show('slow')
+                } else {
+                    // DoSomethingElse()
+                    $("#oops").show('slow');
+                    //alert(response.responseText);
+                }
+            },
+            error: function (xhr, status, error) {
+                var err = eval("(" + xhr.responseText + ")");
+                alert(err.Message);
+            }
+
+        });
+
+    }
+    $('#SendContact').click(function () {
+        var free = 0;
+        var empre = 0;
+
+
+        var newContact = {
+            Namecontact: $('#namecontact').val(),
+            Emailcontact: $('#emailcontact').val(),
+            Numbercontact: $('#numbercontact').val(),
+            Citycontact: $('#citycontact').val(),
+            Asuntocontact: $('#asuntocontact').val(),
+            Mensajecontact: $('#mensajecontact').val(),
+
+        };
+        SendContact(newContact);
+
+    });
+</script>
+
+
+
+
+
+
+
+

@@ -1,0 +1,292 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title> Principal Contratante | Zona FL</title>
+
+    <!-- core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/font-awesome.min.css" rel="stylesheet">
+    <link href="css/prettyPhoto.css" rel="stylesheet">
+    <link href="css/animate.min.css" rel="stylesheet">
+    <link href="css/main.css" rel="stylesheet">
+    <link href="css/responsive.css" rel="stylesheet">
+
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.js"></script>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->
+    <link rel="shortcut icon" href="images/ico/favicon.ico">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="images/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="images/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="images/ico/apple-touch-icon-57-precomposed.png">
+</head><!--/head-->
+
+<body>
+
+
+    <header id="header">
+        <nav class="navbar navbar-inverse navbar navbar-fixed-top" role="banner">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="index.html"><img src="images/logo.png" alt="logo"></a>
+                </div>
+
+                <div class="collapse navbar-collapse navbar-right">
+                    <ul class="nav navbar-nav">
+                        <li><div id="miniatura_bar" class="miniatura"><img src="images/user_default.png" /></div></li>
+                        <li><p>¡Hola,<span id="username_bar"> Jairo Barbosa</span>!</p></li>
+
+                        <li><a class="iconbar" href="#"><i class="fa fa-envelope-o"></i></a></li>
+
+
+
+                        <li><a href="index.html">Inicio</a></li>
+                        <li><a href="index.html#contact-page" class="scroll">Contacto</a></li>
+
+
+                    </ul>
+                </div>
+            </div><!--/.container-->
+        </nav><!--/nav-->
+        <!--/pop up nueva oferta-->
+
+        <div id="nuevoproyect" class="emer">
+            <div class="emer-addoferta">
+                <a href="#">x</a>
+                <hr>
+                <h2 class="title_pop">Nuevo proyecto</h2>
+
+                <div id="content_np">
+                    <form id="addoferta_contrat">
+                        Categoría del trabajo:
+                        <select name="Categories">
+                            <option selected value="0"> Elige una catagoría </option>
+
+                            <option value="1">Páginas Web y Software</option>
+                            <option value="2">Aplicaciones para móviles</option>
+                            <option value="3">Diseño gráfico</option>
+                            <option value="4">Producción multimedia</option>
+                            <option value="5">Animación 3D</option>
+                            <option value="6">Microsoft Office</option>
+                            <option value="7">Traducción y redacción</option>
+                            <option value="8">Ingeniería y Arquitectura</option>
+                        </select>
+                        <br>
+                        <br>
+                        <label>Nombre del proyecto</label>
+                        <input type="text" class="form-control" placeholder="Es el título que verán los Freelance en la oferta...">
+                        <br>
+                        <label>Descripción proyecto</label>
+                        <textarea name="message" id="message" required="required" class="form-control" rows="7" placeholder="Describe en detalle el proyecto que necesitas llevar a cabo; sé tan especifico como quieras para conseguir el Freelance más indicado para el trabajo..."></textarea>
+                        <br>
+                        <strong>Rango de valor</strong><i> (*elige un rango de valores estimado, el valor final se definirá en puja con el mejor postor):</i>
+                        <select name="rango_valor">
+                            <option value="1">Menos de 500.000 COP</option>
+                            <option value="2">500.000 - 1.000.000 COP</option>
+                            <option value="3">1.000.000 - 2.000.000 COP</option>
+                            <option value="4">2.000.000 - 3.000.000 COP</option>
+                            <option value="5">Más de 3.000.000 COP</option>
+                        </select>
+
+                        <br>
+                        <br>
+                        <label>Duración estimada del proyecto</label>
+                        <input type="text" class="form-control" placeholder="Ingresa un estimado de duración en semanas o meses. Ej: 8 semanas...">
+                        <hr>
+                        <a href="#"><h2 class="btn-cancel_addofer">Cancelar</h2></a>
+
+                        <input type="submit" value="Publicar proyecto +" class="btn-addofer">
+
+
+
+
+                    </form>
+                    <br />
+                </div>
+
+                <hr>
+
+            </div>
+
+        </div>
+        <!--/ fin pop up nueva oferta-->
+
+    </header><!--/header-->
+
+    <section id="submenu">
+        <div class="container">
+            <div class="row">
+
+                <ul class="pull-right">
+                    <li><a id="nuevoproyecto" href="#nuevoproyect">Nuevo Proyecto <i class="fa fa-plus"></i></a></li>
+                    <li><a href="contacto">Perfil</a></li>
+                    <li><a href="#">Ofertas</a></li>
+                    <li><a href="index.html">Mis proyectos</a></li>
+                </ul>
+                <div class=" col-sm-1 col-md-1 col-lg-1">
+                    <li class="dropdown cogg">
+                        <a href="#" class="dropdown-toggle iconbar" data-toggle="dropdown"><i class="fa fa-cog"></i></a>
+                        <ul class="dropdown-menu coggs">
+                            <li id="primero_cogg"><a href="index.html">Inicio &nbsp;</a></li>
+                            <li><a href="#">Perfil</a></li>
+                            <li><a href="#">Ofertas</a></li>
+                            <li><a href="#">Mis proyectos</a></li>
+                            <li><a id="nuevoproyecto_cog" href="#nuevoproyect">Nuevo Proyecto <i class="fa fa-plus"></i></a></li>
+                            <hr>
+                            <hr>
+                            <li><a href="#">Verificaciones</a></li>
+                            <li><a href="#">Bandeja de entrada</a></li>
+                            <li><a href="#">Cerrar sesión</a></li>
+                            <li id="ultimo_cogg"><a href="#">Darse de baja</a></li>
+
+                        </ul>
+                    </li>
+                </div>
+
+            </div>
+        </div>
+        </div>
+    </section>
+
+
+
+    <section id="principal">
+        <div class="container">
+            <div id="columnahide" class="col-lg-2"></div>
+            <div id="columna" class=" col-md-12 col-lg-12">
+
+                <!-- Div izq-->
+                <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+                    <div class="saludoperfi">
+                        <div id="fotop" class="fotodeperfil">
+                            <img src="images/user_default.png" />
+                        </div>
+                        <div id="saludop" class="saludops">
+                            <h5 id="username_profile">Jairo Barbosa</h5>
+                            <h6 id="tipo_usuario_profile"><i>Contratante</i></h6>
+                            <h6 id="ciudad_profile">Bucaramanga</h6>
+                            <h6 id="pais_profile">COLOMBIA</h6>
+
+                        </div>
+
+                    </div>
+                    <div id="calificaciones" class="col-xs-12">
+                        <div id="stars">
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star-half-o"></i>
+                            <i class="fa fa-star-o"></i>
+                        </div>
+                        <div id="bande_comen" class="col-xs-12">
+                            <a class="iconbar2" href="#"><i class="fa fa-envelope-o"></i></a>
+                            <a class="iconbar2" href="#"><i class="fa fa-comment-o"></i></a>
+
+                        </div>
+                    </div>
+                    <hr>
+                    <div id="comentarios_freelance" class="col-xs-12 col-sm-12 col-md-12">
+                        <h3><strong><i class="fa fa-comment-o"></i> Comentarios:</strong></h3>
+                        <hr>
+                        <div id="comentarios_recopil">
+                            <div class="single_comments">
+                                <img id="com_reciente_img" src="images/blog/avatar3.png" alt="" />
+                                <p id="com_reciente_com">"Excelente trabajo, dentro de los tiempos establecidos."</p>
+                                <div class="entry-meta small muted">
+                                    <span>Por: <a id="com_reciente_user" href="#">Otro usuario</a></span>
+                                </div>
+                            </div>
+
+
+
+
+                        </div>
+                    </div>
+
+                    <br>
+                </div>
+                <!--FIN Div izq-->
+                <!--Div central-->
+                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                    <div class="media-body post_reply_comments acercade">
+                        <h3><strong><i class="fa fa-user"></i> &nbsp;Acerca de mi:</strong></h3>
+                        <hr>
+                        <p id="descripcion_profile">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud</p>
+                    </div>
+
+
+                </div>
+
+                <!--FIN Div central-->
+                <!-- Div der-->
+
+                <div id="secder_free" class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+                    <a id="edicion_perfil" href="index.html">Editar perfil &nbsp;<i class="fa fa-edit"></i></a>
+
+
+                    <div id="veri_pago" class="verificaciones_barra">
+                        <div id="verifi_pago" class="verif_item">
+                            <img src="images/verificacion/verificacionpago.png" />
+                        </div>
+                        <center><h5>Verificación pago</h5></center>
+                    </div>
+
+
+                    <div id="veri_mail" class="verificaciones_barra">
+                        <div id="verifi_mail" class="verif_item">
+                            <img src="images/verificacion/verificacionemail.png" />
+                        </div>
+                        <center><h5>Verificación Email</h5></center>
+                    </div>
+
+                    <div id="veri_movil" class="verificaciones_barra">
+                        <div id="verifi_movil" class="verif_item">
+                            <img src="images/verificacion/verificacionmovil.png" />
+                        </div>
+                        <center><h5>Verificación móvil</h5></center>
+                    </div>
+
+                    <div id="veri_saldo" class="verificaciones_barra">
+                        <div id="verifi_saldo" class="verif_item">
+                            <img src="images/verificacion/Verificacionsaldos.png" />
+                        </div>
+                        <center><h5>Verificación saldo</h5></center>
+                    </div>
+
+                </div>
+
+                <!--FIN Div der-->
+
+            </div>
+
+
+        </div><!--/.container-->
+    </section><!--/about-us-->
+
+
+ @RenderPage("footer.cshtml")
+
+        <script src="js/jquery.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/jquery.prettyPhoto.js"></script>
+        <script src="js/jquery.isotope.min.js"></script>
+        <script src="js/main.js"></script>
+        <script src="js/wow.min.js"></script>
+        <script src="js/jquery-1.10.2.js"></script>
+</body>
+</html>
